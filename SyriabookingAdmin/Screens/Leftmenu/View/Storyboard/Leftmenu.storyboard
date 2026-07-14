@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad7_9" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--LeftmenuVC-->
+        <scene sceneID="Jir-gt-UV4">
+            <objects>
+                <viewController storyboardIdentifier="LeftmenuVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="P5m-AS-nbP" customClass="LeftmenuVC" customModule="SyriabookingAdmin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vut-Un-Cbw">
+                        <rect key="frame" x="0.0" y="0.0" width="744" height="1133"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDC-de-YAS">
+                                <rect key="frame" x="0.0" y="78" width="744" height="1055"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="diasmissButtonAction:" destination="P5m-AS-nbP" eventType="touchUpInside" id="OLq-03-DPe"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SZX-gz-13m">
+                                <rect key="frame" x="0.0" y="78" width="350" height="650"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UNo-3E-uXC">
+                                        <rect key="frame" x="10" y="10" width="330" height="640"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="P5m-AS-nbP" id="LHH-1c-rFT"/>
+                                            <outlet property="delegate" destination="P5m-AS-nbP" id="d5S-Qu-5it"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="UNo-3E-uXC" secondAttribute="trailing" constant="10" id="GWv-Hy-l1r"/>
+                                    <constraint firstItem="UNo-3E-uXC" firstAttribute="leading" secondItem="SZX-gz-13m" secondAttribute="leading" constant="10" id="NGn-Rx-2e0"/>
+                                    <constraint firstAttribute="height" constant="650" id="Pie-hX-jj9"/>
+                                    <constraint firstAttribute="width" constant="350" id="Snk-xs-Rc4"/>
+                                    <constraint firstAttribute="bottom" secondItem="UNo-3E-uXC" secondAttribute="bottom" id="Xyv-W4-DAH"/>
+                                    <constraint firstItem="UNo-3E-uXC" firstAttribute="top" secondItem="SZX-gz-13m" secondAttribute="top" constant="10" id="sdj-yg-TEH"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="yZE-RJ-WpK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DDC-de-YAS" firstAttribute="trailing" secondItem="yZE-RJ-WpK" secondAttribute="trailing" id="0TR-C2-VUR"/>
+                            <constraint firstItem="DDC-de-YAS" firstAttribute="top" secondItem="yZE-RJ-WpK" secondAttribute="top" id="AU6-WO-Vy3"/>
+                            <constraint firstItem="SZX-gz-13m" firstAttribute="leading" secondItem="yZE-RJ-WpK" secondAttribute="leading" id="ZDe-uT-BHO"/>
+                            <constraint firstItem="SZX-gz-13m" firstAttribute="top" secondItem="yZE-RJ-WpK" secondAttribute="top" id="aY7-cb-fdN"/>
+                            <constraint firstAttribute="bottom" secondItem="DDC-de-YAS" secondAttribute="bottom" id="bog-7T-67h"/>
+                            <constraint firstItem="DDC-de-YAS" firstAttribute="leading" secondItem="yZE-RJ-WpK" secondAttribute="leading" id="qvD-8q-iSi"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="pHJ-A5-9yZ"/>
+                    <connections>
+                        <outlet property="backView" destination="SZX-gz-13m" id="XG0-gL-aaA"/>
+                        <outlet property="dismissButton" destination="DDC-de-YAS" id="hB2-GW-r9g"/>
+                        <outlet property="leftmenuListTableView" destination="UNo-3E-uXC" id="RAq-7G-nwN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UPi-UT-M2y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1973.3870967741937" y="131.59752868490733"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9WO-wW-tjZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xHI-Ee-w0L" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PCl-fu-p2p">
+                        <rect key="frame" x="0.0" y="24" width="744" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="P5m-AS-nbP" kind="relationship" relationship="rootViewController" id="Hd1-xa-GKS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YiJ-IT-b45" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1200.8064516129032" y="131.59752868490733"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
