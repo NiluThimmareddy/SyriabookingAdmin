@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		56FA6A0330079400001D45C4 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 56FA6A0230079400001D45C4 /* FSCalendar */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		B5707FBE3004BDEF0041F38F /* SyriabookingAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SyriabookingAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56FA6A0330079400001D45C4 /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = SyriabookingAdmin;
 			packageProductDependencies = (
+				56FA6A0230079400001D45C4 /* FSCalendar */,
 			);
 			productName = SyriabookingAdmin;
 			productReference = B5707FBE3004BDEF0041F38F /* SyriabookingAdmin.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = B5707FB53004BDEF0041F38F;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				56FA6A0130079400001D45C4 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B5707FBF3004BDEF0041F38F /* Products */;
 			projectDirPath = "";
@@ -345,6 +354,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		56FA6A0130079400001D45C4 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		56FA6A0230079400001D45C4 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56FA6A0130079400001D45C4 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B5707FB63004BDEF0041F38F /* Project object */;
 }

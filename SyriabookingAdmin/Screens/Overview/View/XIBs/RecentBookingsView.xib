@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ZSP-ad-vnz" customClass="RecentBookingsView" customModule="SyriabookingAdmin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="737" height="54"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="E6s-VI-E2V">
+                    <rect key="frame" x="0.0" y="0.0" width="737" height="27.333333333333332"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJ3-zX-5ha">
+                            <rect key="frame" x="0.0" y="0.0" width="110.66666666666667" height="27.333333333333332"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="ID">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="11"/>
+                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAB-Du-HUP">
+                            <rect key="frame" x="115.66666666666667" y="0.0" width="230.33333333333331" height="27.333333333333332"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="GUEST">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="11"/>
+                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oen-Cc-Xgd">
+                            <rect key="frame" x="351" y="0.0" width="140" height="27.333333333333332"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="  ROOM">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbU-KP-iUo">
+                            <rect key="frame" x="495.99999999999994" y="0.0" width="140.33333333333331" height="27.333333333333332"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="CHECK-IN">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9P-OW-5dm">
+                            <rect key="frame" x="641.33333333333337" y="0.0" width="95.666666666666629" height="27.333333333333332"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="STATUS">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="11"/>
+                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Oen-Cc-Xgd" firstAttribute="width" secondItem="E6s-VI-E2V" secondAttribute="width" multiplier="0.19" id="8A3-j6-lIS"/>
+                        <constraint firstItem="BJ3-zX-5ha" firstAttribute="width" secondItem="E6s-VI-E2V" secondAttribute="width" multiplier="0.15" id="JJK-tU-nxZ"/>
+                        <constraint firstItem="rbU-KP-iUo" firstAttribute="width" secondItem="E6s-VI-E2V" secondAttribute="width" multiplier="0.19" id="ZfW-bV-Ovh"/>
+                        <constraint firstItem="q9P-OW-5dm" firstAttribute="width" secondItem="E6s-VI-E2V" secondAttribute="width" multiplier="0.13" id="b4e-Bk-kTs"/>
+                    </constraints>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZP-cB-oFi">
+                    <rect key="frame" x="0.0" y="53" width="737" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="0cj-nD-Ulm"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="n28-rf-o3O"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="cZP-cB-oFi" firstAttribute="leading" secondItem="n28-rf-o3O" secondAttribute="leading" id="1VY-87-FOo"/>
+                <constraint firstItem="n28-rf-o3O" firstAttribute="trailing" secondItem="cZP-cB-oFi" secondAttribute="trailing" id="RxG-7w-iB0"/>
+                <constraint firstAttribute="bottom" secondItem="cZP-cB-oFi" secondAttribute="bottom" id="Twp-iC-cKV"/>
+                <constraint firstItem="E6s-VI-E2V" firstAttribute="leading" secondItem="n28-rf-o3O" secondAttribute="leading" id="U7e-ME-2Wa"/>
+                <constraint firstItem="E6s-VI-E2V" firstAttribute="top" secondItem="ZSP-ad-vnz" secondAttribute="top" id="bdh-7I-9id"/>
+                <constraint firstItem="n28-rf-o3O" firstAttribute="trailing" secondItem="E6s-VI-E2V" secondAttribute="trailing" id="k3n-8H-NQB"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-918" y="-438"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
