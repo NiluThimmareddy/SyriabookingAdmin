@@ -163,6 +163,8 @@ class OverviewVC: UIViewController {
     }
     
     @IBAction func editHotelInfoButtonAction(_ sender: Any) {
+        let storyboard = storyboard?.instantiateViewController(withIdentifier: "UpdateHotelDetailsVC") as! UpdateHotelDetailsVC
+        present(storyboard, animated: true)
     }
     
     @IBAction func publishButtonAction(_ sender: Any) {
