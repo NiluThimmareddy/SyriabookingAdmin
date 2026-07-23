@@ -32,7 +32,8 @@ class LeftmenuVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        
+        selectedIndex = SidebarManager.shared.selectedMenu.rawValue
+        leftmenuListTableView.reloadData()
     }
     
     @IBAction func diasmissButtonAction(_ sender: Any) {
@@ -58,14 +59,63 @@ extension LeftmenuVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         tableView.deselectRow(at: indexPath, animated: true)
+
         let previousSelectedIndex = selectedIndex
         selectedIndex = indexPath.row
+
+        // Save selected menu
+        SidebarManager.shared.selectedMenu =
+            SidebarMenu(rawValue: indexPath.row) ?? .overview
+
         var indexPathsToReload: [IndexPath] = [indexPath]
+
         if previousSelectedIndex != selectedIndex {
-            indexPathsToReload.append(IndexPath(row: previousSelectedIndex, section: 0))
+            indexPathsToReload.append(
+                IndexPath(row: previousSelectedIndex, section: 0)
+            )
         }
+
         tableView.reloadRows(at: indexPathsToReload, with: .automatic)
+
+        switch SidebarManager.shared.selectedMenu {
+
+        case .overview:
+            let vc = UIStoryboard(name: "Overview", bundle: nil)
+                .instantiateViewController(withIdentifier: "OverviewVC") as! OverviewVC
+            navigationController?.pushViewController(vc, animated: true)
+            onDismiss?()
+        case .hotelInvoices:
+            let vc = UIStoryboard(name: "HotelInvoice", bundle: nil)
+                .instantiateViewController(withIdentifier: "HotelInvoiceVC") as! HotelInvoiceVC
+            navigationController?.pushViewController(vc, animated: true)
+            onDismiss?()
+
+        case .manageBookings:
+            break
+
+        case .manageReviews:
+            break
+
+        case .manageDiscounts:
+            break
+
+        case .manageFacilities:
+            break
+
+        case .manageLandmarks:
+            break
+
+        case .managePolicies:
+            break
+
+        case .manageImages:
+            break
+
+        case .manageRooms:
+            break
+        }
     }
 }
 

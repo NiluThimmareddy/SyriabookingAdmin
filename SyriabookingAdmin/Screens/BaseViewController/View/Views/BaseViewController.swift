@@ -14,48 +14,8 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupNavigationBar()
-    }
-
-    private func setupNavigationBar() {
-
-        let leftButton = UIBarButtonItem(
-            image: UIImage(systemName: "line.3.horizontal"),
-            style: .plain,
-            target: self,
-            action: #selector(leftMenuTapped)
-        )
-
-        let colorButton = UIBarButtonItem(
-            image: UIImage(systemName: "paintpalette"),
-            style: .plain,
-            target: self,
-            action: #selector(colorTapped)
-        )
-
-        let rightButton = UIBarButtonItem(
-            image: UIImage(systemName: "ellipsis"),
-            style: .plain,
-            target: self,
-            action: #selector(rightMenuTapped)
-        )
-
-        navigationItem.leftBarButtonItem = leftButton
-        navigationItem.rightBarButtonItems = [rightButton, colorButton]
-    }
-
-    @objc func leftMenuTapped() {
-        guard let button = navigationItem.leftBarButtonItem else { return }
-        leftMenuButtonAction(button)
-    }
-
-    @objc func colorTapped() {
-        colourChangeButtonAction(self)
-    }
-
-    @objc func rightMenuTapped() {
-        rightMenuButtonAction(self)
+        navigationController?.applyGreenNavigationBar()
     }
 
     @IBAction func leftMenuButtonAction(_ sender: UIBarButtonItem) {
@@ -122,6 +82,61 @@ class BaseViewController: UIViewController {
             popover.barButtonItem = navigationItem.rightBarButtonItems?.first
         }
         present(alert, animated: true)
+    }
+}
+
+extension BaseViewController {
+    
+    private func setupNavigationBar() {
+        
+        let leftButton = UIBarButtonItem(
+            image: UIImage(systemName: "line.3.horizontal"),
+            style: .plain,
+            target: self,
+            action: #selector(leftMenuTapped)
+        )
+        
+        let bookingLabel = UILabel()
+        bookingLabel.text = "Booking Admin"
+        bookingLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        bookingLabel.textColor = .white
+
+        let bookingLabelItem = UIBarButtonItem(customView: bookingLabel)
+
+        navigationItem.leftBarButtonItems = [
+            leftButton,
+            bookingLabelItem
+        ]
+
+        let colorButton = UIBarButtonItem(
+            image: UIImage(named: "ic_edit"),
+            style: .plain,
+            target: self,
+            action: #selector(colorTapped)
+        )
+
+        let rightButton = UIBarButtonItem(
+            image: UIImage(systemName: "ellipsis"),
+            style: .plain,
+            target: self,
+            action: #selector(rightMenuTapped)
+        )
+
+        navigationItem.leftBarButtonItem = leftButton
+        navigationItem.rightBarButtonItems = [rightButton, colorButton]
+    }
+
+    @objc func leftMenuTapped() {
+        guard let button = navigationItem.leftBarButtonItem else { return }
+        leftMenuButtonAction(button)
+    }
+
+    @objc func colorTapped() {
+        colourChangeButtonAction(self)
+    }
+
+    @objc func rightMenuTapped() {
+        rightMenuButtonAction(self)
     }
     
     private func closeLeftMenu() {
