@@ -7,11 +7,8 @@
 import UIKit
 import FSCalendar
 
-class OverviewVC: UIViewController {
+class OverviewVC: BaseViewController {
 
-    @IBOutlet weak var leftMenuButton: UIBarButtonItem!
-    @IBOutlet weak var colourChangeButton: UIBarButtonItem!
-    @IBOutlet weak var rightMenuButton: UIBarButtonItem!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var insideScrollView: UIView!
     @IBOutlet weak var topView: UIView!
@@ -77,9 +74,6 @@ class OverviewVC: UIViewController {
 
     var filteredBookings: [BookingSummary] = []
     
-    var leftMenuVC: LeftmenuVC?
-    var isLeftMenuVisible = false
-    
     private let calendar = FSCalendar()
     
     override func viewDidLoad() {
@@ -93,7 +87,6 @@ class OverviewVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        // Update calendar frame to fill the container
         calendar.frame = bookingCalenderView.bounds
         calendar.setNeedsLayout()
         calendar.layoutIfNeeded()
@@ -113,53 +106,6 @@ class OverviewVC: UIViewController {
             self.calendar.setNeedsLayout()
             self.calendar.layoutIfNeeded()
         })
-    }
-
-    @IBAction func leftMenuButtonAction(_ sender: UIBarButtonItem) {
-        
-        sender.isEnabled = false
-        
-        if isLeftMenuVisible {
-            closeLeftMenu()
-            sender.isEnabled = true
-            return
-        }
-        
-        let storyboard = UIStoryboard(name: "Leftmenu", bundle: nil)
-        guard let menuVC = storyboard.instantiateViewController(withIdentifier: "LeftmenuVC") as? LeftmenuVC else {
-            sender.isEnabled = true
-            return
-        }
-        
-        leftMenuVC = menuVC
-        
-        menuVC.onDismiss = { [weak self] in
-            self?.closeLeftMenu()
-        }
-        
-        addChild(menuVC)
-        view.addSubview(menuVC.view)
-        
-        menuVC.view.frame = CGRect(x: -view.frame.width,y: 0,
-            width: view.frame.width,
-            height: view.frame.height
-        )
-        
-        menuVC.didMove(toParent: self)
-        
-        UIView.animate(withDuration: 0.3) {
-            menuVC.view.frame.origin.x = 0
-        } completion: { _ in
-            self.isLeftMenuVisible = true
-            sender.image = UIImage(systemName: "xmark")
-            sender.isEnabled = true
-        }
-    }
-    
-    @IBAction func colourChangeButtonAction(_ sender: Any) {
-    }
-    
-    @IBAction func rightMenuButtonAction(_ sender: Any) {
     }
     
     @IBAction func editHotelInfoButtonAction(_ sender: Any) {
@@ -303,24 +249,6 @@ extension OverviewVC {
         
         // Reload calendar
         calendar.reloadData()
-    }
-    
-    private func closeLeftMenu() {
-        guard let menuVC = leftMenuVC else { return }
-        
-        UIView.animate(withDuration: 0.3) {
-            menuVC.view.frame.origin.x = -self.view.frame.width
-        } completion: { _ in
-            menuVC.willMove(toParent: nil)
-            menuVC.view.removeFromSuperview()
-            menuVC.removeFromParent()
-            
-            self.leftMenuVC = nil
-            self.isLeftMenuVisible = false
-            
-            self.leftMenuButton.image = UIImage(systemName: "line.3.horizontal")
-            self.leftMenuButton.isEnabled = true
-        }
     }
     
     private func filterBookings(for selectedDate: Date) {
