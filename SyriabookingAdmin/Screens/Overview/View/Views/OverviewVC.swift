@@ -174,6 +174,7 @@ extension OverviewVC : UITableViewDelegate, UITableViewDataSource {
 extension OverviewVC {
     
     func setUpUI() {
+        scrollView.showsVerticalScrollIndicator = false
         publishButton.applyOverviewGradient()
         navigationController?.applyGreenNavigationBar()
         [topView,totalRoomsView,bookingsView,revenueView,guestsView,confirmedView,cancelledView,pendingView].forEach { lightShadow in

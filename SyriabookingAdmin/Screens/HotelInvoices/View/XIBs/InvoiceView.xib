@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Ae1-w4-tao" customClass="InvoiceView" customModule="SyriabookingAdmin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1037" height="54"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ylh-cJ-J5o">
+                    <rect key="frame" x="0.0" y="0.0" width="1037" height="27.333333333333332"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0a-pC-U9r">
+                            <rect key="frame" x="0.0" y="0.0" width="134.66666666666666" height="27.333333333333332"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Invoice No">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="11"/>
+                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxT-JF-dkK">
+                            <rect key="frame" x="139.66666666666666" y="0.0" width="135.99999999999997" height="27.333333333333332"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Period">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="11"/>
+                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsq-9S-tyb">
+                            <rect key="frame" x="280.66666666666669" y="0.0" width="155.66666666666669" height="27.333333333333332"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Status">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Xr-oY-zi5">
+                            <rect key="frame" x="441.33333333333331" y="0.0" width="155.33333333333331" height="27.333333333333332"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Total Amount">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xd-an-m05">
+                            <rect key="frame" x="601.66666666666663" y="0.0" width="135" height="27.333333333333332"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Due Date">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="11"/>
+                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLu-o6-cnH">
+                            <rect key="frame" x="741.66666666666663" y="0.0" width="155.66666666666663" height="27.333333333333332"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Paid Date">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="11"/>
+                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6u-dP-Jn2">
+                            <rect key="frame" x="902.33333333333337" y="0.0" width="134.66666666666663" height="27.333333333333332"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Actions">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="11"/>
+                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="e0a-pC-U9r" firstAttribute="width" secondItem="ylh-cJ-J5o" secondAttribute="width" multiplier="0.13" id="2c5-Ty-wPz"/>
+                        <constraint firstItem="3xd-an-m05" firstAttribute="width" secondItem="ylh-cJ-J5o" secondAttribute="width" multiplier="0.13" id="B0j-jJ-yRH"/>
+                        <constraint firstItem="nLu-o6-cnH" firstAttribute="width" secondItem="ylh-cJ-J5o" secondAttribute="width" multiplier="0.15" id="Wh0-Sd-asc"/>
+                        <constraint firstItem="0Xr-oY-zi5" firstAttribute="width" secondItem="ylh-cJ-J5o" secondAttribute="width" multiplier="0.15" id="dJW-K6-dRI"/>
+                        <constraint firstItem="Gsq-9S-tyb" firstAttribute="width" secondItem="ylh-cJ-J5o" secondAttribute="width" multiplier="0.15" id="gMv-c7-Cgy"/>
+                        <constraint firstItem="H6u-dP-Jn2" firstAttribute="width" secondItem="ylh-cJ-J5o" secondAttribute="width" multiplier="0.13" id="wZg-gI-lKN"/>
+                    </constraints>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaB-ad-dDE">
+                    <rect key="frame" x="0.0" y="53" width="1037" height="1"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="O7H-jd-PkM"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="XDO-Lx-dda"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="ylh-cJ-J5o" firstAttribute="top" secondItem="Ae1-w4-tao" secondAttribute="top" id="4NF-hg-Nre"/>
+                <constraint firstItem="XDO-Lx-dda" firstAttribute="trailing" secondItem="ylh-cJ-J5o" secondAttribute="trailing" id="5k6-ot-EfM"/>
+                <constraint firstAttribute="bottom" secondItem="aaB-ad-dDE" secondAttribute="bottom" id="RPz-bA-dXY"/>
+                <constraint firstItem="aaB-ad-dDE" firstAttribute="leading" secondItem="XDO-Lx-dda" secondAttribute="leading" id="bXA-uW-tRo"/>
+                <constraint firstItem="ylh-cJ-J5o" firstAttribute="leading" secondItem="XDO-Lx-dda" secondAttribute="leading" id="maJ-fO-brH"/>
+                <constraint firstItem="XDO-Lx-dda" firstAttribute="trailing" secondItem="aaB-ad-dDE" secondAttribute="trailing" id="xdM-Jr-NdC"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-918" y="-438"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
