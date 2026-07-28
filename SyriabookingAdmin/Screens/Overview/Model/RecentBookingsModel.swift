@@ -27,3 +27,15 @@ struct BookingSummary {
     let checkInDate: String
     let checkOutDate: String
 }
+
+
+struct BookingInvoice {
+    let isIncluded: Bool
+    let bookingId: String
+    let guestName: String
+    let checkInDate: String
+    let netTotal: Double
+    let commission: Double
+    let tax: Double
+    var isDisputed: Bool
+}
