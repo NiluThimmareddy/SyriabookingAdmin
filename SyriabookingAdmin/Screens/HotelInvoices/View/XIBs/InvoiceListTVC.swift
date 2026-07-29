@@ -42,18 +42,26 @@ class InvoiceListTVC: UITableViewCell {
         case .draft:
             statusLabel.backgroundColor = UIColor(hex: "F3F4F6")
             statusLabel.textColor = UIColor(hex: "4B5563")
+
         case .canceled:
             statusLabel.backgroundColor = UIColor(hex: "FEF2F2")
             statusLabel.textColor = UIColor(hex: "B91C1C")
+
         case .disputed:
             statusLabel.backgroundColor = UIColor(hex: "FFF7ED")
             statusLabel.textColor = UIColor(hex: "C2410C")
+
         case .paid:
             statusLabel.backgroundColor = UIColor(hex: "F0FDF4")
             statusLabel.textColor = UIColor(hex: "15803D")
+
         case .partiallyPaid:
             statusLabel.backgroundColor = UIColor(hex: "EFF6FF")
             statusLabel.textColor = UIColor(hex: "1D4ED8")
+
+        case .approved:
+            statusLabel.backgroundColor = UIColor(hex: "#3190EE").withAlphaComponent(0.10)
+            statusLabel.textColor = UIColor(hex: "#3190EE")
         }
     }
 }

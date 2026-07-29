@@ -30,8 +30,9 @@ struct Invoice: Identifiable, Codable {
 
 enum InvoiceStatus: String, Codable {
     case draft = "Draft"
-    case canceled = "Canceled"
+    case canceled = "Cancelled"
     case disputed = "Disputed"
     case paid = "Paid"
-    case partiallyPaid = "PartiallyPaid"
+    case partiallyPaid = "Partially Paid"
+    case approved = "Approved"
 }

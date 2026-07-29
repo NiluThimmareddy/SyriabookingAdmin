@@ -41,6 +41,11 @@ class HotelViewVC: UIViewController {
     @IBOutlet weak var approvebutton: UIButton!
     @IBOutlet weak var saveChangesButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var pdfViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bookingListTableViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var pdfViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var pdfViewTopConstraint: NSLayoutConstraint!
+    
     
     let bookings: [BookingInvoice] = [
         BookingInvoice(isIncluded: true,bookingId: "BK00277",guestName: "Mr Maheswar Reddy",checkInDate: "07 Dec 2025",netTotal: 1400.00,commission: 140.00,tax: 7.00,isDisputed: false),
@@ -50,18 +55,20 @@ class HotelViewVC: UIViewController {
         BookingInvoice(isIncluded: true,bookingId: "BK00317",guestName: "Mr Maheswar Reddy",checkInDate: "22 Dec 2025",netTotal: 140.00,commission: 14.00,tax: 0.70,isDisputed: false)
     ]
     
+    var selectedInvoice: Invoice?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.showsVerticalScrollIndicator = false
-        bookingsListTableview.register(UINib(nibName: "BookingInvoiceTVC", bundle: nil), forCellReuseIdentifier: "BookingInvoiceTVC")
-        bookingsListTableview.isScrollEnabled = false
+        setUpUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         bookingsListTableview.reloadData()
         bookingsListTableview.layoutIfNeeded()
-        bookingsListtableviewHeightConstraint.constant = bookingsListTableview.contentSize.height
+        if !bookingsListTableview.isHidden {
+            bookingsListtableviewHeightConstraint.constant = bookingsListTableview.contentSize.height
+        }
     }
     
     @IBAction func dismissButtonaction(_ sender: Any) {
@@ -107,5 +114,116 @@ extension HotelViewVC : UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView,heightForHeaderInSection section: Int) -> CGFloat {
         return 50 
+    }
+}
+
+
+extension HotelViewVC {
+    func setUpUI() {
+        view.backgroundColor = UIColor.label.withAlphaComponent(0.5)
+        scrollView.showsVerticalScrollIndicator = false
+        
+        bookingsListTableview.register(UINib(nibName: "BookingInvoiceTVC", bundle: nil),forCellReuseIdentifier: "BookingInvoiceTVC")
+        bookingsListTableview.isScrollEnabled = false
+
+        noBookingLinesFoundLabel.isHidden = true
+        pdfView.isHidden = false
+        pdfViewHeightConstraint.constant = 50
+        bookingsListTableview.isHidden = false
+        bookingsListtableviewHeightConstraint.constant = 321.68
+        approvebutton.isHidden = false
+        saveChangesButton.isHidden = false
+        
+        pdfViewTopConstraint.constant = 20
+        pdfViewBottomConstraint.constant = 20
+        bookingListTableViewTopConstraint.constant = 20
+
+        guard let invoice = selectedInvoice else { return }
+        statusLabel.text = invoice.status.rawValue
+        switch invoice.status {
+
+        case .canceled:
+
+            statusView.backgroundColor = UIColor(hex: "FEF2F2")
+            statusLabel.textColor = UIColor(hex: "B91C1C")
+
+            noBookingLinesFoundLabel.isHidden = false
+
+            pdfView.isHidden = true
+            pdfViewHeightConstraint.constant = 0
+            pdfViewTopConstraint.constant = 0
+            pdfViewBottomConstraint.constant = 0
+
+            bookingsListTableview.isHidden = true
+            bookingsListtableviewHeightConstraint.constant = 0
+            bookingListTableViewTopConstraint.constant = 0
+
+            approvebutton.isHidden = true
+            saveChangesButton.isHidden = true
+
+        case .draft:
+
+            statusView.backgroundColor = UIColor(hex: "F3F4F6")
+            statusLabel.textColor = UIColor(hex: "4B5563")
+
+            pdfView.isHidden = true
+            pdfViewHeightConstraint.constant = 0
+            pdfViewTopConstraint.constant = 0
+            pdfViewBottomConstraint.constant = 0
+
+            bookingListTableViewTopConstraint.constant = 0
+
+        case .disputed:
+
+            statusView.backgroundColor = UIColor(hex: "FFF7ED")
+            statusLabel.textColor = UIColor(hex: "C2410C")
+
+            pdfView.isHidden = true
+            pdfViewHeightConstraint.constant = 0
+            pdfViewTopConstraint.constant = 0
+            pdfViewBottomConstraint.constant = 0
+
+            bookingListTableViewTopConstraint.constant = 0
+
+        case .paid:
+
+            statusView.backgroundColor = UIColor(hex: "F0FDF4")
+            statusLabel.textColor = UIColor(hex: "15803D")
+
+            pdfViewTopConstraint.constant = 20
+            pdfViewBottomConstraint.constant = 20
+            bookingListTableViewTopConstraint.constant = 20
+
+            approvebutton.isHidden = true
+            saveChangesButton.isHidden = true
+
+        case .partiallyPaid:
+
+            statusView.backgroundColor = UIColor(hex: "EFF6FF")
+            statusLabel.textColor = UIColor(hex: "1D4ED8")
+
+            pdfViewTopConstraint.constant = 20
+            pdfViewBottomConstraint.constant = 20
+            bookingListTableViewTopConstraint.constant = 20
+
+            approvebutton.isHidden = true
+            saveChangesButton.isHidden = true
+
+        case .approved:
+
+            statusView.backgroundColor = UIColor(hex: "F0FDF4")
+            statusLabel.textColor = UIColor(hex: "15803D")
+
+            pdfView.isHidden = true
+            pdfViewHeightConstraint.constant = 0
+            pdfViewTopConstraint.constant = 0
+            pdfViewBottomConstraint.constant = 0
+
+            bookingListTableViewTopConstraint.constant = 0
+
+            approvebutton.isHidden = true
+            saveChangesButton.isHidden = true
+        }
+        view.layoutIfNeeded()
     }
 }

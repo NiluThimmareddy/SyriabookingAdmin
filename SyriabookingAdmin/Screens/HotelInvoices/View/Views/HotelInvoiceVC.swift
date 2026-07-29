@@ -74,9 +74,12 @@ extension HotelInvoiceVC : UITableViewDelegate, UITableViewDataSource {
         let invoice = invoices[indexPath.row]
         cell.configure(_with: invoice)
         cell.onViewTapped = { [weak self] in
-            let vc = self?.storyboard?.instantiateViewController(withIdentifier: "HotelViewVC") as! HotelViewVC
-            vc.modalPresentationStyle = .fullScreen
-            self?.present(vc, animated: true)
+            guard let self = self else { return }
+            let invoice = self.invoices[indexPath.row]
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "HotelViewVC") as! HotelViewVC
+            vc.selectedInvoice = invoice
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true)
         }
         return cell
     }
