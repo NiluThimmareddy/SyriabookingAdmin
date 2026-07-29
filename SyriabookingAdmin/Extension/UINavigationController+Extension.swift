@@ -5,9 +5,37 @@
 //  Created by Hitman on 14/07/26.
 //
 
-import Foundation
+
 import UIKit
 
+extension UINavigationController {
+
+    func applyTheme() {
+
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+
+        appearance.backgroundColor = ThemeManager.shared.currentColor
+
+        appearance.titleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
+
+        appearance.largeTitleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
+
+        navigationBar.standardAppearance = appearance
+        navigationBar.scrollEdgeAppearance = appearance
+        navigationBar.compactAppearance = appearance
+
+        navigationBar.tintColor = .white
+    }
+}
+
+//import Foundation
+//import UIKit
+//
 extension UINavigationController {
 
     func applyGreenNavigationBar() {
