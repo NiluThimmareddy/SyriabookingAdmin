@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="s2R-ke-R7U" customClass="ManageBookingStatusView" customModule="SyriabookingAdmin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1400" height="54"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="TXC-u2-gdl">
+                    <rect key="frame" x="0.0" y="0.0" width="1400" height="34.333333333333336"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIv-O7-SnA">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="34.333333333333336"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="square" catalog="system"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAF-U7-MYW">
+                            <rect key="frame" x="47" y="0.0" width="98" height="34.333333333333336"/>
+                            <color key="tintColor" red="0.14509803921568626" green="0.14509803921568626" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Booking ID">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YB3-LM-PFQ">
+                            <rect key="frame" x="150" y="0.0" width="281" height="34.333333333333336"/>
+                            <color key="tintColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="GuestName">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Oj-Vf-ryG">
+                            <rect key="frame" x="436" y="0.0" width="112" height="34.333333333333336"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="GuestPhone">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U95-53-AOg">
+                            <rect key="frame" x="553" y="0.0" width="84" height="34.333333333333336"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="RoomId">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTJ-dv-3Yc">
+                            <rect key="frame" x="642" y="0.0" width="126" height="34.333333333333336"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Check-In">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVn-DC-VTo">
+                            <rect key="frame" x="773" y="0.0" width="126" height="34.333333333333336"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Check-Out">
+                                <color key="titleColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZ7-Rn-8NI">
+                            <rect key="frame" x="904" y="0.0" width="70" height="34.333333333333336"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Amount">
+                                <color key="titleColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TO2-Ut-9aN">
+                            <rect key="frame" x="979" y="0.0" width="98" height="34.333333333333336"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Discount">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xBH-L1-K6p">
+                            <rect key="frame" x="1082" y="0.0" width="98" height="34.333333333333336"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="NetTotal">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tm4-JW-xe3">
+                            <rect key="frame" x="1185" y="0.0" width="84" height="34.333333333333336"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Status">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6PU-an-Plz">
+                            <rect key="frame" x="1274" y="0.0" width="126" height="34.333333333333336"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="BookingType">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="6PU-an-Plz" firstAttribute="width" secondItem="TXC-u2-gdl" secondAttribute="width" multiplier="0.09" id="CqU-mQ-MwR"/>
+                        <constraint firstItem="U95-53-AOg" firstAttribute="width" secondItem="TXC-u2-gdl" secondAttribute="width" multiplier="0.06" id="DLB-kE-k5D"/>
+                        <constraint firstItem="MZ7-Rn-8NI" firstAttribute="width" secondItem="TXC-u2-gdl" secondAttribute="width" multiplier="0.05" id="JMv-4D-H8V"/>
+                        <constraint firstItem="Tm4-JW-xe3" firstAttribute="width" secondItem="TXC-u2-gdl" secondAttribute="width" multiplier="0.06" id="Srm-Zy-mhr"/>
+                        <constraint firstItem="KIv-O7-SnA" firstAttribute="width" secondItem="TXC-u2-gdl" secondAttribute="width" multiplier="0.03" id="YpA-Oj-r0L"/>
+                        <constraint firstItem="TO2-Ut-9aN" firstAttribute="width" secondItem="TXC-u2-gdl" secondAttribute="width" multiplier="0.07" id="c4F-KM-NF2"/>
+                        <constraint firstItem="fVn-DC-VTo" firstAttribute="width" secondItem="TXC-u2-gdl" secondAttribute="width" multiplier="0.09" id="dnd-kS-nbx"/>
+                        <constraint firstItem="6Oj-Vf-ryG" firstAttribute="width" secondItem="TXC-u2-gdl" secondAttribute="width" multiplier="0.08" id="fpl-h2-oEq"/>
+                        <constraint firstItem="YTJ-dv-3Yc" firstAttribute="width" secondItem="TXC-u2-gdl" secondAttribute="width" multiplier="0.09" id="gSE-ou-ooP"/>
+                        <constraint firstItem="xBH-L1-K6p" firstAttribute="width" secondItem="TXC-u2-gdl" secondAttribute="width" multiplier="0.07" id="i01-jB-c2q"/>
+                        <constraint firstItem="WAF-U7-MYW" firstAttribute="width" secondItem="TXC-u2-gdl" secondAttribute="width" multiplier="0.07" id="lsx-vM-ehv"/>
+                    </constraints>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CMY-C4-ESW">
+                    <rect key="frame" x="0.0" y="53" width="1400" height="1"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="0yO-km-QoV"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="71m-z4-cFG"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="CMY-C4-ESW" firstAttribute="leading" secondItem="71m-z4-cFG" secondAttribute="leading" id="0aB-5a-NwG"/>
+                <constraint firstAttribute="bottom" secondItem="CMY-C4-ESW" secondAttribute="bottom" id="1WO-jO-Qbr"/>
+                <constraint firstItem="71m-z4-cFG" firstAttribute="trailing" secondItem="CMY-C4-ESW" secondAttribute="trailing" id="Q2t-cw-ukH"/>
+                <constraint firstItem="TXC-u2-gdl" firstAttribute="leading" secondItem="71m-z4-cFG" secondAttribute="leading" id="SWT-sl-gIG"/>
+                <constraint firstItem="71m-z4-cFG" firstAttribute="trailing" secondItem="TXC-u2-gdl" secondAttribute="trailing" id="bsm-my-FFx"/>
+                <constraint firstItem="TXC-u2-gdl" firstAttribute="top" secondItem="s2R-ke-R7U" secondAttribute="top" id="dh3-aD-0VR"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-918" y="-438"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="square" catalog="system" width="128" height="114"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

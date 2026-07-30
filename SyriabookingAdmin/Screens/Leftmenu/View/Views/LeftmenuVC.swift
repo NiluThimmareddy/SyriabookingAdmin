@@ -91,10 +91,10 @@ extension LeftmenuVC : UITableViewDelegate, UITableViewDataSource {
                 .instantiateViewController(withIdentifier: "HotelInvoiceVC") as! HotelInvoiceVC
             navigationController?.pushViewController(vc, animated: true)
             onDismiss?()
-
         case .manageBookings:
-            break
-
+            let vc = UIStoryboard(name: "ManageBookings", bundle: nil).instantiateViewController(withIdentifier: "ManageBookingsVC") as! ManageBookingsVC
+            navigationController?.pushViewController(vc, animated: true)
+            onDismiss?()
         case .manageReviews:
             break
 
