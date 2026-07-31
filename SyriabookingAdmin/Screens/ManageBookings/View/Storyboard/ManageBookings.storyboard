@@ -68,10 +68,10 @@
                                                 <rect key="frame" x="20" y="320" width="704" height="600"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRR-e0-qP1">
-                                                        <rect key="frame" x="0.0" y="0.0" width="1450" height="600"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="1300" height="600"/>
                                                         <subviews>
                                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xER-dl-099">
-                                                                <rect key="frame" x="0.0" y="0.0" width="1450" height="600"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="1335" height="600"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <connections>
                                                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="aHa-8g-bGo"/>
@@ -81,9 +81,9 @@
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="1450" id="Myg-i9-oB4"/>
+                                                            <constraint firstAttribute="width" constant="1300" id="Myg-i9-oB4"/>
                                                             <constraint firstAttribute="bottom" secondItem="xER-dl-099" secondAttribute="bottom" id="Otb-pe-zfZ"/>
-                                                            <constraint firstAttribute="trailing" secondItem="xER-dl-099" secondAttribute="trailing" id="Rsm-fI-vfg"/>
+                                                            <constraint firstAttribute="trailing" secondItem="xER-dl-099" secondAttribute="trailing" constant="-35" id="Rsm-fI-vfg"/>
                                                             <constraint firstItem="xER-dl-099" firstAttribute="top" secondItem="sRR-e0-qP1" secondAttribute="top" id="h1P-ou-pao"/>
                                                             <constraint firstItem="xER-dl-099" firstAttribute="leading" secondItem="sRR-e0-qP1" secondAttribute="leading" id="oyz-OW-0nq"/>
                                                         </constraints>
@@ -121,7 +121,7 @@
                                                     </children>
                                                 </menu>
                                                 <state key="normal" title="10">
-                                                    <color key="titleColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                                     <imageReference key="image" image="chevron.down" catalog="system" symbolScale="small"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="light"/>
                                                 </state>
@@ -238,6 +238,7 @@
                         <outlet property="booingStatusScrollView" destination="ncu-nL-t4K" id="ly6-kY-SMA"/>
                         <outlet property="bookingStatusCollectionView" destination="toL-As-fif" id="wcl-fj-Q9b"/>
                         <outlet property="bookingStatusInsideScrollView" destination="sRR-e0-qP1" id="fuG-So-PDN"/>
+                        <outlet property="bookingStatusListScrollViewHeightConstraint" destination="sbd-s7-DJd" id="Xd6-ap-9Me"/>
                         <outlet property="bookingStatusListTableView" destination="xER-dl-099" id="jKl-v4-k5S"/>
                         <outlet property="insideScrollView" destination="7eh-5l-pyK" id="cVa-g2-Gxs"/>
                         <outlet property="lastPageButton" destination="qTy-5A-mNH" id="Xum-XN-elT"/>

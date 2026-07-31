@@ -24,9 +24,7 @@ class ManageBookingsVC: BaseViewController {
     @IBOutlet weak var onePageBackwardButton: UIButton!
     @IBOutlet weak var onePageForwardButton: UIButton!
     @IBOutlet weak var lastPageButton: UIButton!
-    @IBOutlet weak var bookingStatusScrollViewHeightConstraint: NSLayoutConstraint!
-    
-    
+    @IBOutlet weak var bookingStatusListScrollViewHeightConstraint: NSLayoutConstraint!
     
     let bookingStatusArray: [BookingStatusModel] = [
         BookingStatusModel(title: "PENDING",count: "99+",iconName: "doc.text"),
@@ -41,8 +39,7 @@ class ManageBookingsVC: BaseViewController {
         BookingModel(bookingId: "BK00498",guestName: "Testing Demo User",guestPhone: "90000000",roomId: "R00031",checkInDate: "23-Jan-2026",checkOutDate: "23-Jan-2026",amount: 110,discount: 5.5,
             netTotal: 104.5,status: "Pending",bookingType: "International"),
         BookingModel(bookingId: "BK00518",guestName: "Testing Demo User",guestPhone: "90000000",roomId: "R00031",checkInDate: "18-Feb-2026",checkOutDate: "18-Feb-2026",amount: 100,discount: 10,
-            netTotal: 90,status: "Pending",
-            bookingType: "International"),
+            netTotal: 90,status: "Pending",bookingType: "International"),
         BookingModel(bookingId: "BK00559",guestName:"Testing Demo User",guestPhone: "90000000",roomId: "R00031",checkInDate: "24-Feb-2026",checkOutDate: "24-Feb-2026",amount: 110,discount: 5.5,
             netTotal: 104.5,status: "Pending",bookingType: "International"),
         BookingModel(bookingId: "BK00677",guestName:"Testing Demo User",guestPhone: "90000000",roomId: "R00032",checkInDate: "26-Feb-2026",checkOutDate: "26-Feb-2026",amount: 140,discount: 0,
@@ -55,13 +52,46 @@ class ManageBookingsVC: BaseViewController {
             netTotal: 90,status: "Pending",bookingType: "International"),
         BookingModel(bookingId: "BK00807",guestName:"Testing Demo User",guestPhone: "90000000",roomId: "R00031",checkInDate: "11-Mar-2026",checkOutDate: "11-Mar-2026",amount: 110,discount: 5.5,
             netTotal: 104.5,status: "Pending",bookingType: "International"),
-        BookingModel(bookingId: "BK00823",guestName:"Testing Demo User",guestPhone: "90000000",
-            roomId: "R00031",checkInDate: "13-Mar-2026",checkOutDate: "13-Mar-2026",amount: 100,discount: 10,netTotal: 90,status: "Pending",bookingType: "International"),
-        BookingModel(bookingId: "BK00877",guestName: "Testing Demo User",guestPhone: "90000000",
-            roomId: "R00031",checkInDate: "21-May-2026",checkOutDate: "23-May-2026",amount: 200,discount: 20,netTotal: 180,status: "Pending",bookingType: "International")
+        BookingModel(bookingId: "BK00823",guestName:"Testing Demo User",guestPhone: "90000000",roomId: "R00031",checkInDate: "13-Mar-2026",checkOutDate: "13-Mar-2026",amount: 100,discount: 10,
+            netTotal: 90,status: "Pending",bookingType: "International"),
+        BookingModel(bookingId: "BK00877",guestName: "Testing Demo User",guestPhone: "90000000",roomId: "R00031",checkInDate: "21-May-2026",checkOutDate: "23-May-2026",amount: 200,discount: 20,
+            netTotal: 180,status: "Pending",bookingType: "International"),
+        BookingModel(bookingId: "BK00878",guestName: "Rahul Sharma",guestPhone: "9876543210",roomId: "R00015",checkInDate: "25-May-2026",checkOutDate: "27-May-2026",amount: 250,discount: 25,netTotal: 225,status: "Confirmed",bookingType: "Domestic"),
+        BookingModel(bookingId: "BK00879",guestName: "Priya Reddy",guestPhone: "9123456789",roomId: "R00018",checkInDate: "28-May-2026",checkOutDate: "30-May-2026",amount: 300,discount: 30,netTotal: 270,status: "Confirmed",bookingType: "Domestic"),
+        BookingModel(bookingId: "BK00880",guestName: "John Smith",guestPhone: "9988776655",roomId: "R00022",checkInDate: "01-Jun-2026",checkOutDate: "04-Jun-2026",amount: 450,discount: 50,netTotal: 400,status: "Check-In",bookingType: "International"),
+        BookingModel(bookingId: "BK00881",guestName: "Ananya Patel",guestPhone: "9001112233",roomId: "R00012",checkInDate: "03-Jun-2026",checkOutDate: "05-Jun-2026",amount: 220,discount: 10,netTotal: 210,status: "Pending",bookingType: "Domestic"),
+        BookingModel(bookingId: "BK00882",guestName: "David Miller",guestPhone: "9556677889",roomId: "R00025",checkInDate: "05-Jun-2026",checkOutDate: "08-Jun-2026",amount: 520,discount: 40,netTotal: 480,status: "Check-Out",bookingType: "International"),
+        BookingModel(bookingId: "BK00883",guestName: "Sneha Verma",guestPhone: "9887766554",roomId: "R00009",checkInDate: "07-Jun-2026",checkOutDate: "09-Jun-2026",amount: 180,discount: 0,netTotal: 180,status: "Confirmed",bookingType: "Domestic"),
+        BookingModel(bookingId: "BK00884",guestName: "Michael Brown",guestPhone: "9776655443",roomId: "R00027",checkInDate: "10-Jun-2026",checkOutDate: "14-Jun-2026",amount: 600,discount: 60,netTotal: 540,status: "Pending",bookingType: "International"),
+        BookingModel(bookingId: "BK00885",guestName: "Kiran Kumar",guestPhone: "9665544332",roomId: "R00006",checkInDate: "12-Jun-2026",checkOutDate: "13-Jun-2026",amount: 120,discount: 5,netTotal: 115,status: "Cancelled",bookingType: "Domestic"),
+        BookingModel(bookingId: "BK00886",guestName: "Emily Johnson",guestPhone: "9554433221",roomId: "R00029",checkInDate: "15-Jun-2026",checkOutDate: "18-Jun-2026",amount: 480,discount: 20,netTotal: 460,status: "Confirmed",bookingType: "International"),
+        BookingModel(bookingId: "BK00887",guestName: "Arjun Singh",guestPhone: "9443322110",roomId: "R00014",checkInDate: "17-Jun-2026",checkOutDate: "19-Jun-2026",amount: 260,discount: 15,netTotal: 245,status: "Check-In",bookingType: "Domestic"),
+        BookingModel(bookingId: "BK00888",guestName: "Neha Gupta",guestPhone: "9332211009",roomId: "R00019",checkInDate: "20-Jun-2026",checkOutDate: "22-Jun-2026",amount: 290,discount: 10,netTotal: 280,status: "Pending",bookingType: "Domestic"),
+        BookingModel(bookingId: "BK00889",guestName: "Chris Evans",guestPhone: "9221100998",roomId: "R00035",checkInDate: "22-Jun-2026",checkOutDate: "26-Jun-2026",amount: 700,discount: 100,netTotal: 600,status: "Confirmed",bookingType: "International"),
+        BookingModel(bookingId: "BK00890",guestName: "Pooja Nair",guestPhone: "9110099887",roomId: "R00016",checkInDate: "25-Jun-2026",checkOutDate: "28-Jun-2026",amount: 350,discount: 25,netTotal: 325,status: "Check-Out",bookingType: "Domestic"),
+        BookingModel(bookingId: "BK00891",guestName: "Robert Wilson",guestPhone: "9009988776",roomId: "R00038",checkInDate: "28-Jun-2026",checkOutDate: "01-Jul-2026",amount: 550,discount: 50,netTotal: 500,status: "Confirmed",bookingType: "International"),
+        BookingModel(bookingId: "BK00892",guestName: "Lakshmi Devi",guestPhone: "9898989898",roomId: "R00011",checkInDate: "02-Jul-2026",checkOutDate: "04-Jul-2026",amount: 240,discount: 20,netTotal: 220,status: "Pending",bookingType: "Domestic"),
+        BookingModel(bookingId: "BK00893",guestName: "Daniel Thomas",guestPhone: "9787878787",roomId: "R00041",checkInDate: "05-Jul-2026",checkOutDate: "08-Jul-2026",amount: 620,discount: 70,netTotal: 550,status: "No Show",bookingType: "International"),
+        BookingModel(bookingId: "BK00894",guestName: "Aisha Khan",guestPhone: "9676767676",roomId: "R00020",checkInDate: "09-Jul-2026",checkOutDate: "11-Jul-2026",amount: 280,discount: 15,netTotal: 265,status: "Confirmed",bookingType: "Domestic"),
+        BookingModel(bookingId: "BK00895",guestName: "Vikram Rao",guestPhone: "9565656565",roomId: "R00017",checkInDate: "12-Jul-2026",checkOutDate: "14-Jul-2026",amount: 320,discount: 20,netTotal: 300,status: "Check-In",bookingType: "Domestic"),
+        BookingModel(bookingId: "BK00896",guestName: "Sophia Lee",guestPhone: "9454545454",roomId: "R00044",checkInDate: "15-Jul-2026",checkOutDate: "18-Jul-2026",amount: 680,discount: 80,netTotal: 600,status: "Confirmed",bookingType: "International"),
+        BookingModel(bookingId: "BK00897",guestName: "Manoj Kumar",guestPhone: "9343434343",roomId: "R00008",checkInDate: "18-Jul-2026",checkOutDate: "20-Jul-2026",amount: 210,discount: 10,netTotal: 200,status: "Cancelled",bookingType: "Domestic")
     ]
     
     var selectedIndex = 0
+    
+    // Pagination
+    private var rowsPerPage = 10
+    private var currentPage = 1
+    private var totalPages: Int {
+        return Int(ceil(Double(bookings.count) / Double(rowsPerPage)))
+    }
+    private var paginatedBookings: [BookingModel] {
+        let startIndex = (currentPage - 1) * rowsPerPage
+        guard startIndex < bookings.count else { return [] }
+        let endIndex = min(startIndex + rowsPerPage, bookings.count)
+        return Array(bookings[startIndex..<endIndex])
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +105,9 @@ class ManageBookingsVC: BaseViewController {
         
         bookingStatusListTableView.register(UINib(nibName: "ManageBookingStatusTVC", bundle: nil), forCellReuseIdentifier: "ManageBookingStatusTVC")
         bookingStatusListTableView.isScrollEnabled = false
+        
+        setupRowsPerPageMenu()
+        updatePagination()
     }
     
     override func viewDidLayoutSubviews() {
@@ -82,19 +115,67 @@ class ManageBookingsVC: BaseViewController {
         bookingStatusCollectionView.collectionViewLayout.invalidateLayout()
     }
     
+    private func updatePagination() {
+        let startRecord = bookings.isEmpty ? 0 : ((currentPage - 1) * rowsPerPage) + 1
+        let endRecord = min(currentPage * rowsPerPage, bookings.count)
+        totalPagesCountLabel.text = "\(startRecord)-\(endRecord) of \(bookings.count)"
+        startingPageButton.isEnabled = currentPage > 1
+        onePageBackwardButton.isEnabled = currentPage > 1
+        onePageForwardButton.isEnabled = currentPage < totalPages
+        lastPageButton.isEnabled = currentPage < totalPages
+        bookingStatusListTableView.reloadData()
+        DispatchQueue.main.async {
+            self.updateTableHeight()
+        }
+    }
+    
+    private func setupRowsPerPageMenu() {
+        let options = [10, 20, 30, 40]
+        let actions = options.map { value in
+            UIAction(title: "\(value)") { [weak self] _ in
+                guard let self = self else { return }
+                self.rowsPerPage = value
+                self.currentPage = 1
+                self.rowsPerPageButton.setTitle("\(value)", for: .normal)
+                self.updatePagination()
+            }
+        }
+        rowsPerPageButton.menu = UIMenu(title: "", children: actions)
+        rowsPerPageButton.showsMenuAsPrimaryAction = true
+        rowsPerPageButton.setTitle("10", for: .normal)
+    }
+    
+    private func updateTableHeight() {
+        let rowHeight: CGFloat = 53.5
+        let headerHeight: CGFloat = 45
+        let totalHeight = (CGFloat(paginatedBookings.count) * rowHeight) + headerHeight + 20
+        bookingStatusListScrollViewHeightConstraint.constant = totalHeight
+        view.layoutIfNeeded()
+    }
+    
     @IBAction func addNewBookingsButtonAction(_ sender: Any) {
     }
     
     @IBAction func startingPageButtonAction(_ sender: Any) {
+        currentPage = 1
+        updatePagination()
     }
     
     @IBAction func onePageBackwardButtonAction(_ sender: Any) {
+        guard currentPage > 1 else { return }
+        currentPage -= 1
+        updatePagination()
     }
     
     @IBAction func onePageFarwardButtonAction(_ sender: Any) {
+        guard currentPage < totalPages else { return }
+        currentPage += 1
+        updatePagination()
     }
     
     @IBAction func lastPageButtonAction(_ sender: Any) {
+        currentPage = totalPages
+        updatePagination()
     }
     
 }
@@ -134,18 +215,18 @@ extension ManageBookingsVC : UICollectionViewDelegate, UICollectionViewDataSourc
 
 extension ManageBookingsVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bookings.count
+        return paginatedBookings.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ManageBookingStatusTVC") as! ManageBookingStatusTVC
-        let bookings = bookings[indexPath.row]
-        cell.configure(_with: bookings)
+        let booking = paginatedBookings[indexPath.row]
+        cell.configure(_with: booking)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55
+        return 53.5
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
