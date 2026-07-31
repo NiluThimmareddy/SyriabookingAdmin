@@ -154,6 +154,8 @@ class ManageBookingsVC: BaseViewController {
     }
     
     @IBAction func addNewBookingsButtonAction(_ sender: Any) {
+        let storyboard = storyboard?.instantiateViewController(withIdentifier: "AddNewBookingVC") as! AddNewBookingVC
+        present(storyboard, animated: true)
     }
     
     @IBAction func startingPageButtonAction(_ sender: Any) {
