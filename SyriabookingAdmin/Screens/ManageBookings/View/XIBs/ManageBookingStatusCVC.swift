@@ -15,25 +15,14 @@ class ManageBookingStatusCVC: UICollectionViewCell {
     @IBOutlet weak var statusTitleLabel: UILabel!
     @IBOutlet weak var statusCountLabel: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         statusCountLabel.layer.masksToBounds = true
     }
     
-//    func configure(_with bookingStatus : BookingStatusModel) {
-//        statusIconImgView.image = UIImage(systemName: bookingStatus.iconName)
-//        statusTitleLabel.text = bookingStatus.title
-//        statusCountLabel.text = bookingStatus.count
-//    }
-    
-    func configure(_with bookingStatus: BookingStatusModel,
-                   isSelected: Bool) {
-        
+    func configure(_with bookingStatus: BookingStatusModel,isSelected: Bool) {
         statusIconImgView.image = UIImage(systemName: bookingStatus.iconName)
-        statusTitleLabel.text = bookingStatus.title
-        statusCountLabel.text = bookingStatus.count
-        
+        statusTitleLabel.text = bookingStatus.title        
         let selectedColor = UIColor(hex: "#379D67")
         let normalColor = UIColor(hex: "#575757")
         

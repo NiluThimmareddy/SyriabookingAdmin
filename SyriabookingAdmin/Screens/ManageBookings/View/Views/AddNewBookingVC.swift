@@ -3,9 +3,14 @@
 //  SyriabookingAdmin
 //
 //  Created by Toqsoft on 31/07/26.
-//
 
 import UIKit
+import FSCalendar
+
+enum DateSelectionType {
+    case checkIn
+    case checkOut
+}
 
 class AddNewBookingVC: UIViewController {
 
@@ -53,43 +58,82 @@ class AddNewBookingVC: UIViewController {
     @IBOutlet weak var cancelbutton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
+    var guestCount = 1
+    var totalAmount = 0
+    var discountPercentage = 0
+    var netTotal = 0
+    var amountStep = 10
+    
+    var selectedDateField: UITextField?
+    private var calendarView: FSCalendar!
+    private var dimView: UIView!
+    var currentSelectionType: DateSelectionType?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupUserMenu()
-        setupRoomMenu()
-        setupBookingTypeMenu()
-        setupStatusMenu()
+        setUpUI()
     }
     
     @IBAction func increaseGuestsCountButtonAction(_ sender: Any) {
+        guestCount += 1
+        noOfGuestsTF.text = "\(guestCount)"
     }
-    
+
     @IBAction func decreaseGuestsCountButtonAction(_ sender: Any) {
+        if guestCount > 1 {
+            guestCount -= 1
+            noOfGuestsTF.text = "\(guestCount)"
+        }
     }
     
     @IBAction func checkInCalendarButtonAction(_ sender: Any) {
+        currentSelectionType = .checkIn
+        selectedDateField = checkInDateTF
+        showCalendar()
     }
-    
+
     @IBAction func checkOutCalendarButtonAction(_ sender: Any) {
+        currentSelectionType = .checkOut
+        selectedDateField = checkOutDateTF
+        showCalendar()
     }
     
     @IBAction func increaseTotalAmountButtonAction(_ sender: Any) {
+        totalAmount += 10
+        updateNetTotal()
     }
-    
+
     @IBAction func decreaseTotalAmountButtonAction(_ sender: Any) {
+        if totalAmount >= 10 {
+            totalAmount -= 10
+            updateNetTotal()
+        }
     }
     
     @IBAction func increaseTotalDiscountButtonAction(_ sender: Any) {
+        if discountPercentage < 100 {
+            discountPercentage += 5
+            updateNetTotal()
+        }
     }
-    
+
     @IBAction func decreaseTotalDiscountButtonACtion(_ sender: Any) {
+        if discountPercentage > 0 {
+            discountPercentage -= 5
+            updateNetTotal()
+        }
     }
-    
+
     @IBAction func increasenetTotalButtonAction(_ sender: Any) {
+        netTotal += amountStep
+        netTotalTF.text = "\(netTotal)"
     }
-    
+
     @IBAction func decreaseNetTotalButtonAction(_ sender: Any) {
+        if netTotal >= amountStep {
+            netTotal -= amountStep
+            netTotalTF.text = "\(netTotal)"
+        }
     }
     
     @IBAction func cancelbuttonAction(_ sender: Any) {
@@ -101,6 +145,33 @@ class AddNewBookingVC: UIViewController {
 }
 
 extension AddNewBookingVC {
+    
+    func setUpUI() {
+        setupUserMenu()
+        setupRoomMenu()
+        setupBookingTypeMenu()
+        setupStatusMenu()
+        
+        noOfGuestsTF.text = "\(guestCount)"
+        totalAmountTF.text = "\(totalAmount)"
+        totalDiscountTF.text = "\(discountPercentage)"
+        netTotalTF.text = "\(netTotal)"
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let today = formatter.string(from: Date())
+        checkInDateTF.text = today
+        checkOutDateTF.text = today
+    }
+    
+    func updateNetTotal() {
+        let discountAmount = (totalAmount * discountPercentage) / 100
+        netTotal = totalAmount - discountAmount
+        totalAmountTF.text = "\(totalAmount)"
+        totalDiscountTF.text = "\(discountPercentage)%"
+        netTotalTF.text = "\(netTotal)"
+    }
+    
     func setupUserMenu() {
         let users = ["touqueir", "Ragav", "RAGAVENDIRAN A", "Nilu", "Maheswar", "Yedukondalu"]
         let actions = users.map { user in
@@ -143,5 +214,69 @@ extension AddNewBookingVC {
         }
         statusButton.menu = UIMenu(children: actions)
         statusButton.showsMenuAsPrimaryAction = true
+    }
+    
+    func showCalendar() {
+        dimView = UIView(frame: view.bounds)
+        dimView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideCalendar))
+        dimView.addGestureRecognizer(tap)
+        view.addSubview(dimView)
+
+        let containerView = UIView()
+        containerView.backgroundColor = .white
+        containerView.layer.cornerRadius = 12
+        containerView.clipsToBounds = true
+        containerView.frame = CGRect(x: 150,y: 50,width: 350,height: 350)
+
+        calendarView = FSCalendar(frame: containerView.bounds)
+        calendarView.delegate = self
+        calendarView.dataSource = self
+        calendarView.appearance.headerDateFormat = "MMMM yyyy"
+        calendarView.appearance.todayColor = .systemBlue
+        calendarView.appearance.selectionColor = .systemPurple
+
+        containerView.addSubview(calendarView)
+        view.addSubview(containerView)
+    }
+    
+    @objc func hideCalendar() {
+        calendarView.superview?.removeFromSuperview()
+        dimView.removeFromSuperview()
+    }
+}
+
+extension AddNewBookingVC: FSCalendarDelegate, FSCalendarDataSource {
+    func calendar(_ calendar: FSCalendar,didSelect date: Date,at monthPosition: FSCalendarMonthPosition) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let selectedDate = formatter.string(from: date)
+        switch currentSelectionType {
+        case .checkIn:
+            checkInDateTF.text = selectedDate
+            if let checkoutText = checkOutDateTF.text,
+               let checkoutDate = formatter.date(from: checkoutText),
+               checkoutDate < date {
+                checkOutDateTF.text = selectedDate
+            }
+        case .checkOut:
+            if let checkInText = checkInDateTF.text,
+               let checkInDate = formatter.date(from: checkInText),
+               date >= checkInDate {
+                checkOutDateTF.text = selectedDate
+            } else {
+                let alert = UIAlertController(
+                    title: "Invalid Date",
+                    message: "Check-out date cannot be earlier than check-in date.",
+                    preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                present(alert, animated: true)
+                return
+            }
+        case .none:
+            break
+        }
+        hideCalendar()
     }
 }

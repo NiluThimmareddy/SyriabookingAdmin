@@ -9,7 +9,6 @@ import Foundation
 
 struct BookingStatusModel {
     let title: String
-    let count: String
     let iconName: String
 }
 
