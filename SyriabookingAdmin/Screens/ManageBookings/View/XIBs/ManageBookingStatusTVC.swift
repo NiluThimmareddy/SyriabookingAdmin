@@ -22,13 +22,14 @@ class ManageBookingStatusTVC: UITableViewCell {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var bookingTypeLabel: UILabel!
     
-    
+    var onCheckmarkTapped: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     @IBAction func checkmarkButtonAction(_ sender: Any) {
+        onCheckmarkTapped?()
     }
     
     func configure(_with bookings : BookingModel) {
@@ -43,6 +44,18 @@ class ManageBookingStatusTVC: UITableViewCell {
         netTotalLabel.text = "\(bookings.netTotal)"
         statusLabel.text = bookings.status
         bookingTypeLabel.text = bookings.bookingType
+    }
+    
+    func setSelected(_ isSelected: Bool) {
+        let imageName = isSelected ? "checkmark.square.fill" : "square"
+
+        let image = UIImage(systemName: imageName)?
+            .withRenderingMode(.alwaysTemplate)
+
+        checkMarkButton.setImage(image, for: .normal)
+        checkMarkButton.tintColor = isSelected
+            ? UIColor(hex: "#379D67")
+            : .lightGray
     }
     
 }

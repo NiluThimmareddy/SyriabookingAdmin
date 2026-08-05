@@ -68,6 +68,7 @@ class ManageBookingsVC: BaseViewController {
     ]
     
     var selectedIndex = 0
+    private var selectedBookingIndexPath: IndexPath?
     
     // Pagination
     private var rowsPerPage = 10
@@ -123,7 +124,6 @@ class ManageBookingsVC: BaseViewController {
         currentPage = totalPages
         updatePagination()
     }
-    
 }
 
 extension ManageBookingsVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -184,10 +184,20 @@ extension ManageBookingsVC : UITableViewDelegate, UITableViewDataSource {
         return paginatedBookings.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ManageBookingStatusTVC") as! ManageBookingStatusTVC
+    func tableView(_ tableView: UITableView,cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ManageBookingStatusTVC",for: indexPath) as! ManageBookingStatusTVC
         let booking = paginatedBookings[indexPath.row]
         cell.configure(_with: booking)
+        cell.setSelected(indexPath == selectedBookingIndexPath)
+        cell.onCheckmarkTapped = { [weak self, weak tableView] in
+            guard let self = self else { return }
+            let previousIndexPath = self.selectedBookingIndexPath
+            self.selectedBookingIndexPath = indexPath
+            var reloadPaths = [indexPath]
+            if let previousIndexPath,previousIndexPath != indexPath {reloadPaths.append(previousIndexPath)}
+            tableView?.reloadRows(at: reloadPaths, with: .none)
+            self.openViewBookingScreen(with: booking)
+        }
         return cell
     }
     
@@ -264,39 +274,31 @@ extension ManageBookingsVC {
     }
     
     private var filteredBookings: [BookingModel] {
-
         switch selectedIndex {
-
         case 0: // PENDING
             return bookings.filter {
                 $0.status.lowercased() == "pending"
             }
-
         case 1: // CONFIRMED
             return bookings.filter {
                 $0.status.lowercased() == "confirmed"
             }
-
         case 2: // CHECK-IN
             return bookings.filter {
                 $0.status.lowercased() == "check-in"
             }
-
         case 3: // CHECK-OUT
             return bookings.filter {
                 $0.status.lowercased() == "check-out"
             }
-
         case 4: // CANCELLED
             return bookings.filter {
                 $0.status.lowercased() == "cancelled"
             }
-
         case 5: // NO SHOW
             return bookings.filter {
                 $0.status.lowercased() == "no show"
             }
-
         default:
             return bookings
         }
@@ -306,5 +308,18 @@ extension ManageBookingsVC {
         return bookings.filter {
             $0.status.lowercased() == status.lowercased()
         }.count
+    }
+    
+    private func openViewBookingScreen(with booking: BookingModel) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ViewBookingVC") as! ViewBookingVC
+        vc.booking = booking
+        vc.onDismiss = { [weak self] in
+            guard let self = self else { return }
+            if let indexPath = self.selectedBookingIndexPath {
+                self.selectedBookingIndexPath = nil
+                self.bookingStatusListTableView.reloadRows(at: [indexPath], with: .none)
+            }
+        }
+        present(vc, animated: true)
     }
 }
