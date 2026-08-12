@@ -64,7 +64,7 @@ class ViewBookingVC: UIViewController {
     var totalAmount = 0
     var discountPercentage = 0
     var netTotal = 0
-    var amountStep = 10
+    var amountStep = 1
 
     var selectedDateField: UITextField?
     private var calendarView: FSCalendar!
@@ -86,14 +86,12 @@ class ViewBookingVC: UIViewController {
     
     @IBAction func increaseGuestCountButtonAction(_ sender: Any) {
         guard editButton.isSelected else { return }
-
         guestCount += 1
         guestsCountTF.text = "\(guestCount)"
     }
 
     @IBAction func decreaseGuestCountButtonAction(_ sender: Any) {
         guard editButton.isSelected else { return }
-
         if guestCount > 1 {
             guestCount -= 1
             guestsCountTF.text = "\(guestCount)"
@@ -102,7 +100,6 @@ class ViewBookingVC: UIViewController {
     
     @IBAction func checkInDateButtonAction(_ sender: Any) {
         guard editButton.isSelected else { return }
-
         currentSelectionType = .checkIn
         selectedDateField = checkInDateTF
         showCalendar()
@@ -110,7 +107,6 @@ class ViewBookingVC: UIViewController {
 
     @IBAction func checkOutDateButtonAction(_ sender: Any) {
         guard editButton.isSelected else { return }
-
         currentSelectionType = .checkOut
         selectedDateField = checkOutDateTF
         showCalendar()
@@ -118,23 +114,20 @@ class ViewBookingVC: UIViewController {
     
     @IBAction func increaseTotalAmountButtonAction(_ sender: Any) {
         guard editButton.isSelected else { return }
-
-        totalAmount += 10
+        totalAmount += 1
         updateNetTotal()
     }
 
     @IBAction func decreaseTotalAmountButtonAction(_ sender: Any) {
         guard editButton.isSelected else { return }
-
-        if totalAmount >= 10 {
-            totalAmount -= 10
+        if totalAmount >= 1 {
+            totalAmount -= 1
             updateNetTotal()
         }
     }
     
     @IBAction func increaseTotalDiscountButtonAction(_ sender: Any) {
         guard editButton.isSelected else { return }
-
         if discountPercentage < 100 {
             discountPercentage += 5
             updateNetTotal()
@@ -143,7 +136,6 @@ class ViewBookingVC: UIViewController {
 
     @IBAction func decreaseTotalDiscountButtonAction(_ sender: Any) {
         guard editButton.isSelected else { return }
-
         if discountPercentage > 0 {
             discountPercentage -= 5
             updateNetTotal()
@@ -152,14 +144,12 @@ class ViewBookingVC: UIViewController {
     
     @IBAction func increaseNetTotalButtonAction(_ sender: Any) {
         guard editButton.isSelected else { return }
-
         netTotal += amountStep
         netTotalTF.text = "\(netTotal)"
     }
 
     @IBAction func decreaseNetTotalButtonAction(_ sender: Any) {
         guard editButton.isSelected else { return }
-
         if netTotal >= amountStep {
             netTotal -= amountStep
             netTotalTF.text = "\(netTotal)"
@@ -192,6 +182,9 @@ class ViewBookingVC: UIViewController {
     }
     
     @IBAction func viewDetailsButtonAction(_ sender: Any) {
+        let storyboard = storyboard?.instantiateViewController(withIdentifier: "ViewManageBookingDetailsVC") as! ViewManageBookingDetailsVC
+        storyboard.modalPresentationStyle = .fullScreen
+        present(storyboard, animated: true)
     }
     
 }
@@ -204,6 +197,8 @@ extension ViewBookingVC {
         setupStatusMenu()
         
         populateBookingData()
+        
+        viewDetailsButton.applyOverviewGradient()
     }
     
     func updateNetTotal() {
