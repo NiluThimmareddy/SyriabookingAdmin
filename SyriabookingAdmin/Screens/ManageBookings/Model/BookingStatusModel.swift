@@ -74,3 +74,8 @@ struct BookingModel {
         self.bookingType = bookingType
     }
 }
+
+struct AmenitiesModel {
+    let icon: String
+    let title: String
+}

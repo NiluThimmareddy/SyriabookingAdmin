@@ -48,7 +48,29 @@ class ViewManageBookingDetailsVC: UIViewController {
     @IBOutlet weak var paymentDetailsView: UIView!
     @IBOutlet weak var noPaymentsFoundButton: UIButton!
     @IBOutlet weak var registeredGuestListStackView: UIStackView!
+    @IBOutlet weak var roomDetailsTitleLabel: UILabel!
+    @IBOutlet weak var roomDetailsView: UIView!
+    @IBOutlet weak var hotelImgView: UIImageView!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var roomTypeLabel: UILabel!
+    @IBOutlet weak var bedLabel: UILabel!
+    @IBOutlet weak var bedTypeLabel: UILabel!
+    @IBOutlet weak var breakfastLabel: UILabel!
+    @IBOutlet weak var breakFastincludeLabel: UILabel!
+    @IBOutlet weak var amenitiesLabel: UILabel!
+    @IBOutlet weak var amenitiesCollectionView: UICollectionView!
+    @IBOutlet weak var priceDetailsLabel: UIView!
+    @IBOutlet weak var userInformationLabel: UIView!
+    @IBOutlet weak var userInformationButton: UIButton!
     
+    let amenities : [AmenitiesModel] = [
+        AmenitiesModel(icon: "wifi", title: "WiFi"),
+        AmenitiesModel(icon: "square.split.bottomrightquarter", title: "Room Service"),
+        AmenitiesModel(icon: "air.conditioner.horizontal", title: "Air Conditioning"),
+        AmenitiesModel(icon: "bed.double", title: "Extra Pillows"),
+        AmenitiesModel(icon: "heater.vertical", title: "Heater"),
+        AmenitiesModel(icon: "tv", title: "Television"),
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +80,16 @@ class ViewManageBookingDetailsVC: UIViewController {
         
         updateButton.applyOverviewGradient()
         addGuestButton.applyOverviewGradient()
+        
+        amenitiesCollectionView.register(UINib(nibName: "AmenitiesCVC", bundle: nil), forCellWithReuseIdentifier: "AmenitiesCVC")
+        if let layout = amenitiesCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .vertical
+            layout.estimatedItemSize = CGSize(width: 1, height: 30)
+            layout.minimumInteritemSpacing = 8
+            layout.minimumLineSpacing = 8
+            layout.sectionInset = .zero
+        }
+        amenitiesCollectionView.isScrollEnabled = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -81,3 +113,17 @@ class ViewManageBookingDetailsVC: UIViewController {
         present(storyboard, animated: true)
     }
 }
+
+extension ViewManageBookingDetailsVC : UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return amenities.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AmenitiesCVC", for: indexPath) as! AmenitiesCVC
+        let amenities = amenities[indexPath.row]
+        cell.configure(_with: amenities)
+        return cell
+    }
+}
+
