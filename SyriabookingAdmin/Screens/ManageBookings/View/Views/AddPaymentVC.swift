@@ -117,7 +117,6 @@ extension AddPaymentVC {
 }
 
 extension AddPaymentVC: FSCalendarDelegate, FSCalendarDataSource {
-
     func calendar(_ calendar: FSCalendar,didSelect date: Date,at monthPosition: FSCalendarMonthPosition) {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"

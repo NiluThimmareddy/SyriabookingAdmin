@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="ManageReviewsTVC" customModule="SyriabookingAdmin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="969" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="969" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="KKm-5P-R2I">
+                        <rect key="frame" x="0.0" y="0.0" width="969" height="44"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdQ-Qb-L97">
+                                <rect key="frame" x="0.0" y="0.0" width="48.333333333333336" height="44"/>
+                                <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="square" catalog="system"/>
+                                <connections>
+                                    <action selector="checkmarkButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kXl-wK-l0S"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HR00012" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xam-Kg-wrK">
+                                <rect key="frame" x="53.333333333333343" y="0.0" width="97" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Testing Demo User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nna-JE-NLE">
+                                <rect key="frame" x="155.33333333333337" y="0.0" width="193.66666666666663" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="am5-8H-T2Y">
+                                <rect key="frame" x="354" y="0.0" width="194" height="44"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2o-VY-4bk" customClass="CosmosView" customModule="SyriabookingAdmin" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="7" width="194" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="vHI-xH-iME"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="l2o-VY-4bk" secondAttribute="trailing" id="2Aj-pu-E2h"/>
+                                    <constraint firstItem="l2o-VY-4bk" firstAttribute="centerY" secondItem="am5-8H-T2Y" secondAttribute="centerY" id="Lci-ZA-KnK"/>
+                                    <constraint firstItem="l2o-VY-4bk" firstAttribute="leading" secondItem="am5-8H-T2Y" secondAttribute="leading" id="lIQ-K8-enP"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Excellent Stay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuR-8v-id9">
+                                <rect key="frame" x="553" y="0.0" width="193.66666666666663" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7/29/2025 3:10:49 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqq-nI-aVu">
+                                <rect key="frame" x="751.66666666666663" y="0.0" width="217.33333333333337" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="xam-Kg-wrK" firstAttribute="width" secondItem="KKm-5P-R2I" secondAttribute="width" multiplier="0.1" id="3Wf-ow-5Oj"/>
+                            <constraint firstItem="IuR-8v-id9" firstAttribute="width" secondItem="KKm-5P-R2I" secondAttribute="width" multiplier="0.2" id="Bdu-Pd-8Dw"/>
+                            <constraint firstItem="am5-8H-T2Y" firstAttribute="width" secondItem="KKm-5P-R2I" secondAttribute="width" multiplier="0.2" id="Gq9-ys-cRr"/>
+                            <constraint firstItem="gdQ-Qb-L97" firstAttribute="width" secondItem="KKm-5P-R2I" secondAttribute="width" multiplier="0.05" id="VgF-lC-vEI"/>
+                            <constraint firstItem="nna-JE-NLE" firstAttribute="width" secondItem="KKm-5P-R2I" secondAttribute="width" multiplier="0.2" id="lob-fp-htx"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="KKm-5P-R2I" secondAttribute="bottom" id="1ai-r5-d2w"/>
+                    <constraint firstAttribute="trailing" secondItem="KKm-5P-R2I" secondAttribute="trailing" id="7KR-gn-wFr"/>
+                    <constraint firstItem="KKm-5P-R2I" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pb3-IA-YNF"/>
+                    <constraint firstItem="KKm-5P-R2I" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="u1t-Ei-snK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="checkMarkButton" destination="gdQ-Qb-L97" id="6sl-eJ-IpB"/>
+                <outlet property="createdLabel" destination="oqq-nI-aVu" id="v5h-a4-OW3"/>
+                <outlet property="idLabel" destination="xam-Kg-wrK" id="xFc-ii-cS0"/>
+                <outlet property="ratingsView" destination="l2o-VY-4bk" id="eEQ-QO-c8X"/>
+                <outlet property="reviewLabel" destination="IuR-8v-id9" id="FSe-S1-C3M"/>
+                <outlet property="reviewerLabel" destination="nna-JE-NLE" id="41Z-Mw-RhR"/>
+            </connections>
+            <point key="canvasLocation" x="66" y="94"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="square" catalog="system" width="128" height="114"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
