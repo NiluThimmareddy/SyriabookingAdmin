@@ -23,8 +23,15 @@ final class ThemeManager {
 
     private let colorKey = "SelectedThemeColor"
 
-    private(set) var currentColor: UIColor = .systemBlue
+    private(set) var currentColor: UIColor = UIColor(
+        red: 55.0/255.0,
+        green: 157.0/255.0,
+        blue: 103.0/255.0,
+        alpha: 1.0
+    )
 
+   
+    
     func setThemeColor(_ color: UIColor) {
 
         currentColor = color
