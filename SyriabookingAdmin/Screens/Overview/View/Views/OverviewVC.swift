@@ -203,6 +203,7 @@ extension OverviewVC {
         calendar.appearance.selectionColor =  ThemeManager.shared.currentColor
         calendar.appearance.todayColor =  ThemeManager.shared.currentColor.withAlphaComponent(0.3)
         calendar.appearance.todaySelectionColor = ThemeManager.shared.currentColor
+        calendar.appearance.titleTodayColor = ThemeManager.shared.currentColor
     }
     
     func setupCalendar() {
@@ -226,7 +227,7 @@ extension OverviewVC {
         calendar.appearance.titleFont = UIFont.systemFont(ofSize: 16)
         calendar.appearance.titleDefaultColor = UIColor(hex: "#1A1A1A")
         calendar.appearance.titleWeekendColor = UIColor(hex: "#FF3B30")
-        calendar.appearance.titleTodayColor = UIColor(hex: "#22C55E")
+        calendar.appearance.titleTodayColor = ThemeManager.shared.currentColor
         
         // Configure selection colors
         calendar.appearance.selectionColor =  ThemeManager.shared.currentColor

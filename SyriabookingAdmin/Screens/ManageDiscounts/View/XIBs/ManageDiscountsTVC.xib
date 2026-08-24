@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ManageDiscountsTVC" customModule="SyriabookingAdmin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="eyP-c0-jm9">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csj-rr-WMb">
+                                <rect key="frame" x="0.0" y="0.0" width="51.333333333333336" height="44"/>
+                                <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="square" catalog="system"/>
+                                <connections>
+                                    <action selector="checkMarkButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DdT-om-bpC"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HR00012" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emq-ju-gyp">
+                                <rect key="frame" x="56.333333333333336" y="0.0" width="102.33333333333331" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Happy New Year Discount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLS-kN-kfX">
+                                <rect key="frame" x="163.66666666666666" y="0.0" width="384.66666666666674" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Percentage" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kP2-V6-6gG">
+                                <rect key="frame" x="553.33333333333337" y="0.0" width="204.66666666666663" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ms-uf-x6T">
+                                <rect key="frame" x="763" y="0.0" width="102.33333333333337" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="False" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYo-CQ-hAB">
+                                <rect key="frame" x="870.33333333333337" y="0.0" width="153.66666666666663" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="emq-ju-gyp" firstAttribute="width" secondItem="eyP-c0-jm9" secondAttribute="width" multiplier="0.1" id="Eh0-yl-0Jm"/>
+                            <constraint firstItem="kP2-V6-6gG" firstAttribute="width" secondItem="eyP-c0-jm9" secondAttribute="width" multiplier="0.2" id="MHP-mt-N1r"/>
+                            <constraint firstItem="csj-rr-WMb" firstAttribute="width" secondItem="eyP-c0-jm9" secondAttribute="width" multiplier="0.05" id="dE0-Vr-Pmt"/>
+                            <constraint firstItem="gYo-CQ-hAB" firstAttribute="width" secondItem="eyP-c0-jm9" secondAttribute="width" multiplier="0.15" id="eGi-Ed-HxT"/>
+                            <constraint firstItem="2Ms-uf-x6T" firstAttribute="width" secondItem="eyP-c0-jm9" secondAttribute="width" multiplier="0.1" id="hx8-A0-5FI"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="eyP-c0-jm9" secondAttribute="trailing" id="25w-l2-siW"/>
+                    <constraint firstAttribute="bottom" secondItem="eyP-c0-jm9" secondAttribute="bottom" id="CId-hY-aQJ"/>
+                    <constraint firstItem="eyP-c0-jm9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="X8c-CX-dwI"/>
+                    <constraint firstItem="eyP-c0-jm9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="vok-5I-Bf0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="activeLabel" destination="gYo-CQ-hAB" id="XE0-SP-wEq"/>
+                <outlet property="checkMarkButton" destination="csj-rr-WMb" id="ZA7-W1-60Y"/>
+                <outlet property="discountNameLabel" destination="SLS-kN-kfX" id="QaG-eJ-Ac7"/>
+                <outlet property="discountTypeLabel" destination="kP2-V6-6gG" id="I4U-S1-2Iu"/>
+                <outlet property="discountValueLabel" destination="2Ms-uf-x6T" id="kSh-zb-ckn"/>
+                <outlet property="hotelIdLabel" destination="emq-ju-gyp" id="fjW-Bq-MbW"/>
+            </connections>
+            <point key="canvasLocation" x="46" y="94"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="square" catalog="system" width="128" height="114"/>
+    </resources>
+</document>

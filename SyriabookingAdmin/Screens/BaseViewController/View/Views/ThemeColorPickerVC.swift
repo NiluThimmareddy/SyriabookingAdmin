@@ -3,8 +3,6 @@
 //  SyriabookingAdmin
 //
 //  Created by Toqsoft on 29/07/26.
-//
-
 
 import UIKit
 
@@ -19,10 +17,17 @@ class ThemeColorPickerVC: UIViewController {
         .systemPink,
         .brown,
         .black,
-        .systemTeal
+        .systemTeal,
+        .magenta,
+        .systemYellow,
+        .opaqueSeparator,
+        .systemIndigo,
+        .systemCyan
     ]
 
     private let container = UIView()
+
+    private let numberOfColumns = 5
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,24 +44,23 @@ class ThemeColorPickerVC: UIViewController {
         view.addGestureRecognizer(tap)
     }
 
-    func setupContainer() {
+    private func setupContainer() {
 
         container.backgroundColor = .white
         container.layer.cornerRadius = 16
+        container.clipsToBounds = true
 
         view.addSubview(container)
 
         container.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-
             container.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-
             container.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
-            container.widthAnchor.constraint(equalToConstant: 220),
+            container.widthAnchor.constraint(equalToConstant: 280),
 
-            container.heightAnchor.constraint(equalToConstant: 180)
+            // Height will be calculated below
         ])
 
         let stack = UIStackView()
@@ -70,19 +74,19 @@ class ThemeColorPickerVC: UIViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-
             stack.topAnchor.constraint(equalTo: container.topAnchor, constant: 20),
-
             stack.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20),
-
             stack.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20),
-
             stack.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -20)
         ])
 
-        var index = 0
+        // Calculate number of rows automatically
+        let numberOfRows = Int(
+            ceil(Double(colors.count) / Double(numberOfColumns))
+        )
 
-        for _ in 0..<3 {
+        // Create rows automatically
+        for rowIndex in 0..<numberOfRows {
 
             let row = UIStackView()
 
@@ -90,33 +94,58 @@ class ThemeColorPickerVC: UIViewController {
             row.spacing = 15
             row.distribution = .fillEqually
 
-            for _ in 0..<3 {
+            for columnIndex in 0..<numberOfColumns {
 
-                let button = UIButton(type: .system)
+                let index = (rowIndex * numberOfColumns) + columnIndex
 
-                button.backgroundColor = colors[index]
+                // Make sure we don't access colors[index]
+                // when index is outside the array
+                if index < colors.count {
 
-                button.layer.cornerRadius = 18
+                    let button = UIButton(type: .system)
 
-                button.tag = index
+                    button.backgroundColor = colors[index]
+                    button.layer.cornerRadius = 18
 
-                button.addTarget(
-                    self,
-                    action: #selector(colorSelected(_:)),
-                    for: .touchUpInside
-                )
+                    button.tag = index
 
-                row.addArrangedSubview(button)
+                    button.addTarget(
+                        self,
+                        action: #selector(colorSelected(_:)),
+                        for: .touchUpInside
+                    )
 
-                index += 1
+                    row.addArrangedSubview(button)
+
+                } else {
+
+                    // Empty space for the last row
+                    let emptyView = UIView()
+
+                    row.addArrangedSubview(emptyView)
+                }
             }
 
             stack.addArrangedSubview(row)
         }
+
+        // Automatically calculate container height
+        let rowHeight: CGFloat = 36
+        let verticalSpacing: CGFloat = 15
+        let verticalPadding: CGFloat = 40
+
+        let containerHeight =
+            (CGFloat(numberOfRows) * rowHeight) +
+            (CGFloat(max(0, numberOfRows - 1)) * verticalSpacing) +
+            verticalPadding
+
+        container.heightAnchor.constraint(
+            equalToConstant: containerHeight
+        ).isActive = true
     }
 
     @objc
-    func colorSelected(_ sender: UIButton) {
+    private func colorSelected(_ sender: UIButton) {
 
         let color = colors[sender.tag]
 
@@ -126,7 +155,7 @@ class ThemeColorPickerVC: UIViewController {
     }
 
     @objc
-    func close() {
+    private func close() {
 
         dismiss(animated: true)
     }
