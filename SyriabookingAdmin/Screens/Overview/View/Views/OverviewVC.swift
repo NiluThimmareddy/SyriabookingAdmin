@@ -83,6 +83,13 @@ class OverviewVC: BaseViewController {
         let today = Date()
         calendar.select(today)
         filterBookings(for: today)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(themeChange),
+            name: .themeChanged,
+            object: nil
+        )
     }
     
     override func viewDidLayoutSubviews() {
@@ -175,7 +182,7 @@ extension OverviewVC {
     
     func setUpUI() {
         scrollView.showsVerticalScrollIndicator = false
-        publishButton.applyOverviewGradient()
+        publishButton.applyOverviewGradient(color: ThemeManager.shared.currentColor)
 //        navigationController?.applyGreenNavigationBar()
         [topView,totalRoomsView,bookingsView,revenueView,guestsView,confirmedView,cancelledView,pendingView].forEach { lightShadow in
             lightShadow.applyLightShadow()
@@ -189,6 +196,13 @@ extension OverviewVC {
         
         noBookingsView.isHidden = true
         checkInCheckOutTableView.isHidden = false
+    }
+    
+    @objc private func themeChange() {
+        publishButton.applyOverviewGradient(color: ThemeManager.shared.currentColor)
+        calendar.appearance.selectionColor =  ThemeManager.shared.currentColor
+        calendar.appearance.todayColor =  ThemeManager.shared.currentColor.withAlphaComponent(0.3)
+        calendar.appearance.todaySelectionColor = ThemeManager.shared.currentColor
     }
     
     func setupCalendar() {
@@ -215,9 +229,9 @@ extension OverviewVC {
         calendar.appearance.titleTodayColor = UIColor(hex: "#22C55E")
         
         // Configure selection colors
-        calendar.appearance.selectionColor = UIColor(hex: "#22C55E")
-        calendar.appearance.todayColor = UIColor(hex: "#22C55E").withAlphaComponent(0.3)
-        calendar.appearance.todaySelectionColor = UIColor(hex: "#22C55E")
+        calendar.appearance.selectionColor =  ThemeManager.shared.currentColor
+        calendar.appearance.todayColor =  ThemeManager.shared.currentColor.withAlphaComponent(0.3)
+        calendar.appearance.todaySelectionColor = ThemeManager.shared.currentColor
         
         // Hide event dots
         calendar.appearance.eventDefaultColor = .clear

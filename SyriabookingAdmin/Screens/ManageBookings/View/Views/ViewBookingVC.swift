@@ -198,7 +198,7 @@ extension ViewBookingVC {
         
         populateBookingData()
         
-        viewDetailsButton.applyOverviewGradient()
+        viewDetailsButton.applyOverviewGradient(color: ThemeManager.shared.currentColor)
     }
     
     func updateNetTotal() {

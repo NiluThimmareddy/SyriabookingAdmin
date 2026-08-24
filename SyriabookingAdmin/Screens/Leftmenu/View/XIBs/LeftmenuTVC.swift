@@ -35,7 +35,7 @@ class LeftmenuTVC: UITableViewCell {
         iconImgView.tintColor = normalColor
         
         if isSelected {
-            backVIew.applyOverviewGradient()
+            backVIew.applyOverviewGradient(color: ThemeManager.shared.currentColor)
             titleLabel.textColor = .white
             iconImgView.tintColor = .white
         }

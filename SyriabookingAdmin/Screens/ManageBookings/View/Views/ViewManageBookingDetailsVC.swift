@@ -78,8 +78,8 @@ class ViewManageBookingDetailsVC: UIViewController {
         registeredGuestListStackView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         registeredGuestListStackView.clipsToBounds = true
         
-        updateButton.applyOverviewGradient()
-        addGuestButton.applyOverviewGradient()
+        updateButton.applyOverviewGradient(color: ThemeManager.shared.currentColor)
+        addGuestButton.applyOverviewGradient(color: ThemeManager.shared.currentColor)
         
         amenitiesCollectionView.register(UINib(nibName: "AmenitiesCVC", bundle: nil), forCellWithReuseIdentifier: "AmenitiesCVC")
         if let layout = amenitiesCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {

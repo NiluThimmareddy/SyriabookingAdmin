@@ -28,7 +28,7 @@ class UpdateHotelDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        publishButton.applyOverviewGradient()
+        publishButton.applyOverviewGradient(color: ThemeManager.shared.currentColor)
         updateTabSelection(selectedButton: basicButton)
         let vc = storyboard?.instantiateViewController(withIdentifier: "BasicVC") as! BasicVC
         showChildVC(vc)

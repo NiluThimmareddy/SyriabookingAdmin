@@ -52,18 +52,22 @@ extension UIView {
         layer.shadowPath = nil
     }
     
-    func applyOverviewGradient() {
+    func applyOverviewGradient(color:UIColor) {
         layer.sublayers?.removeAll(where: { $0 is CAGradientLayer })
         
         let gradient = CAGradientLayer()
         gradient.frame = bounds
         gradient.name = "overviewGradient"
         
-        gradient.colors = [
-            UIColor(hex: "#379D67").cgColor,
-            UIColor(hex: "#22C55E").cgColor
-        ]
+//        gradient.colors = [
+//            UIColor(hex: "#379D67").cgColor,
+//            UIColor(hex: "#22C55E").cgColor
+//        ]
         
+        gradient.colors = [
+            color.cgColor,
+            color.lighter(by: 30).cgColor
+        ]
         
         gradient.locations = [0.0, 1.0]
         gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
@@ -95,3 +99,31 @@ extension UIView {
     
 }
 
+
+extension UIColor {
+
+    func lighter(by percentage: CGFloat = 20) -> UIColor {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+
+        guard getRed(
+            &red,
+            green: &green,
+            blue: &blue,
+            alpha: &alpha
+        ) else {
+            return self
+        }
+
+        let amount = percentage / 100
+
+        return UIColor(
+            red: min(red + amount, 1.0),
+            green: min(green + amount, 1.0),
+            blue: min(blue + amount, 1.0),
+            alpha: alpha
+        )
+    }
+}
