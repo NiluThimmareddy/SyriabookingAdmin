@@ -1,20 +1,20 @@
 //
-//  ManageDiscountsVC.swift
+//  ManageFacilitiesVC.swift
 //  SyriabookingAdmin
 //
-//  Created by Toqsoft on 24/08/26.
+//  Created by Toqsoft on 25/08/26.
 //
 
 import UIKit
 
-class ManageDiscountsVC: BaseViewController {
+class ManageFacilitiesVC: BaseViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var insideScrollView: UIView!
-    @IBOutlet weak var addNewDiscountButton: UIButton!
-    @IBOutlet weak var discountsSearchBar: UISearchBar!
-    @IBOutlet weak var discountsListTableView: UITableView!
-    @IBOutlet weak var discountsListTableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var addNewFacilitiesButton: UIButton!
+    @IBOutlet weak var facilitiesSearchBar: UISearchBar!
+    @IBOutlet weak var facilitiesTableView: UITableView!
+    @IBOutlet weak var facilitiesTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var rowsPerPageLabel: UILabel!
     @IBOutlet weak var rowsPerPageButton: UIButton!
     @IBOutlet weak var totalPagesCountLabel: UILabel!
@@ -23,32 +23,37 @@ class ManageDiscountsVC: BaseViewController {
     @IBOutlet weak var onePageForwardButton: UIButton!
     @IBOutlet weak var lastPageButton: UIButton!
     
-    let discountList: [DiscountModel] = [
-        DiscountModel(id: "HD00005",name: "Happy New Year Discount",type: "Percentage",value: 5, isActive: false, activeDate: nil),
-        DiscountModel(id: "HD00006",name: "Summer Special Discount",type: "Percentage",value: 10, isActive: true, activeDate: "26-Aug-2026"),
-        DiscountModel(id: "HD00007",name: "Weekend Discount",type: "Percentage",value: 15, isActive: false, activeDate: nil),
-        DiscountModel(id: "HD00008",name: "Festival Discount",type: "Percentage",value: 20, isActive: true, activeDate: "28-Aug-2026"),
-        DiscountModel(id: "HD00009",name: "New Customer Discount",type: "Percentage",value: 10, isActive: false, activeDate: "28-Aug-2026")
+    let facilityList: [FacilityModel] = [
+        FacilityModel(id: "HR00024",facility: "Free Wi-Fi",notes: "",isActive: true),
+        FacilityModel(id: "HR00025",facility: "Swimming Pool",notes: "Available for all guests",isActive: true),
+        FacilityModel(id: "HR00026",facility: "Gym",notes: "Open 24 hours",isActive: true),
+        FacilityModel(id: "HR00027",facility: "Parking",notes: "Free parking available",isActive: true),
+        FacilityModel(id: "HR00028",facility: "Restaurant",notes: "Breakfast and dinner available",isActive: true),
+        FacilityModel(id: "HR00029",facility: "Room Service",notes: "Available 24 hours",isActive: true),
+        FacilityModel(id: "HR00030",facility: "Laundry",notes: "Laundry service available",isActive: false),
+        FacilityModel(id: "HR00031",facility: "Airport Shuttle",notes: "Available on request",isActive: true),
+        FacilityModel(id: "HR00032",facility: "Conference Room",notes: "Available for meetings",isActive: true),
+        FacilityModel(id: "HR00033",facility: "Spa",notes: "Advance booking required",isActive: false)
     ]
     
     var selectedIndex = 0
-    private var selectedDiscountIndexPath: IndexPath?
+    private var selectedFacilityIndexPath: IndexPath?
     
     private var rowsPerPage = 10
     private var currentPage = 1
     private var totalPages: Int {
-        return max( 1,Int(ceil(Double(discountList.count) / Double(rowsPerPage))))
+        return max( 1,Int(ceil(Double(facilityList.count) / Double(rowsPerPage))))
     }
-    private var paginatedDiscounts: [DiscountModel] {
+    private var paginatedFacilities: [FacilityModel] {
         let startIndex = (currentPage - 1) * rowsPerPage
-        guard startIndex < discountList.count else {
+        guard startIndex < facilityList.count else {
             return []
         }
         let endIndex = min(
             startIndex + rowsPerPage,
-            discountList.count
+            facilityList.count
         )
-        return Array(discountList[startIndex..<endIndex])
+        return Array(facilityList[startIndex..<endIndex])
     }
     
     override func viewDidLoad() {
@@ -56,8 +61,8 @@ class ManageDiscountsVC: BaseViewController {
         setUpUI()
     }
     
-    @IBAction func addNewDiscountButtonAction(_ sender: Any) {
-        let storyboard = storyboard?.instantiateViewController(withIdentifier: "AddDiscountVC") as! AddDiscountVC
+    @IBAction func addNewFacilitiesButtonAction(_ sender: Any) {
+        let storyboard = storyboard?.instantiateViewController(withIdentifier: "AddNewFacilityVC") as! AddNewFacilityVC
         present(storyboard, animated: true)
     }
     
@@ -82,38 +87,36 @@ class ManageDiscountsVC: BaseViewController {
         currentPage = totalPages
         updatePagination()
     }
-    
-
 }
 
-extension ManageDiscountsVC : UITableViewDelegate, UITableViewDataSource {
+extension ManageFacilitiesVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return paginatedDiscounts.count
+        return paginatedFacilities.count
     }
     
     func tableView(_ tableView: UITableView,cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ManageDiscountsTVC",for: indexPath) as! ManageDiscountsTVC
-        let discount = paginatedDiscounts[indexPath.row]
-        cell.configure(with: discount)
-        cell.setSelected(indexPath == selectedDiscountIndexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ManageFacilitiesTVC",for: indexPath) as! ManageFacilitiesTVC
+        let facilities = paginatedFacilities[indexPath.row]
+        cell.configure(_with: facilities)
+        cell.setSelected(indexPath == selectedFacilityIndexPath)
         cell.onCheckmarkTapped = { [weak self, weak tableView] in
             guard let self = self else { return }
-            let previousIndexPath = self.selectedDiscountIndexPath
-            self.selectedDiscountIndexPath = indexPath
+            let previousIndexPath = self.selectedFacilityIndexPath
+            self.selectedFacilityIndexPath = indexPath
             var reloadPaths = [indexPath]
             if let previousIndexPath,previousIndexPath != indexPath {reloadPaths.append(previousIndexPath)}
             tableView?.reloadRows(at: reloadPaths, with: .none)
-            self.openViewDiscountScreen(with: discount)
+            self.openViewFacilitiesScreen(with: facilities)
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 53.5
+        return 53
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerView = Bundle.main.loadNibNamed("ManageDiscountsView", owner: self, options: nil)?.first as? ManageDiscountsView else {
+        guard let headerView = Bundle.main.loadNibNamed("ManageFacilitiesView", owner: self, options: nil)?.first as? ManageFacilitiesView else {
             return nil
         }
         return headerView
@@ -123,17 +126,17 @@ extension ManageDiscountsVC : UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ManageDiscountsVC {
+extension ManageFacilitiesVC {
     func setUpUI() {
-        discountsListTableView.register(UINib(nibName: "ManageDiscountsTVC", bundle: nil), forCellReuseIdentifier: "ManageDiscountsTVC")
-        discountsListTableView.isScrollEnabled = false
+        facilitiesTableView.register(UINib(nibName: "ManageFacilitiesTVC", bundle: nil), forCellReuseIdentifier: "ManageFacilitiesTVC")
+        facilitiesTableView.isScrollEnabled = false
         
         setupRowsPerPageMenu()
         updatePagination()
     }
     
     private func updatePagination() {
-        let totalCount = discountList.count
+        let totalCount = facilityList.count
         let startRecord = totalCount == 0 ? 0 : ((currentPage - 1) * rowsPerPage) + 1
         let endRecord = min(currentPage * rowsPerPage, totalCount)
         totalPagesCountLabel.text = "\(startRecord)-\(endRecord) of \(totalCount)"
@@ -141,7 +144,7 @@ extension ManageDiscountsVC {
         onePageBackwardButton.isEnabled = currentPage > 1
         onePageForwardButton.isEnabled = currentPage < totalPages
         lastPageButton.isEnabled = currentPage < totalPages
-        discountsListTableView.reloadData()
+        facilitiesTableView.reloadData()
         DispatchQueue.main.async {
             self.updateTableHeight()
         }
@@ -166,19 +169,19 @@ extension ManageDiscountsVC {
     private func updateTableHeight() {
         let rowHeight: CGFloat = 53.5
         let headerHeight: CGFloat = 45
-        let totalHeight = (CGFloat(paginatedDiscounts.count) * rowHeight) + headerHeight + 20
-        discountsListTableViewHeightConstraint.constant = totalHeight
+        let totalHeight = (CGFloat(paginatedFacilities.count) * rowHeight) + headerHeight + 20
+        facilitiesTableViewHeightConstraint.constant = totalHeight
         view.layoutIfNeeded()
     }
     
-    private func openViewDiscountScreen(with discount: DiscountModel) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "ViewDiscountVC") as! ViewDiscountVC
-        vc.discount = discount
+    private func openViewFacilitiesScreen(with facility: FacilityModel) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ViewFacilityVC") as! ViewFacilityVC
+        vc.facility = facility
         vc.onDismiss = { [weak self] in
             guard let self = self else { return }
-            if let indexPath = self.selectedDiscountIndexPath {
-                self.selectedDiscountIndexPath = nil
-                self.discountsListTableView.reloadRows(at: [indexPath], with: .none)
+            if let indexPath = self.selectedFacilityIndexPath {
+                self.selectedFacilityIndexPath = nil
+                self.facilitiesTableView.reloadRows(at: [indexPath], with: .none)
             }
         }
         present(vc, animated: true)

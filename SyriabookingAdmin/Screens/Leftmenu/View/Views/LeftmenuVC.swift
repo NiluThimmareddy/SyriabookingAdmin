@@ -104,8 +104,9 @@ extension LeftmenuVC : UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
             onDismiss?()
         case .manageFacilities:
-            break
-
+            let vc = UIStoryboard(name: "ManageFacilities", bundle: nil).instantiateViewController(withIdentifier: "ManageFacilitiesVC") as! ManageFacilitiesVC
+            navigationController?.pushViewController(vc, animated: true)
+            onDismiss?()
         case .manageLandmarks:
             break
 
