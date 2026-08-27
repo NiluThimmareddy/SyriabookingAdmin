@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad7_9" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,7 +23,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="744" height="1194.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ke-pZ-v3o">
-                                                <rect key="frame" x="20" y="48" width="71" height="25"/>
+                                                <rect key="frame" x="20" y="48" width="154.5" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="uZJ-7m-39E"/>
                                                 </constraints>
@@ -32,6 +32,9 @@
                                                 <state key="normal" title="ADD NEW">
                                                     <color key="titleColor" red="0.082352941176470587" green="0.50196078431372548" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <buttonConfiguration key="configuration" style="plain" title="ADD NEW REVIEW">
+                                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="addNewReviewsButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="4yB-PZ-Ra5"/>
                                                 </connections>
@@ -124,7 +127,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="744" height="561"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ebS-j6-0g2">
-                                                <rect key="frame" x="20" y="20" width="24" height="24"/>
+                                                <rect key="frame" x="20" y="21.5" width="24" height="20.5"/>
                                                 <color key="tintColor" red="0.21568627450980393" green="0.61568627450980395" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ebS-j6-0g2" secondAttribute="height" id="QLR-Xc-xf2"/>
@@ -510,6 +513,7 @@
                         <outlet property="reviewerNameLabel" destination="RSw-KS-cSY" id="KW0-fP-cTb"/>
                         <outlet property="reviewerNameTF" destination="MIY-aX-JGK" id="1nD-aY-sR6"/>
                         <outlet property="scrollView" destination="JmL-7i-SWC" id="7K3-Ua-cNl"/>
+                        <outlet property="viewReviewIconImageView" destination="ebS-j6-0g2" id="PNH-KY-nj8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k9q-bh-bEP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -829,6 +833,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addReviewIconImageView" destination="iAd-js-j6h" id="PrA-MA-jYW"/>
                         <outlet property="addReviewTitleLabel" destination="Nb9-Cs-IGq" id="k9Z-bU-N04"/>
                         <outlet property="cancelbutton" destination="sZa-ue-Lie" id="jVc-or-xUU"/>
                         <outlet property="decreaseRatingsButton" destination="J51-I5-CfG" id="1D7-C8-273"/>

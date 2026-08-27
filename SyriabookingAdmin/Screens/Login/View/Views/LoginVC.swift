@@ -21,7 +21,7 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         backView.applyLightShadow()
-        loginButton.applyOverviewGradient(color: ThemeManager.shared.currentColor)
+        loginButton.backgroundColor = ThemeManager.shared.currentColor
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(themeChange),
@@ -31,7 +31,8 @@ class LoginVC: UIViewController {
     }
     
     @objc private func themeChange() {
-        loginButton.applyOverviewGradient(color: ThemeManager.shared.currentColor)
+        loginButton.backgroundColor = ThemeManager.shared.currentColor
+//        loginButton.applyOverviewGradient(color: ThemeManager.shared.currentColor)
     }
     
     @IBAction func loginButtonAction(_ sender: Any) {

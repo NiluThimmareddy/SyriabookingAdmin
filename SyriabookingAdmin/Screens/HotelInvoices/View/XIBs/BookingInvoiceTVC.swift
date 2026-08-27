@@ -21,6 +21,7 @@ class BookingInvoiceTVC: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        includeButton.tintColor = ThemeManager.shared.currentColor
     }
     
     @IBAction func includeButtonAction(_ sender: Any) {

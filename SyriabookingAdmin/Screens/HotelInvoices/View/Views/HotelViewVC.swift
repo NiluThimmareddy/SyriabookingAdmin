@@ -120,6 +120,8 @@ extension HotelViewVC : UITableViewDelegate, UITableViewDataSource {
 
 extension HotelViewVC {
     func setUpUI() {
+        saveChangesButton.tintColor = ThemeManager.shared.currentColor
+        approvebutton.backgroundColor = ThemeManager.shared.currentColor
         view.backgroundColor = UIColor.label.withAlphaComponent(0.5)
         scrollView.showsVerticalScrollIndicator = false
         

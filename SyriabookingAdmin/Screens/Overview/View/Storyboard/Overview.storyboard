@@ -822,8 +822,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="Z5o-Iz-mDA"/>
                     <connections>
+                        <outlet property="BookingCalendarIconImageView" destination="tFX-bU-czB" id="0KV-ol-Bpr"/>
+                        <outlet property="QuickStatsIconImageView" destination="RQx-Ml-b7J" id="WhU-GL-Y1T"/>
+                        <outlet property="RecentBookingCalendarIconImageView" destination="VFn-sB-AYu" id="6zy-6L-Hnb"/>
                         <outlet property="bookingCalenderLabel" destination="ZiW-d4-wsf" id="G5O-rl-wHN"/>
                         <outlet property="bookingCalenderView" destination="7of-22-sb1" id="9OP-wy-aJ2"/>
+                        <outlet property="bookingStatusIconImageView" destination="SYu-OS-z1h" id="DKa-yK-k1f"/>
                         <outlet property="bookingStatusLabel" destination="J4p-7i-g9M" id="RgZ-jr-Rmb"/>
                         <outlet property="bookingsLabel" destination="GXw-uk-1xh" id="WbW-sK-nnc"/>
                         <outlet property="bookingsView" destination="dpO-9H-2A7" id="zeH-HB-Vn4"/>
@@ -847,6 +851,7 @@
                         <outlet property="pendingView" destination="WO7-vy-DKC" id="5Ui-q3-7My"/>
                         <outlet property="publishButton" destination="8jf-6J-gtc" id="U4t-ld-OVf"/>
                         <outlet property="quickStatsLabel" destination="4Cc-Il-v1a" id="dQs-e6-UbI"/>
+                        <outlet property="recentBookingIconImageView" destination="een-Sh-Emv" id="4kn-jy-bEV"/>
                         <outlet property="recentBookingsLabel" destination="X35-mB-NOt" id="UGF-Sf-Nov"/>
                         <outlet property="recentBookingsTableView" destination="45v-S7-9aX" id="BJR-DM-nNT"/>
                         <outlet property="revenueLabel" destination="Eoh-ET-87X" id="z0o-9p-y7n"/>
@@ -935,7 +940,7 @@
                                                         <color key="tintColor" systemColor="labelColor"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="BASIC">
-                                                            <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
+                                                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="16"/>
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="basicButtonAction:" destination="L9c-Lb-Zay" eventType="touchUpInside" id="uaI-fb-4Zb"/>
@@ -2742,10 +2747,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.53333333333333333" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

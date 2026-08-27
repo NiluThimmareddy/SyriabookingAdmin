@@ -23,9 +23,10 @@ class AddReviewVC: UIViewController {
     @IBOutlet weak var cancelbutton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
+    @IBOutlet weak var addReviewIconImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        addReviewIconImageView.tintColor = ThemeManager.shared.currentColor
     }
     
     @IBAction func increaseRatingsButtonAction(_ sender: Any) {

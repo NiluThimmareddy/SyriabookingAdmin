@@ -64,6 +64,7 @@ class ManageBookingsVC: BaseViewController {
         BookingModel(bookingId: "BK00894",guestName: "Aisha Khan",guestPhone: "9676767676",roomId: "R00020",checkInDate: "09-Jul-2026",checkOutDate: "11-Jul-2026",amount: 280,discount: 15,netTotal: 265,status: "Confirmed",bookingType: "Local"),
         BookingModel(bookingId: "BK00895",guestName: "Vikram Rao",guestPhone: "9565656565",roomId: "R00017",checkInDate: "12-Jul-2026",checkOutDate: "14-Jul-2026",amount: 320,discount: 20,netTotal: 300,status: "Check-In",bookingType: "Local"),
         BookingModel(bookingId: "BK00896",guestName: "Sophia Lee",guestPhone: "9454545454",roomId: "R00044",checkInDate: "15-Jul-2026",checkOutDate: "18-Jul-2026",amount: 680,discount: 80,netTotal: 600,status: "Confirmed",bookingType: "International"),
+        BookingModel(bookingId: "BK00897",guestName: "Manoj Kumar",guestPhone: "9343434343",roomId: "R00008",checkInDate: "18-Jul-2026",checkOutDate: "20-Jul-2026",amount: 210,discount: 10,netTotal: 200,status: "Cancelled",bookingType: "Local"),
         BookingModel(bookingId: "BK00897",guestName: "Manoj Kumar",guestPhone: "9343434343",roomId: "R00008",checkInDate: "18-Jul-2026",checkOutDate: "20-Jul-2026",amount: 210,discount: 10,netTotal: 200,status: "Cancelled",bookingType: "Local")
     ]
     
@@ -219,6 +220,7 @@ extension ManageBookingsVC : UITableViewDelegate, UITableViewDataSource {
 
 extension ManageBookingsVC {
     func setUpUI() {
+        addNewBookingsButton.tintColor = ThemeManager.shared.currentColor
         bookingStatusCollectionView.register(UINib(nibName: "ManageBookingStatusCVC", bundle: nil), forCellWithReuseIdentifier: "ManageBookingStatusCVC")
         if let layout = bookingStatusCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.estimatedItemSize = .zero

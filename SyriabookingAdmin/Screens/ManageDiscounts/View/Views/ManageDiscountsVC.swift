@@ -23,6 +23,7 @@ class ManageDiscountsVC: BaseViewController {
     @IBOutlet weak var onePageForwardButton: UIButton!
     @IBOutlet weak var lastPageButton: UIButton!
     
+    
     let discountList: [DiscountModel] = [
         DiscountModel(id: "HD00005",name: "Happy New Year Discount",type: "Percentage",value: 5, isActive: false, activeDate: nil),
         DiscountModel(id: "HD00006",name: "Summer Special Discount",type: "Percentage",value: 10, isActive: true, activeDate: "26-Aug-2026"),
@@ -130,6 +131,7 @@ extension ManageDiscountsVC {
         
         setupRowsPerPageMenu()
         updatePagination()
+        addNewDiscountButton.tintColor = ThemeManager.shared.currentColor
     }
     
     private func updatePagination() {

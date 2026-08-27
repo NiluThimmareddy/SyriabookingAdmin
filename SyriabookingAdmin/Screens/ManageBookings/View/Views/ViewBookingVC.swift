@@ -56,6 +56,7 @@ class ViewBookingVC: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var viewDetailsButton: UIButton!
+    @IBOutlet weak var viewBookingIconImgView: UIImageView!
     
     var booking: BookingModel?
     var onDismiss: (() -> Void)?
@@ -182,6 +183,7 @@ class ViewBookingVC: UIViewController {
     }
     
     @IBAction func viewDetailsButtonAction(_ sender: Any) {
+        
         let storyboard = storyboard?.instantiateViewController(withIdentifier: "ViewManageBookingDetailsVC") as! ViewManageBookingDetailsVC
         storyboard.modalPresentationStyle = .fullScreen
         present(storyboard, animated: true)
@@ -199,6 +201,7 @@ extension ViewBookingVC {
         populateBookingData()
         
         viewDetailsButton.applyOverviewGradient(color: ThemeManager.shared.currentColor)
+        viewBookingIconImgView.tintColor = ThemeManager.shared.currentColor
     }
     
     func updateNetTotal() {
@@ -347,8 +350,10 @@ extension ViewBookingVC {
         calendarView.delegate = self
         calendarView.dataSource = self
         calendarView.appearance.headerDateFormat = "MMMM yyyy"
-        calendarView.appearance.todayColor = .systemBlue
-        calendarView.appearance.selectionColor = .systemPurple
+        calendarView.appearance.headerTitleColor = ThemeManager.shared.currentColor
+        calendarView.appearance.weekdayTextColor = ThemeManager.shared.currentColor
+        calendarView.appearance.todayColor = ThemeManager.shared.currentColor
+        calendarView.appearance.selectionColor = ThemeManager.shared.currentColor
 
         containerView.addSubview(calendarView)
         view.addSubview(containerView)

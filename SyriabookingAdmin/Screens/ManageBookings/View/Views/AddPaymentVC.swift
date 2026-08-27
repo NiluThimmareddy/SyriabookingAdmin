@@ -31,6 +31,8 @@ class AddPaymentVC: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
+    @IBOutlet weak var addPaymentIconImageView: UIImageView!
+    
     private var calendarView: FSCalendar!
     private var dimView: UIView!
     var currentSelectionType: PaidDateSelectionTypes?
@@ -57,6 +59,7 @@ class AddPaymentVC: UIViewController {
 extension AddPaymentVC {
     
     func setUpUI() {
+        addPaymentIconImageView.tintColor = ThemeManager.shared.currentColor
         setupPaymentMethodMenu()
         setupPaymentStatusMenu()
     }
@@ -102,8 +105,10 @@ extension AddPaymentVC {
         calendarView.delegate = self
         calendarView.dataSource = self
         calendarView.appearance.headerDateFormat = "MMMM yyyy"
-        calendarView.appearance.todayColor = .systemBlue
-        calendarView.appearance.selectionColor = .systemPurple
+        calendarView.appearance.headerTitleColor = ThemeManager.shared.currentColor
+        calendarView.appearance.weekdayTextColor = ThemeManager.shared.currentColor
+        calendarView.appearance.todayColor = ThemeManager.shared.currentColor
+        calendarView.appearance.selectionColor = ThemeManager.shared.currentColor
 
         containerView.addSubview(calendarView)
         view.addSubview(containerView)

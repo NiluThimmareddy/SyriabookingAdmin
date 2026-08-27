@@ -24,6 +24,7 @@ class ViewFacilityVC: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var deletebutton: UIButton!
+    @IBOutlet weak var viewFacilityIconImageView: UIImageView!
     
     var facility: FacilityModel?
     var onDismiss: (() -> Void)?
@@ -55,6 +56,7 @@ class ViewFacilityVC: UIViewController {
 
 extension ViewFacilityVC {
     func setUpUI() {
+        viewFacilityIconImageView.tintColor = ThemeManager.shared.currentColor
         setupFacilitiesTypeMenu()
         setupViewMode()
         configureFacilitiesData()

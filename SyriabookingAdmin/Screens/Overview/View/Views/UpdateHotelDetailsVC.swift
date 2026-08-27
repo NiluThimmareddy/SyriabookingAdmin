@@ -32,11 +32,15 @@ class UpdateHotelDetailsVC: UIViewController {
         updateTabSelection(selectedButton: basicButton)
         let vc = storyboard?.instantiateViewController(withIdentifier: "BasicVC") as! BasicVC
         showChildVC(vc)
+        
+//        basicLineView.backgroundColor = ThemeManager.shared.currentColor
+//        descriptionLineView.backgroundColor = ThemeManager.shared.currentColor
+//        locationLineView.backgroundColor = ThemeManager.shared.currentColor
     }
     
     func updateTabSelection(selectedButton: UIButton) {
         
-        let selectedColor = UIColor(hex: "#379D67")
+        let selectedColor = ThemeManager.shared.currentColor
         let normalColor = UIColor(hex: "#575757")
         
         let buttons = [basicButton, locationButton, descriptionButton]

@@ -57,6 +57,7 @@ class AddNewBookingVC: UIViewController {
     @IBOutlet weak var statusButton: UIButton!
     @IBOutlet weak var cancelbutton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var newBookingIconImgView: UIImageView!
     
     var guestCount = 1
     var totalAmount = 0
@@ -162,6 +163,8 @@ extension AddNewBookingVC {
         let today = formatter.string(from: Date())
         checkInDateTF.text = today
         checkOutDateTF.text = today
+        
+        newBookingIconImgView.tintColor = ThemeManager.shared.currentColor
     }
     
     func updateNetTotal() {
@@ -233,8 +236,10 @@ extension AddNewBookingVC {
         calendarView.delegate = self
         calendarView.dataSource = self
         calendarView.appearance.headerDateFormat = "MMMM yyyy"
-        calendarView.appearance.todayColor = .systemBlue
-        calendarView.appearance.selectionColor = .systemPurple
+        calendarView.appearance.headerTitleColor = ThemeManager.shared.currentColor
+        calendarView.appearance.weekdayTextColor = ThemeManager.shared.currentColor
+        calendarView.appearance.todayColor = ThemeManager.shared.currentColor
+        calendarView.appearance.selectionColor = ThemeManager.shared.currentColor
 
         containerView.addSubview(calendarView)
         view.addSubview(containerView)

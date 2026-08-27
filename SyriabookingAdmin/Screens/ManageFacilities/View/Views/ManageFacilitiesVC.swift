@@ -128,6 +128,7 @@ extension ManageFacilitiesVC : UITableViewDelegate, UITableViewDataSource {
 
 extension ManageFacilitiesVC {
     func setUpUI() {
+        addNewFacilitiesButton.tintColor = ThemeManager.shared.currentColor
         facilitiesTableView.register(UINib(nibName: "ManageFacilitiesTVC", bundle: nil), forCellReuseIdentifier: "ManageFacilitiesTVC")
         facilitiesTableView.isScrollEnabled = false
         
