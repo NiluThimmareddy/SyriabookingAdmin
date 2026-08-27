@@ -24,17 +24,17 @@ class ManageFacilitiesVC: BaseViewController {
     @IBOutlet weak var lastPageButton: UIButton!
     
     let facilityList: [FacilityModel] = [
-        FacilityModel(id: "HR00024",facility: "Free Wi-Fi",notes: "",isActive: true),
-        FacilityModel(id: "HR00025",facility: "Swimming Pool",notes: "Available for all guests",isActive: true),
-        FacilityModel(id: "HR00026",facility: "Gym",notes: "Open 24 hours",isActive: true),
-        FacilityModel(id: "HR00027",facility: "Parking",notes: "Free parking available",isActive: true),
-        FacilityModel(id: "HR00028",facility: "Restaurant",notes: "Breakfast and dinner available",isActive: true),
-        FacilityModel(id: "HR00029",facility: "Room Service",notes: "Available 24 hours",isActive: true),
-        FacilityModel(id: "HR00030",facility: "Laundry",notes: "Laundry service available",isActive: false),
-        FacilityModel(id: "HR00031",facility: "Airport Shuttle",notes: "Available on request",isActive: true),
-        FacilityModel(id: "HR00032",facility: "Conference Room",notes: "Available for meetings",isActive: true),
-        FacilityModel(id: "HR00033",facility: "Spa",notes: "Advance booking required",isActive: false)
-    ]
+        FacilityModel(id: "HF00024", facility: "Free Wi-Fi", notes: "High-speed internet available in all rooms and public areas", isActive: true),
+        FacilityModel(id: "HF00025", facility: "Luggage Storage", notes: "Available before check-in and after check-out", isActive: true),
+        FacilityModel(id: "HF00026", facility: "Tour Desk", notes: "Assistance with booking local tours and attractions", isActive: true),
+        FacilityModel(id: "HF00027", facility: "Free Parking", notes: "Complimentary parking for hotel guests", isActive: true),
+        FacilityModel(id: "HF00028", facility: "Paid Airport Shuttle", notes: "Available upon request, charges apply", isActive: true),
+        FacilityModel(id: "HF00029", facility: "Paid Airport Shuttle", notes: "Available upon request, charges apply", isActive: true), 
+        FacilityModel(id: "HF00030", facility: "Restaurant", notes: "Serves breakfast, lunch, and dinner", isActive: true),
+        FacilityModel(id: "HF00031", facility: "Coffee Shop", notes: "Freshly brewed coffee and snacks available all day", isActive: true),
+        FacilityModel(id: "HF00032", facility: "24h Front Desk", notes: "Round-the-clock assistance for guests", isActive: true),
+        FacilityModel(id: "HF00033", facility: "Concierge", notes: "Personalized assistance for reservations and recommendations", isActive: true),
+    ];
     
     var selectedIndex = 0
     private var selectedFacilityIndexPath: IndexPath?
