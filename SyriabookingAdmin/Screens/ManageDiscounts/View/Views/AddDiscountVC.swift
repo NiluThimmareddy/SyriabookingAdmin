@@ -21,6 +21,7 @@ class AddDiscountVC: UIViewController {
     @IBOutlet weak var activeSwitch: UISwitch!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var addDiscountIconImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,7 @@ class AddDiscountVC: UIViewController {
 
 extension AddDiscountVC {
     func setUpUI() {
+        addDiscountIconImageView.tintColor = ThemeManager.shared.currentColor
         setupDiscountTypeMenu()
     }
     

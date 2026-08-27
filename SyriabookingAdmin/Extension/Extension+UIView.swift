@@ -66,7 +66,7 @@ extension UIView {
         
         gradient.colors = [
             color.cgColor,
-            color.lighter(by: 30).cgColor
+            color.lighter(by: 20).cgColor
         ]
         
         gradient.locations = [0.0, 1.0]

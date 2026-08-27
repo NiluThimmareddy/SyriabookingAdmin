@@ -63,6 +63,8 @@ class ViewManageBookingDetailsVC: UIViewController {
     @IBOutlet weak var userInformationLabel: UIView!
     @IBOutlet weak var userInformationButton: UIButton!
     
+    @IBOutlet weak var calendarIconImageView: UIImageView!
+    
     let amenities : [AmenitiesModel] = [
         AmenitiesModel(icon: "wifi", title: "WiFi"),
         AmenitiesModel(icon: "square.split.bottomrightquarter", title: "Room Service"),
@@ -90,6 +92,8 @@ class ViewManageBookingDetailsVC: UIViewController {
             layout.sectionInset = .zero
         }
         amenitiesCollectionView.isScrollEnabled = false
+        calendarIconImageView.tintColor = ThemeManager.shared.currentColor
+        addPaymentButton.tintColor = ThemeManager.shared.currentColor
     }
     
     override func viewDidLayoutSubviews() {

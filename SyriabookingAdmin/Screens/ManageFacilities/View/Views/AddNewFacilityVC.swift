@@ -20,7 +20,7 @@ class AddNewFacilityVC: UIViewController {
     @IBOutlet weak var activeLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
-    
+    @IBOutlet weak var addNewFacilityIconImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +38,7 @@ class AddNewFacilityVC: UIViewController {
 
 extension AddNewFacilityVC {
     func setUpUI() {
+        addNewFacilityIconImageView.tintColor = ThemeManager.shared.currentColor
         setupFacilitiesTypeMenu()
     }
     

@@ -34,6 +34,7 @@ class ManageReviewsVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addNewReviewsButton.tintColor = ThemeManager.shared.currentColor
         reviewsListTableView.register(UINib(nibName: "ManageReviewsTVC", bundle: nil), forCellReuseIdentifier: "ManageReviewsTVC")
         reviewsListTableView.isScrollEnabled = false
     }

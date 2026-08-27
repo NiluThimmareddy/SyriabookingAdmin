@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad7_9" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -220,7 +220,6 @@
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UBy-0n-XKk">
                                                 <rect key="frame" x="20" y="21.5" width="24" height="20.5"/>
-                                                <color key="tintColor" red="0.2156862745" green="0.61568627450000002" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="OU9-Cl-3fO"/>
                                                     <constraint firstAttribute="width" secondItem="UBy-0n-XKk" secondAttribute="height" id="UWZ-pj-TJM"/>
@@ -559,6 +558,7 @@
                         <outlet property="noteTF" destination="a2Q-FZ-xG6" id="icF-7o-HNd"/>
                         <outlet property="notesLabel" destination="A9e-Ky-v4R" id="vdN-Ul-AOa"/>
                         <outlet property="scrollView" destination="cgd-t4-OaI" id="uFT-iY-yGh"/>
+                        <outlet property="viewFacilityIconImageView" destination="UBy-0n-XKk" id="MQd-YJ-UDT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nho-9b-lxe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -581,7 +581,6 @@
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="EEc-NH-Ne4">
                                                 <rect key="frame" x="20" y="20.5" width="24" height="23"/>
-                                                <color key="tintColor" red="0.2156862745" green="0.61568627450000002" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="Iir-Gr-NTt"/>
                                                     <constraint firstAttribute="width" secondItem="EEc-NH-Ne4" secondAttribute="height" id="tIc-76-1ll"/>
@@ -835,6 +834,7 @@
                     <connections>
                         <outlet property="activeLabel" destination="TEf-FV-4Ap" id="UtV-11-XsK"/>
                         <outlet property="activeSwitch" destination="b4V-d5-QYb" id="wH2-Yb-BrA"/>
+                        <outlet property="addNewFacilityIconImageView" destination="EEc-NH-Ne4" id="tyT-6K-OkB"/>
                         <outlet property="addNewFacilityLabel" destination="npR-Q8-6hf" id="1GC-fz-JcU"/>
                         <outlet property="closeButton" destination="ish-3T-nzf" id="H9F-3v-FGz"/>
                         <outlet property="facilitiesButton" destination="Bh1-On-uIB" id="Gju-lT-XE5"/>

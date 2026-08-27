@@ -31,6 +31,7 @@ class HotelInvoiceVC: BaseViewController {
     @IBOutlet weak var invoiceListTableview: UITableView!
     @IBOutlet weak var invoiceListTableviewHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var invoiceIconImageView: UIImageView!
     
     let invoices: [Invoice] = [
         Invoice(invoiceNo: "INV000030",period: "2025-12",status: .draft,totalAmount: 785.40,currency: "USD",dueDate: "06 Jan 2026",paidDate: nil ?? "-"),
@@ -53,6 +54,7 @@ class HotelInvoiceVC: BaseViewController {
         scrollView.showsVerticalScrollIndicator = false
         invoiceListTableview.register(UINib(nibName: "InvoiceListTVC", bundle: nil), forCellReuseIdentifier: "InvoiceListTVC")
         invoiceListTableview.isScrollEnabled = false
+        invoiceIconImageView.tintColor = ThemeManager.shared.currentColor
     }
     
     override func viewDidLayoutSubviews() {

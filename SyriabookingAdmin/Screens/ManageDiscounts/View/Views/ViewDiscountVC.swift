@@ -26,6 +26,8 @@ class ViewDiscountVC: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     
+    @IBOutlet weak var viewDiscountIconImageView: UIImageView!
+    
     var discount: DiscountModel?
     var onDismiss: (() -> Void)?
     
@@ -56,6 +58,7 @@ class ViewDiscountVC: UIViewController {
 
 extension ViewDiscountVC {
     func setUpUI() {
+        viewDiscountIconImageView.tintColor = ThemeManager.shared.currentColor
         setupDiscountTypeMenu()
         setupViewMode()
         configureDiscountData()

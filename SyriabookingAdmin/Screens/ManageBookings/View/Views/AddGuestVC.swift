@@ -33,6 +33,7 @@ class AddGuestVC: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
+    @IBOutlet weak var addGuestIconImageView: UIImageView!
     private var calendarView: FSCalendar!
     private var dimView: UIView!
     var currentSelectionType: DateSelectionTypes?
@@ -60,6 +61,7 @@ class AddGuestVC: UIViewController {
 extension AddGuestVC {
     
     func setUpUI() {
+        addGuestIconImageView.tintColor = ThemeManager.shared.currentColor
         setupGenderMenu()
     }
     
@@ -93,8 +95,10 @@ extension AddGuestVC {
         calendarView.delegate = self
         calendarView.dataSource = self
         calendarView.appearance.headerDateFormat = "MMMM yyyy"
-        calendarView.appearance.todayColor = .systemBlue
-        calendarView.appearance.selectionColor = .systemPurple
+        calendarView.appearance.headerTitleColor = ThemeManager.shared.currentColor
+        calendarView.appearance.weekdayTextColor = ThemeManager.shared.currentColor
+        calendarView.appearance.todayColor = ThemeManager.shared.currentColor
+        calendarView.appearance.selectionColor = ThemeManager.shared.currentColor
 
         containerView.addSubview(calendarView)
         view.addSubview(containerView)

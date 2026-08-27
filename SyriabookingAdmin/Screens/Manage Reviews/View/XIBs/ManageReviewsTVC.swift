@@ -42,7 +42,7 @@ class ManageReviewsTVC: UITableViewCell {
 
         checkMarkButton.setImage(image, for: .normal)
         checkMarkButton.tintColor = isSelected
-            ? UIColor(hex: "#379D67")
+        ? ThemeManager.shared.currentColor
             : .lightGray
     }
 }

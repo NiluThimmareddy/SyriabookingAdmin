@@ -18,12 +18,13 @@ class ManageBookingStatusCVC: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         statusCountLabel.layer.masksToBounds = true
+        
     }
     
     func configure(_with bookingStatus: BookingStatusModel,isSelected: Bool) {
         statusIconImgView.image = UIImage(systemName: bookingStatus.iconName)
         statusTitleLabel.text = bookingStatus.title        
-        let selectedColor = UIColor(hex: "#379D67")
+        let selectedColor = ThemeManager.shared.currentColor
         let normalColor = UIColor(hex: "#575757")
         
         backView.layer.cornerRadius = 12
@@ -33,7 +34,7 @@ class ManageBookingStatusCVC: UICollectionViewCell {
         statusCountLabel.clipsToBounds = true
         
         if isSelected {
-            
+            statusCountLabel.backgroundColor = ThemeManager.shared.currentColor
             backView.layer.borderColor = selectedColor.cgColor
             
             backgroundColourView.backgroundColor =
@@ -42,7 +43,7 @@ class ManageBookingStatusCVC: UICollectionViewCell {
             statusIconImgView.tintColor = selectedColor
             
             statusCountLabel.textColor = .white
-            statusCountLabel.backgroundColor = UIColor(hex: "#F97316")
+            
             
         } else {
             

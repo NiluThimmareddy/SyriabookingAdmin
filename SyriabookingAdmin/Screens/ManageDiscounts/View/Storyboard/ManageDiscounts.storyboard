@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad7_9" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -26,7 +26,6 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zd3-Ay-lbs">
                                                 <rect key="frame" x="20" y="30" width="176" height="32"/>
-                                                <color key="tintColor" red="0.08235294118" green="0.50196078430000002" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="ADD NEW DISCOUNT">
                                                     <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
@@ -220,7 +219,6 @@
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aSc-Sc-MMi">
                                                 <rect key="frame" x="20" y="21.5" width="24" height="20.5"/>
-                                                <color key="tintColor" red="0.2156862745" green="0.61568627450000002" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="aSc-Sc-MMi" secondAttribute="height" id="Cse-BP-0NB"/>
                                                     <constraint firstAttribute="height" constant="24" id="Zdc-xm-G1D"/>
@@ -608,6 +606,7 @@
                         <outlet property="iconImgView" destination="aSc-Sc-MMi" id="LId-XH-ubW"/>
                         <outlet property="insideScrollView" destination="lKw-Nc-cJa" id="mny-J0-UQz"/>
                         <outlet property="scrollView" destination="HdS-rf-YpI" id="8TP-LR-ypd"/>
+                        <outlet property="viewDiscountIconImageView" destination="aSc-Sc-MMi" id="BIZ-yv-c66"/>
                         <outlet property="viewDiscountLabel" destination="aRw-wC-AUB" id="Cpu-vb-lYK"/>
                     </connections>
                 </viewController>
@@ -631,7 +630,6 @@
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nnh-jJ-NMu">
                                                 <rect key="frame" x="20" y="20.5" width="24" height="23"/>
-                                                <color key="tintColor" red="0.2156862745" green="0.61568627450000002" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="Ask-uL-e3o"/>
                                                     <constraint firstAttribute="width" secondItem="nnh-jJ-NMu" secondAttribute="height" id="OLw-SA-Rxs"/>
@@ -935,6 +933,7 @@
                     </view>
                     <connections>
                         <outlet property="activeSwitch" destination="8wq-Sj-2Kn" id="pf8-qZ-o81"/>
+                        <outlet property="addDiscountIconImageView" destination="nnh-jJ-NMu" id="iIq-fT-vnB"/>
                         <outlet property="addDiscountLabel" destination="RBA-CW-32H" id="ngB-6Y-FlN"/>
                         <outlet property="closeButton" destination="Bqn-Nb-zSm" id="jgn-Hf-vVW"/>
                         <outlet property="discountNameLabel" destination="Mql-FD-S4i" id="kRP-0K-nUP"/>

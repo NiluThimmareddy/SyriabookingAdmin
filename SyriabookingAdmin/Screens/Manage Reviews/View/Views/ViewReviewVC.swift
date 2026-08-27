@@ -79,6 +79,8 @@ class ViewReviewVC: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
 
+    @IBOutlet weak var viewReviewIconImageView: UIImageView!
+    
     var review: ReviewModel?
     var onDismiss: (() -> Void)?
 
@@ -138,6 +140,7 @@ class ViewReviewVC: UIViewController {
 
 extension ViewReviewVC {
     func setUpUI() {
+        viewReviewIconImageView.tintColor = ThemeManager.shared.currentColor
         configureReviewData()
         setupViewMode()
     }

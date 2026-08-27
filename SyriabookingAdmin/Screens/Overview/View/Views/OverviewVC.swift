@@ -49,14 +49,19 @@ class OverviewVC: BaseViewController {
     @IBOutlet weak var noBookingsView: UIView!
     @IBOutlet weak var noBookingOnThisDateLabel: UILabel!
     
+    @IBOutlet weak var QuickStatsIconImageView: UIImageView!
+    @IBOutlet weak var bookingStatusIconImageView: UIImageView!
+    @IBOutlet weak var recentBookingIconImageView: UIImageView!
+    @IBOutlet weak var BookingCalendarIconImageView: UIImageView!
+    @IBOutlet weak var RecentBookingCalendarIconImageView: UIImageView!
+    
+    
     let recentBookings: [Booking] = [
         Booking(id: "BK00884",guestInitials: "TD",guestName: "Testing Demo User",roomNumber: "R00031",checkInDate: "10-Jun-2026",
             status: .pending),
         Booking(id: "BK00882",guestInitials: "MT",guestName: "Mr. Maheswar Reddy",roomNumber: "R00031",checkInDate: "04-Jun-2026",
             status: .pending),
         Booking(id: "BK00877",guestInitials: "TD",guestName: "Testing Demo User",roomNumber: "R00031",checkInDate: "21-May-2026",
-            status: .pending),
-        Booking(id: "BK00878",guestInitials: "TD",guestName: "Testing Demo User",roomNumber: "R00031",checkInDate: "21-May-2026",
             status: .pending),
         Booking(id: "BK00878",guestInitials: "TD",guestName: "Testing Demo User",roomNumber: "R00031",checkInDate: "21-May-2026",
             status: .pending),
@@ -179,11 +184,16 @@ extension OverviewVC : UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - UI Setup
 extension OverviewVC {
-    
     func setUpUI() {
+        QuickStatsIconImageView.tintColor = ThemeManager.shared.currentColor
+        bookingStatusIconImageView.tintColor = ThemeManager.shared.currentColor
+        recentBookingIconImageView.tintColor = ThemeManager.shared.currentColor
+        BookingCalendarIconImageView.tintColor = ThemeManager.shared.currentColor
+        RecentBookingCalendarIconImageView.tintColor = ThemeManager.shared.currentColor
+        
         scrollView.showsVerticalScrollIndicator = false
         publishButton.applyOverviewGradient(color: ThemeManager.shared.currentColor)
-//        navigationController?.applyGreenNavigationBar()
+
         [topView,totalRoomsView,bookingsView,revenueView,guestsView,confirmedView,cancelledView,pendingView].forEach { lightShadow in
             lightShadow.applyLightShadow()
         }
