@@ -183,16 +183,18 @@ class ViewBookingVC: UIViewController {
     }
     
     @IBAction func viewDetailsButtonAction(_ sender: Any) {
+      
         
-        let storyboard = storyboard?.instantiateViewController(withIdentifier: "ViewManageBookingDetailsVC") as! ViewManageBookingDetailsVC
-        storyboard.modalPresentationStyle = .fullScreen
-        present(storyboard, animated: true)
+        guard  let storyboard = storyboard?.instantiateViewController(withIdentifier: "ViewManageBookingDetailsVC") as? ViewManageBookingDetailsVC else{ return }
+        
+        navigationController?.pushViewController(storyboard, animated: true)
     }
     
 }
 
 extension ViewBookingVC {
     func setUpUI() {
+        scrollView.applyShadow()
         setupUserMenu()
         setupRoomMenu()
         setupBookingTypeMenu()

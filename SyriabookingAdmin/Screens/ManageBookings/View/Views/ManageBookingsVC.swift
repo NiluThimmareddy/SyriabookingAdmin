@@ -313,7 +313,7 @@ extension ManageBookingsVC {
     }
     
     private func openViewBookingScreen(with booking: BookingModel) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "ViewBookingVC") as! ViewBookingVC
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ViewBookingVC") as? ViewBookingVC else{ return }
         vc.booking = booking
         vc.onDismiss = { [weak self] in
             guard let self = self else { return }
@@ -322,6 +322,11 @@ extension ManageBookingsVC {
                 self.bookingStatusListTableView.reloadRows(at: [indexPath], with: .none)
             }
         }
-        present(vc, animated: true)
+        
+    //    present(vc, animated: true)
+        
+        let navigationController = UINavigationController(rootViewController: vc)
+        navigationController.modalPresentationStyle = .overFullScreen
+        present(navigationController, animated: true)
     }
 }
