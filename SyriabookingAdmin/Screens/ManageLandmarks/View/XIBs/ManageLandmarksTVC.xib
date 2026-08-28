@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ManageLandmarksTVC" customModule="SyriabookingAdmin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1030" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="1030" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="i1a-HR-ORe">
+                        <rect key="frame" x="0.0" y="0.0" width="1030" height="44"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIo-0Y-Enz">
+                                <rect key="frame" x="0.0" y="0.0" width="51.666666666666664" height="44"/>
+                                <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="square" catalog="system"/>
+                                <connections>
+                                    <action selector="checkmarkButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="b5g-45-lQQ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HR00012" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7H-Ah-pPC">
+                                <rect key="frame" x="56.666666666666657" y="0.0" width="103" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Public Park" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVS-iL-Ucm">
+                                <rect key="frame" x="164.66666666666666" y="0.0" width="314.66666666666674" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Park" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kEJ-RF-ymZ">
+                                <rect key="frame" x="484.33333333333326" y="0.0" width="206" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPB-01-LxM">
+                                <rect key="frame" x="695.33333333333337" y="0.0" width="175.33333333333337" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="False" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmj-p9-ZXC">
+                                <rect key="frame" x="875.66666666666663" y="0.0" width="154.33333333333337" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="kEJ-RF-ymZ" firstAttribute="width" secondItem="i1a-HR-ORe" secondAttribute="width" multiplier="0.2" id="13v-Uh-e6E"/>
+                            <constraint firstItem="zPB-01-LxM" firstAttribute="width" secondItem="i1a-HR-ORe" secondAttribute="width" multiplier="0.17" id="65Z-mp-3TZ"/>
+                            <constraint firstItem="lmj-p9-ZXC" firstAttribute="width" secondItem="i1a-HR-ORe" secondAttribute="width" multiplier="0.15" id="UjC-cG-VRb"/>
+                            <constraint firstItem="lIo-0Y-Enz" firstAttribute="width" secondItem="i1a-HR-ORe" secondAttribute="width" multiplier="0.05" id="UvZ-qW-Zgy"/>
+                            <constraint firstItem="w7H-Ah-pPC" firstAttribute="width" secondItem="i1a-HR-ORe" secondAttribute="width" multiplier="0.1" id="YBN-UE-Duz"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="i1a-HR-ORe" secondAttribute="trailing" id="H1M-Xx-yLy"/>
+                    <constraint firstItem="i1a-HR-ORe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="K0r-DR-KHT"/>
+                    <constraint firstAttribute="bottom" secondItem="i1a-HR-ORe" secondAttribute="bottom" id="STV-AK-YLt"/>
+                    <constraint firstItem="i1a-HR-ORe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Wt6-n2-tlz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="activeLabel" destination="lmj-p9-ZXC" id="cxN-XC-8Hg"/>
+                <outlet property="checkmarkButton" destination="lIo-0Y-Enz" id="Ryu-I6-ThB"/>
+                <outlet property="distanceLabel" destination="zPB-01-LxM" id="nwF-4q-7ZO"/>
+                <outlet property="idLabel" destination="w7H-Ah-pPC" id="2db-Cf-fPq"/>
+                <outlet property="landMarkNameLabel" destination="JVS-iL-Ucm" id="cVR-M1-9UL"/>
+                <outlet property="landmarkTypeLabel" destination="kEJ-RF-ymZ" id="zNl-UD-2hj"/>
+            </connections>
+            <point key="canvasLocation" x="6" y="94"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="square" catalog="system" width="128" height="114"/>
+    </resources>
+</document>

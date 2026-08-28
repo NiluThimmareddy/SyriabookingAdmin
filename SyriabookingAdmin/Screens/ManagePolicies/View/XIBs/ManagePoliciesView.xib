@@ -10,20 +10,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="SDF-Ou-8h5" customClass="ManageFacilitiesView" customModule="SyriabookingAdmin" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="8L5-at-Ri4" customClass="ManagePoliciesView" customModule="SyriabookingAdmin" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="1024" height="54"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pTR-xi-jHc">
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0Gf-hw-1FI">
                     <rect key="frame" x="0.0" y="0.0" width="1024" height="34.333333333333336"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2f-lT-Mz4">
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23R-Aq-u1U">
                             <rect key="frame" x="0.0" y="0.0" width="51.333333333333336" height="34.333333333333336"/>
                             <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="square" catalog="system"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZg-EW-yfE">
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y33-4h-DdL">
                             <rect key="frame" x="56.333333333333336" y="0.0" width="102.33333333333331" height="34.333333333333336"/>
                             <color key="tintColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Button"/>
@@ -32,25 +32,25 @@
                                 <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                             </buttonConfiguration>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOD-ae-W2r">
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3h9-fx-fT1">
                             <rect key="frame" x="163.66666666666669" y="0.0" width="204.66666666666669" height="34.333333333333336"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                             <color key="tintColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="Facility">
+                            <state key="normal" title="Title">
                                 <color key="titleColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRG-7R-m9Y">
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pK-PT-lSe">
                             <rect key="frame" x="373.33333333333326" y="0.0" width="492" height="34.333333333333336"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                             <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="Note">
+                            <state key="normal" title="Description">
                                 <color key="titleColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2e-os-B06">
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqZ-PF-QKl">
                             <rect key="frame" x="870.33333333333337" y="0.0" width="153.66666666666663" height="34.333333333333336"/>
                             <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Button"/>
@@ -62,29 +62,29 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="PZg-EW-yfE" firstAttribute="width" secondItem="pTR-xi-jHc" secondAttribute="width" multiplier="0.1" id="41p-yl-htO"/>
-                        <constraint firstItem="G2f-lT-Mz4" firstAttribute="width" secondItem="pTR-xi-jHc" secondAttribute="width" multiplier="0.05" id="6tW-aA-BxM"/>
-                        <constraint firstItem="V2e-os-B06" firstAttribute="width" secondItem="pTR-xi-jHc" secondAttribute="width" multiplier="0.15" id="AnS-LP-exC"/>
-                        <constraint firstItem="YOD-ae-W2r" firstAttribute="width" secondItem="pTR-xi-jHc" secondAttribute="width" multiplier="0.2" id="rec-rO-3n6"/>
+                        <constraint firstItem="nqZ-PF-QKl" firstAttribute="width" secondItem="0Gf-hw-1FI" secondAttribute="width" multiplier="0.15" id="0hY-oH-vFc"/>
+                        <constraint firstItem="23R-Aq-u1U" firstAttribute="width" secondItem="0Gf-hw-1FI" secondAttribute="width" multiplier="0.05" id="HX5-oc-N7u"/>
+                        <constraint firstItem="Y33-4h-DdL" firstAttribute="width" secondItem="0Gf-hw-1FI" secondAttribute="width" multiplier="0.1" id="YXe-AQ-hQq"/>
+                        <constraint firstItem="3h9-fx-fT1" firstAttribute="width" secondItem="0Gf-hw-1FI" secondAttribute="width" multiplier="0.2" id="cDS-IP-hIr"/>
                     </constraints>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fec-nY-3NL">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yaD-t1-iKL">
                     <rect key="frame" x="0.0" y="53" width="1024" height="1"/>
                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="1" id="Z8k-Rk-Ewk"/>
+                        <constraint firstAttribute="height" constant="1" id="Rz7-AP-HrR"/>
                     </constraints>
                 </view>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="eq7-o5-xLC"/>
+            <viewLayoutGuide key="safeArea" id="RwN-QJ-qXV"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="fec-nY-3NL" secondAttribute="bottom" id="4Zk-65-85c"/>
-                <constraint firstItem="fec-nY-3NL" firstAttribute="leading" secondItem="eq7-o5-xLC" secondAttribute="leading" id="GKM-2O-DRg"/>
-                <constraint firstItem="pTR-xi-jHc" firstAttribute="leading" secondItem="eq7-o5-xLC" secondAttribute="leading" id="JOj-ah-nQv"/>
-                <constraint firstItem="eq7-o5-xLC" firstAttribute="trailing" secondItem="fec-nY-3NL" secondAttribute="trailing" id="Tw7-5C-IuW"/>
-                <constraint firstItem="pTR-xi-jHc" firstAttribute="top" secondItem="SDF-Ou-8h5" secondAttribute="top" id="veB-VN-Vrb"/>
-                <constraint firstItem="eq7-o5-xLC" firstAttribute="trailing" secondItem="pTR-xi-jHc" secondAttribute="trailing" id="xeO-JK-SBL"/>
+                <constraint firstItem="0Gf-hw-1FI" firstAttribute="leading" secondItem="RwN-QJ-qXV" secondAttribute="leading" id="YU6-gw-LNL"/>
+                <constraint firstItem="RwN-QJ-qXV" firstAttribute="trailing" secondItem="0Gf-hw-1FI" secondAttribute="trailing" id="eHm-ch-Nin"/>
+                <constraint firstItem="yaD-t1-iKL" firstAttribute="leading" secondItem="RwN-QJ-qXV" secondAttribute="leading" id="eQ3-aN-ObD"/>
+                <constraint firstAttribute="bottom" secondItem="yaD-t1-iKL" secondAttribute="bottom" id="eh0-lQ-gRq"/>
+                <constraint firstItem="RwN-QJ-qXV" firstAttribute="trailing" secondItem="yaD-t1-iKL" secondAttribute="trailing" id="sSf-0r-WGl"/>
+                <constraint firstItem="0Gf-hw-1FI" firstAttribute="top" secondItem="8L5-at-Ri4" secondAttribute="top" id="wz2-Ok-Noo"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-918" y="-438"/>

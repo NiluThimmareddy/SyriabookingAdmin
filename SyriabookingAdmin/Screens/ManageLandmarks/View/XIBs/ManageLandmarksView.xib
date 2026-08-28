@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="DPS-Mi-p5o" customClass="ManageLandmarksView" customModule="SyriabookingAdmin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="54"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2Z3-GM-tz2">
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="34.333333333333336"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGy-ph-tFk">
+                            <rect key="frame" x="0.0" y="0.0" width="51.333333333333336" height="34.333333333333336"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="square" catalog="system"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGb-A3-gy7">
+                            <rect key="frame" x="56.333333333333336" y="0.0" width="102.33333333333331" height="34.333333333333336"/>
+                            <color key="tintColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="ID">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6BT-yf-duh">
+                            <rect key="frame" x="163.66666666666663" y="0.0" width="313" height="34.333333333333336"/>
+                            <color key="tintColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Name">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIe-CG-hoM">
+                            <rect key="frame" x="481.66666666666669" y="0.0" width="204.66666666666669" height="34.333333333333336"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Type">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ol-DN-JDH">
+                            <rect key="frame" x="691.33333333333337" y="0.0" width="174" height="34.333333333333336"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Distance (km)">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Si-FO-eu1">
+                            <rect key="frame" x="870.33333333333337" y="0.0" width="153.66666666666663" height="34.333333333333336"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Active">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="5Ol-DN-JDH" firstAttribute="width" secondItem="2Z3-GM-tz2" secondAttribute="width" multiplier="0.17" id="3gk-w4-1nW"/>
+                        <constraint firstItem="dIe-CG-hoM" firstAttribute="width" secondItem="2Z3-GM-tz2" secondAttribute="width" multiplier="0.2" id="EpV-td-5iP"/>
+                        <constraint firstItem="9Si-FO-eu1" firstAttribute="width" secondItem="2Z3-GM-tz2" secondAttribute="width" multiplier="0.15" id="Hye-dT-3X2"/>
+                        <constraint firstItem="sGb-A3-gy7" firstAttribute="width" secondItem="2Z3-GM-tz2" secondAttribute="width" multiplier="0.1" id="WFm-KQ-lH5"/>
+                        <constraint firstItem="EGy-ph-tFk" firstAttribute="width" secondItem="2Z3-GM-tz2" secondAttribute="width" multiplier="0.05" id="yiJ-hh-dZE"/>
+                    </constraints>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9f-KJ-izw">
+                    <rect key="frame" x="0.0" y="53" width="1024" height="1"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Urd-TZ-2So"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="eg2-io-D11"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="eg2-io-D11" firstAttribute="trailing" secondItem="2Z3-GM-tz2" secondAttribute="trailing" id="6XT-BA-Kif"/>
+                <constraint firstItem="2Z3-GM-tz2" firstAttribute="top" secondItem="DPS-Mi-p5o" secondAttribute="top" id="GVp-3D-RN9"/>
+                <constraint firstAttribute="bottom" secondItem="h9f-KJ-izw" secondAttribute="bottom" id="Kt2-gb-GIu"/>
+                <constraint firstItem="eg2-io-D11" firstAttribute="trailing" secondItem="h9f-KJ-izw" secondAttribute="trailing" id="OYR-Gm-Lxm"/>
+                <constraint firstItem="h9f-KJ-izw" firstAttribute="leading" secondItem="eg2-io-D11" secondAttribute="leading" id="Q2z-zf-VoA"/>
+                <constraint firstItem="2Z3-GM-tz2" firstAttribute="leading" secondItem="eg2-io-D11" secondAttribute="leading" id="jEB-Kv-5j2"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-918" y="-438"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="square" catalog="system" width="128" height="114"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
