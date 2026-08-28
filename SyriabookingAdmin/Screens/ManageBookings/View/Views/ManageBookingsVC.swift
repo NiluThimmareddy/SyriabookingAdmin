@@ -311,21 +311,33 @@ extension ManageBookingsVC {
             $0.status.lowercased() == status.lowercased()
         }.count
     }
-    
+
     private func openViewBookingScreen(with booking: BookingModel) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ViewBookingVC") as? ViewBookingVC else{ return }
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ViewBookingVC") as? ViewBookingVC else {
+            return
+        }
         vc.booking = booking
         vc.onDismiss = { [weak self] in
             guard let self = self else { return }
             if let indexPath = self.selectedBookingIndexPath {
                 self.selectedBookingIndexPath = nil
-                self.bookingStatusListTableView.reloadRows(at: [indexPath], with: .none)
+                self.bookingStatusListTableView.reloadRows(
+                    at: [indexPath],
+                    with: .none
+                )
             }
         }
-        
-    //    present(vc, animated: true)
-        
+
         let navigationController = UINavigationController(rootViewController: vc)
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = ThemeManager.shared.currentColor
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+
+        navigationController.navigationBar.standardAppearance = appearance
+        navigationController.navigationBar.scrollEdgeAppearance = appearance
+        navigationController.navigationBar.compactAppearance = appearance
+        navigationController.navigationBar.tintColor = .white
         navigationController.modalPresentationStyle = .overFullScreen
         present(navigationController, animated: true)
     }

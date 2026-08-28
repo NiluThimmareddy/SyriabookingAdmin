@@ -104,7 +104,9 @@ class ViewManageBookingDetailsVC: UIViewController {
 
     @IBAction func updateButtonaction(_ sender: Any) {
         let storyboard = storyboard?.instantiateViewController(withIdentifier: "ViewBookingVC") as! ViewBookingVC
-        present(storyboard, animated: true)
+        let navigationController = UINavigationController(rootViewController: storyboard)
+        navigationController.modalPresentationStyle = .overFullScreen
+        present(navigationController, animated: true)
     }
     
     @IBAction func addGuestButtonAction(_ sender: Any) {

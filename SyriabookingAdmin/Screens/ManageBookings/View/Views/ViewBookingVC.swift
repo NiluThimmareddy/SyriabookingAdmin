@@ -10,6 +10,7 @@ import FSCalendar
 
 class ViewBookingVC: UIViewController {
     
+    @IBOutlet weak var bookingContainerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var insideScrollView: UIView!
     @IBOutlet weak var viewBookingTitleLabel: UILabel!
@@ -183,10 +184,7 @@ class ViewBookingVC: UIViewController {
     }
     
     @IBAction func viewDetailsButtonAction(_ sender: Any) {
-      
-        
         guard  let storyboard = storyboard?.instantiateViewController(withIdentifier: "ViewManageBookingDetailsVC") as? ViewManageBookingDetailsVC else{ return }
-        
         navigationController?.pushViewController(storyboard, animated: true)
     }
     
@@ -194,7 +192,19 @@ class ViewBookingVC: UIViewController {
 
 extension ViewBookingVC {
     func setUpUI() {
-        scrollView.applyShadow()
+        bookingContainerView.clipsToBounds = true
+        scrollView.clipsToBounds = true
+        scrollView.isScrollEnabled = true
+        scrollView.alwaysBounceVertical = false
+        scrollView.alwaysBounceHorizontal = false
+        scrollView.bounces = false
+        
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        
+        setupBackgroundTap()
+        
+        bookingContainerView.applyShadow()
         setupUserMenu()
         setupRoomMenu()
         setupBookingTypeMenu()
@@ -365,6 +375,24 @@ extension ViewBookingVC {
     func hideCalendar() {
         calendarView.superview?.removeFromSuperview()
         dimView.removeFromSuperview()
+    }
+    
+    private func setupBackgroundTap() {
+        let tapGesture = UITapGestureRecognizer(target: self,
+            action: #selector(backgroundTapped(_:))
+        )
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func backgroundTapped(_ gesture: UITapGestureRecognizer) {
+
+        let location = gesture.location(in: view)
+
+        // If tap is outside booking container, dismiss
+        if !bookingContainerView.frame.contains(location) {
+            dismiss(animated: true)
+        }
     }
 }
 
