@@ -329,15 +329,15 @@ extension ManageBookingsVC {
         }
 
         let navigationController = UINavigationController(rootViewController: vc)
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = ThemeManager.shared.currentColor
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-
-        navigationController.navigationBar.standardAppearance = appearance
-        navigationController.navigationBar.scrollEdgeAppearance = appearance
-        navigationController.navigationBar.compactAppearance = appearance
-        navigationController.navigationBar.tintColor = .white
+//        let appearance = UINavigationBarAppearance()
+//        appearance.configureWithOpaqueBackground()
+//        appearance.backgroundColor = ThemeManager.shared.currentColor
+//        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+//
+//        navigationController.navigationBar.standardAppearance = appearance
+//        navigationController.navigationBar.scrollEdgeAppearance = appearance
+//        navigationController.navigationBar.compactAppearance = appearance
+//        navigationController.navigationBar.tintColor = .white
         navigationController.modalPresentationStyle = .overFullScreen
         present(navigationController, animated: true)
     }

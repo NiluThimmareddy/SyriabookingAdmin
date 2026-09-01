@@ -185,6 +185,15 @@ class ViewBookingVC: UIViewController {
     
     @IBAction func viewDetailsButtonAction(_ sender: Any) {
         guard  let storyboard = storyboard?.instantiateViewController(withIdentifier: "ViewManageBookingDetailsVC") as? ViewManageBookingDetailsVC else{ return }
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = ThemeManager.shared.currentColor
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.tintColor = .white
         navigationController?.pushViewController(storyboard, animated: true)
     }
     
