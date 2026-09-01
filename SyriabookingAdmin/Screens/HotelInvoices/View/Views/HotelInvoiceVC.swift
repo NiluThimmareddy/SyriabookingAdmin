@@ -33,6 +33,7 @@ class HotelInvoiceVC: BaseViewController {
     
     @IBOutlet weak var invoiceIconImageView: UIImageView!
     
+    
     let invoices: [Invoice] = [
         Invoice(invoiceNo: "INV000030",period: "2025-12",status: .draft,totalAmount: 785.40,currency: "USD",dueDate: "06 Jan 2026",paidDate: nil ?? "-"),
         Invoice(invoiceNo: "INV000030",period: "2025-12",status: .canceled,totalAmount: 240.40,currency: "USD",dueDate: "22 Nov 2026",paidDate: nil ?? "-"),
@@ -49,16 +50,55 @@ class HotelInvoiceVC: BaseViewController {
         Invoice(invoiceNo: "INV000030",period: "2025-12",status: .paid,totalAmount: 2677.50,currency: "USD",dueDate: "15 Nov 2025",paidDate: "15 Nov 2026")
     ]
     
+    private var searchText = ""
+    private var selectedIndex = 0
+    private var filteredInvoices : [Invoice] {
+        let statusFilterInvoices : [Invoice] = []
+        
+//        switch selectedIndex {
+//        case 0:
+//            statusFilterInvoices = invoices.filter{
+//                $0.status.rawValue.lowercased() == "draft"
+//            }
+//        case 1:
+//            statusFilterInvoices = invoices.filter{
+//                $0.status.rawValue.lowercased() == "disputed"
+//            }
+//        default:
+//            statusFilterInvoices = invoices
+//        }
+        
+        guard !searchText.isEmpty else{
+            return invoices
+        }
+        
+        return invoices.filter { Invoice in
+            Invoice.invoiceNo.localizedCaseInsensitiveContains(searchText) ||
+            Invoice.period.localizedCaseInsensitiveContains(searchText) ||
+            Invoice.status.rawValue.localizedCaseInsensitiveContains(searchText) ||
+            String(Invoice.totalAmount).localizedCaseInsensitiveContains(searchText) ||
+            Invoice.dueDate.localizedCaseInsensitiveContains(searchText) ||
+            (Invoice.paidDate?.localizedCaseInsensitiveContains(searchText) ?? false)
+            
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.showsVerticalScrollIndicator = false
         invoiceListTableview.register(UINib(nibName: "InvoiceListTVC", bundle: nil), forCellReuseIdentifier: "InvoiceListTVC")
         invoiceListTableview.isScrollEnabled = false
         invoiceIconImageView.tintColor = ThemeManager.shared.currentColor
+        searchBar.delegate = self
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        updateTableViewHeight()
+    }
+    
+    private func updateTableViewHeight() {
         invoiceListTableview.layoutIfNeeded()
         invoiceListTableviewHeightConstraint.constant = invoiceListTableview.contentSize.height
     }
@@ -67,12 +107,12 @@ class HotelInvoiceVC: BaseViewController {
 
 extension HotelInvoiceVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return invoices.count
+        return filteredInvoices.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InvoiceListTVC") as! InvoiceListTVC
-        let invoice = invoices[indexPath.row]
+        let invoice = filteredInvoices[indexPath.row]
         cell.configure(_with: invoice)
         cell.onViewTapped = { [weak self] in
             guard let self = self else { return }
@@ -94,5 +134,35 @@ extension HotelInvoiceVC : UITableViewDelegate, UITableViewDataSource {
             return nil
         }
         return headerView
+    }
+}
+
+
+extension HotelInvoiceVC : UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        invoiceListTableview.reloadData()
+        
+        DispatchQueue.main.async{
+            self.updateTableViewHeight()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchText = ""
+        
+        invoiceListTableview.reloadData()
+        
+        DispatchQueue.main.async{
+            self.updateTableViewHeight()
+        }
+        
+        searchBar.resignFirstResponder()
     }
 }

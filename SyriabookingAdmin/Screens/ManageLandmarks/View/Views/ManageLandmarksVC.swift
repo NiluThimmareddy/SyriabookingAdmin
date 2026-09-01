@@ -35,25 +35,38 @@ class ManageLandmarksVC: BaseViewController {
         LandmarkModel(id: "HL00015",name: "Temple",type: "Religious",distance: 1.9,isActive: false),
         LandmarkModel(id: "HL00016",name: "Cinema",type: "Entertainment",distance: 2.6,isActive: true)
     ]
-    
-    var selectedIndex = 0
+    private var searchText = ""
     private var selectedLandmarkIndexPath: IndexPath?
     
     private var rowsPerPage = 10
     private var currentPage = 1
+    
+    private var filteredLandmark: [LandmarkModel] {
+        guard !searchText.isEmpty else{
+            return landmarkList
+        }
+     
+        return landmarkList.filter { landmarkList in
+            landmarkList.id.localizedCaseInsensitiveContains(searchText) ||
+            landmarkList.name.localizedCaseInsensitiveContains(searchText) ||
+            landmarkList.type.localizedCaseInsensitiveContains(searchText) ||
+            String(landmarkList.distance).localizedCaseInsensitiveContains(searchText) ||
+            String(landmarkList.isActive).localizedCaseInsensitiveContains(searchText)
+        }
+    }
     private var totalPages: Int {
-        return max( 1,Int(ceil(Double(landmarkList.count) / Double(rowsPerPage))))
+        return max( 1,Int(ceil(Double(filteredLandmark.count) / Double(rowsPerPage))))
     }
     private var paginatedLandmark: [LandmarkModel] {
         let startIndex = (currentPage - 1) * rowsPerPage
-        guard startIndex < landmarkList.count else {
+        guard startIndex < filteredLandmark.count else {
             return []
         }
         let endIndex = min(
             startIndex + rowsPerPage,
-            landmarkList.count
+            filteredLandmark.count
         )
-        return Array(landmarkList[startIndex..<endIndex])
+        return Array(filteredLandmark[startIndex..<endIndex])
     }
     
     override func viewDidLoad() {
@@ -130,6 +143,7 @@ extension ManageLandmarksVC : UITableViewDelegate, UITableViewDataSource {
 
 extension ManageLandmarksVC {
     func setUpUI() {
+        landmarkSearchBar.delegate = self
         landmarkTableVIew.register(UINib(nibName: "ManageLandmarksTVC", bundle: nil), forCellReuseIdentifier: "ManageLandmarksTVC")
         landmarkTableVIew.isScrollEnabled = false
         
@@ -139,7 +153,7 @@ extension ManageLandmarksVC {
     }
     
     private func updatePagination() {
-        let totalCount = landmarkList.count
+        let totalCount = filteredLandmark.count
         let startRecord = totalCount == 0 ? 0 : ((currentPage - 1) * rowsPerPage) + 1
         let endRecord = min(currentPage * rowsPerPage, totalCount)
         totalPagesCountLabel.text = "\(startRecord)-\(endRecord) of \(totalCount)"
@@ -188,5 +202,40 @@ extension ManageLandmarksVC {
             }
         }
         present(vc, animated: true)
+    }
+}
+
+
+extension ManageLandmarksVC: UISearchBarDelegate {
+
+    func searchBar(
+        _ searchBar: UISearchBar,
+        textDidChange searchText: String
+    ) {
+
+        self.searchText = searchText.trimmingCharacters(
+            in: .whitespacesAndNewlines
+        )
+
+        // Always start search results from page 1
+        currentPage = 1
+
+        updatePagination()
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+
+        searchBar.text = ""
+        searchText = ""
+
+        currentPage = 1
+
+        updatePagination()
+
+        searchBar.resignFirstResponder()
     }
 }

@@ -36,24 +36,37 @@ class ManagePoliciesVC: BaseViewController {
         PolicyModel(id: "HP00020",title: "Payment Policy",description: "Full payment or the required advance payment must be completed according to the booking terms.",isActive: true),
         PolicyModel(id: "HP00021",title: "Extra Bed Policy",description: "Extra beds are available upon request and additional charges may apply.",isActive: true)
     ]
-    var selectedIndex = 0
+    private var searchText = ""
     private var selectedPolicyIndexPath: IndexPath?
     
     private var rowsPerPage = 10
     private var currentPage = 1
+    
+    private var filteredPolicy: [PolicyModel] {
+        guard !searchText.isEmpty else {
+            return policyList
+        }
+        
+        return policyList.filter { policy in
+            policy.id.localizedCaseInsensitiveContains(searchText) ||
+            policy.title.localizedCaseInsensitiveContains(searchText) ||
+            policy.description.localizedCaseInsensitiveContains(searchText) ||
+                   String(policy.isActive).localizedCaseInsensitiveContains(searchText)
+        }
+    }
     private var totalPages: Int {
-        return max( 1,Int(ceil(Double(policyList.count) / Double(rowsPerPage))))
+        return max( 1,Int(ceil(Double(filteredPolicy.count) / Double(rowsPerPage))))
     }
     private var paginatedPolicy: [PolicyModel] {
         let startIndex = (currentPage - 1) * rowsPerPage
-        guard startIndex < policyList.count else {
+        guard startIndex < filteredPolicy.count else {
             return []
         }
         let endIndex = min(
             startIndex + rowsPerPage,
-            policyList.count
+            filteredPolicy.count
         )
-        return Array(policyList[startIndex..<endIndex])
+        return Array(filteredPolicy[startIndex..<endIndex])
     }
     
     override func viewDidLoad() {
@@ -131,14 +144,14 @@ extension ManagePoliciesVC {
     func setUpUI() {
         policyTableView.register(UINib(nibName: "ManagePoliciesTVC", bundle: nil), forCellReuseIdentifier: "ManagePoliciesTVC")
         policyTableView.isScrollEnabled = false
-        
+        policySearchBar.delegate = self
         setupRowsPerPageMenu()
         updatePagination()
         addNewPolicyButton.tintColor = ThemeManager.shared.currentColor
     }
     
     private func updatePagination() {
-        let totalCount = policyList.count
+        let totalCount = filteredPolicy.count
         let startRecord = totalCount == 0 ? 0 : ((currentPage - 1) * rowsPerPage) + 1
         let endRecord = min(currentPage * rowsPerPage, totalCount)
         totalPagesCountLabel.text = "\(startRecord)-\(endRecord) of \(totalCount)"
@@ -187,5 +200,40 @@ extension ManagePoliciesVC {
             }
         }
         present(vc, animated: true)
+    }
+}
+
+
+extension ManagePoliciesVC: UISearchBarDelegate {
+
+    func searchBar(
+        _ searchBar: UISearchBar,
+        textDidChange searchText: String
+    ) {
+
+        self.searchText = searchText.trimmingCharacters(
+            in: .whitespacesAndNewlines
+        )
+
+        // Always start search results from page 1
+        currentPage = 1
+
+        updatePagination()
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+
+        searchBar.text = ""
+        searchText = ""
+
+        currentPage = 1
+
+        updatePagination()
+
+        searchBar.resignFirstResponder()
     }
 }

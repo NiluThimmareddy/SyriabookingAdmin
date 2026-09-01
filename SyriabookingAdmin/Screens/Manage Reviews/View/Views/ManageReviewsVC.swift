@@ -30,11 +30,26 @@ class ManageReviewsVC: BaseViewController {
     ]
     
     var selectedIndex = 0
+    private var searchText = ""
     private var selectedBookingIndexPath: IndexPath?
     
+    private var filteredReviews: [ReviewModel] {
+        guard !searchText.isEmpty else{
+            return reviews
+        }
+        
+        return reviews.filter { review in
+            review.id.localizedCaseInsensitiveContains(searchText) ||
+            review.reviewer.localizedCaseInsensitiveContains(searchText) ||
+            String(review.rating).localizedCaseInsensitiveContains(searchText) ||
+            review.review.localizedCaseInsensitiveContains(searchText) ||
+            review.created.localizedCaseInsensitiveContains(searchText)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         addNewReviewsButton.tintColor = ThemeManager.shared.currentColor
+        reviewsSearchBar.delegate = self
         reviewsListTableView.register(UINib(nibName: "ManageReviewsTVC", bundle: nil), forCellReuseIdentifier: "ManageReviewsTVC")
         reviewsListTableView.isScrollEnabled = false
     }
@@ -45,6 +60,7 @@ class ManageReviewsVC: BaseViewController {
     }
     
     private func updateTableViewHeight() {
+        
         reviewsListTableView.layoutIfNeeded()
         reviewsListTableViewHeightConstraint.constant = reviewsListTableView.contentSize.height
     }
@@ -58,12 +74,12 @@ class ManageReviewsVC: BaseViewController {
 
 extension ManageReviewsVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reviews.count
+        return filteredReviews.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ManageReviewsTVC") as! ManageReviewsTVC
-        let review = reviews[indexPath.row]
+        let review = filteredReviews[indexPath.row]
         cell.configure(_with: review)
         cell.setSelected(indexPath == selectedBookingIndexPath)
         cell.onCheckmarkTapped = { [weak self, weak tableView] in
@@ -103,5 +119,34 @@ extension ManageReviewsVC : UITableViewDelegate, UITableViewDataSource {
             }
         }
         present(vc, animated: true)
+    }
+}
+
+extension ManageReviewsVC : UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        reviewsListTableView.reloadData()
+        
+        DispatchQueue.main.async{
+            self.updateTableViewHeight()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchText = ""
+        
+        reviewsListTableView.reloadData()
+        
+        DispatchQueue.main.async{
+            self.updateTableViewHeight()
+        }
+        
+        searchBar.resignFirstResponder()
     }
 }

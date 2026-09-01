@@ -36,24 +36,40 @@ class ManageFacilitiesVC: BaseViewController {
         FacilityModel(id: "HF00033", facility: "Concierge", notes: "Personalized assistance for reservations and recommendations", isActive: true),
     ];
     
-    var selectedIndex = 0
+    
+    private var searchText = ""
     private var selectedFacilityIndexPath: IndexPath?
     
     private var rowsPerPage = 10
     private var currentPage = 1
+    
+    
+    private var filteredFacilityList : [FacilityModel] {
+        guard !searchText.isEmpty else {
+            return facilityList
+        }
+        
+        return facilityList.filter { facility in
+            facility.id.localizedCaseInsensitiveContains(searchText) ||
+                   facility.facility.localizedCaseInsensitiveContains(searchText) ||
+                   facility.notes.localizedCaseInsensitiveContains(searchText) ||
+                   String(facility.isActive).localizedCaseInsensitiveContains(searchText)
+        }
+    }
+    
     private var totalPages: Int {
-        return max( 1,Int(ceil(Double(facilityList.count) / Double(rowsPerPage))))
+        return max( 1,Int(ceil(Double(filteredFacilityList.count) / Double(rowsPerPage))))
     }
     private var paginatedFacilities: [FacilityModel] {
         let startIndex = (currentPage - 1) * rowsPerPage
-        guard startIndex < facilityList.count else {
+        guard startIndex < filteredFacilityList.count else {
             return []
         }
         let endIndex = min(
             startIndex + rowsPerPage,
-            facilityList.count
+            filteredFacilityList.count
         )
-        return Array(facilityList[startIndex..<endIndex])
+        return Array(filteredFacilityList[startIndex..<endIndex])
     }
     
     override func viewDidLoad() {
@@ -129,6 +145,7 @@ extension ManageFacilitiesVC : UITableViewDelegate, UITableViewDataSource {
 extension ManageFacilitiesVC {
     func setUpUI() {
         addNewFacilitiesButton.tintColor = ThemeManager.shared.currentColor
+        facilitiesSearchBar.delegate = self
         facilitiesTableView.register(UINib(nibName: "ManageFacilitiesTVC", bundle: nil), forCellReuseIdentifier: "ManageFacilitiesTVC")
         facilitiesTableView.isScrollEnabled = false
         
@@ -137,7 +154,7 @@ extension ManageFacilitiesVC {
     }
     
     private func updatePagination() {
-        let totalCount = facilityList.count
+        let totalCount = filteredFacilityList.count
         let startRecord = totalCount == 0 ? 0 : ((currentPage - 1) * rowsPerPage) + 1
         let endRecord = min(currentPage * rowsPerPage, totalCount)
         totalPagesCountLabel.text = "\(startRecord)-\(endRecord) of \(totalCount)"
@@ -186,5 +203,39 @@ extension ManageFacilitiesVC {
             }
         }
         present(vc, animated: true)
+    }
+}
+
+extension ManageFacilitiesVC: UISearchBarDelegate {
+
+    func searchBar(
+        _ searchBar: UISearchBar,
+        textDidChange searchText: String
+    ) {
+
+        self.searchText = searchText.trimmingCharacters(
+            in: .whitespacesAndNewlines
+        )
+
+        // Always start search results from page 1
+        currentPage = 1
+
+        updatePagination()
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+
+        searchBar.text = ""
+        searchText = ""
+
+        currentPage = 1
+
+        updatePagination()
+
+        searchBar.resignFirstResponder()
     }
 }
