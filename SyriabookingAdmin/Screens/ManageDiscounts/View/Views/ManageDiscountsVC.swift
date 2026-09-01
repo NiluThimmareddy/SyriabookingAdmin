@@ -8,7 +8,7 @@
 import UIKit
 
 class ManageDiscountsVC: BaseViewController {
-
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var insideScrollView: UIView!
     @IBOutlet weak var addNewDiscountButton: UIButton!
@@ -23,6 +23,7 @@ class ManageDiscountsVC: BaseViewController {
     @IBOutlet weak var onePageForwardButton: UIButton!
     @IBOutlet weak var lastPageButton: UIButton!
     
+    private var searchText = ""
     
     let discountList: [DiscountModel] = [
         DiscountModel(id: "HD00005",name: "Happy New Year Discount",type: "Percentage",value: 5, isActive: false, activeDate: nil),
@@ -32,24 +33,40 @@ class ManageDiscountsVC: BaseViewController {
         DiscountModel(id: "HD00009",name: "New Customer Discount",type: "Percentage",value: 10, isActive: false, activeDate: "28-Aug-2026")
     ]
     
-    var selectedIndex = 0
+    
+    private var filteredDiscountList : [DiscountModel] {
+        guard !searchText.isEmpty else{
+            return discountList
+        }
+        
+        return discountList.filter { discount in
+            
+            discount.id.localizedCaseInsensitiveContains(searchText) ||
+            discount.name.localizedCaseInsensitiveContains(searchText) ||
+            discount.type.localizedCaseInsensitiveContains(searchText) ||
+            String(discount.value).localizedCaseInsensitiveContains(searchText) ||
+            String(discount.isActive).localizedCaseInsensitiveContains(searchText) ||
+            (discount.activeDate?.localizedCaseInsensitiveContains(searchText) ?? false)
+        }
+    }
+    
     private var selectedDiscountIndexPath: IndexPath?
     
     private var rowsPerPage = 10
     private var currentPage = 1
     private var totalPages: Int {
-        return max( 1,Int(ceil(Double(discountList.count) / Double(rowsPerPage))))
+        return max( 1,Int(ceil(Double(filteredDiscountList.count) / Double(rowsPerPage))))
     }
     private var paginatedDiscounts: [DiscountModel] {
         let startIndex = (currentPage - 1) * rowsPerPage
-        guard startIndex < discountList.count else {
+        guard startIndex < filteredDiscountList.count else {
             return []
         }
         let endIndex = min(
             startIndex + rowsPerPage,
-            discountList.count
+            filteredDiscountList.count
         )
-        return Array(discountList[startIndex..<endIndex])
+        return Array(filteredDiscountList[startIndex..<endIndex])
     }
     
     override func viewDidLoad() {
@@ -84,7 +101,7 @@ class ManageDiscountsVC: BaseViewController {
         updatePagination()
     }
     
-
+    
 }
 
 extension ManageDiscountsVC : UITableViewDelegate, UITableViewDataSource {
@@ -126,6 +143,7 @@ extension ManageDiscountsVC : UITableViewDelegate, UITableViewDataSource {
 
 extension ManageDiscountsVC {
     func setUpUI() {
+        discountsSearchBar.delegate = self
         discountsListTableView.register(UINib(nibName: "ManageDiscountsTVC", bundle: nil), forCellReuseIdentifier: "ManageDiscountsTVC")
         discountsListTableView.isScrollEnabled = false
         
@@ -135,7 +153,7 @@ extension ManageDiscountsVC {
     }
     
     private func updatePagination() {
-        let totalCount = discountList.count
+        let totalCount = filteredDiscountList.count
         let startRecord = totalCount == 0 ? 0 : ((currentPage - 1) * rowsPerPage) + 1
         let endRecord = min(currentPage * rowsPerPage, totalCount)
         totalPagesCountLabel.text = "\(startRecord)-\(endRecord) of \(totalCount)"
@@ -184,5 +202,32 @@ extension ManageDiscountsVC {
             }
         }
         present(vc, animated: true)
+    }
+}
+
+
+extension ManageDiscountsVC : UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        currentPage = 1
+        updatePagination()
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchText = ""
+        
+        currentPage = 1
+        updatePagination()
+        
+        
+        
+        searchBar.resignFirstResponder()
     }
 }

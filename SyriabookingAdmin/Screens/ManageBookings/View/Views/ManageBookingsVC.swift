@@ -69,6 +69,7 @@ class ManageBookingsVC: BaseViewController {
     ]
     
     var selectedIndex = 0
+    private var searchText = ""
     private var selectedBookingIndexPath: IndexPath?
     
     // Pagination
@@ -89,9 +90,13 @@ class ManageBookingsVC: BaseViewController {
         return Array(filteredBookings[startIndex..<endIndex])
     }
     
+    
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -221,6 +226,8 @@ extension ManageBookingsVC : UITableViewDelegate, UITableViewDataSource {
 extension ManageBookingsVC {
     func setUpUI() {
         addNewBookingsButton.tintColor = ThemeManager.shared.currentColor
+        searchBookings.delegate = self
+        
         bookingStatusCollectionView.register(UINib(nibName: "ManageBookingStatusCVC", bundle: nil), forCellWithReuseIdentifier: "ManageBookingStatusCVC")
         if let layout = bookingStatusCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.estimatedItemSize = .zero
@@ -276,34 +283,56 @@ extension ManageBookingsVC {
     }
     
     private var filteredBookings: [BookingModel] {
+        
+        let statusFilterdBookings : [BookingModel]
         switch selectedIndex {
         case 0: // PENDING
-            return bookings.filter {
+            statusFilterdBookings = bookings.filter {
                 $0.status.lowercased() == "pending"
             }
         case 1: // CONFIRMED
-            return bookings.filter {
+            statusFilterdBookings = bookings.filter {
                 $0.status.lowercased() == "confirmed"
             }
         case 2: // CHECK-IN
-            return bookings.filter {
+            statusFilterdBookings = bookings.filter {
                 $0.status.lowercased() == "check-in"
             }
         case 3: // CHECK-OUT
-            return bookings.filter {
+            statusFilterdBookings = bookings.filter {
                 $0.status.lowercased() == "check-out"
             }
         case 4: // CANCELLED
-            return bookings.filter {
+            statusFilterdBookings = bookings.filter {
                 $0.status.lowercased() == "cancelled"
             }
         case 5: // NO SHOW
-            return bookings.filter {
+            statusFilterdBookings = bookings.filter {
                 $0.status.lowercased() == "no show"
             }
         default:
-            return bookings
+            statusFilterdBookings = bookings
         }
+        
+        guard !searchText.isEmpty else {
+            return statusFilterdBookings
+        }
+        
+        return statusFilterdBookings.filter { booking in
+            booking.bookingId.localizedCaseInsensitiveContains(searchText) ||
+            booking.guestName.localizedCaseInsensitiveContains(searchText) ||
+            booking.guestPhone.localizedCaseInsensitiveContains(searchText) ||
+            booking.roomId.localizedCaseInsensitiveContains(searchText) ||
+            booking.checkInDate.localizedCaseInsensitiveContains(searchText) ||
+            booking.checkOutDate.localizedCaseInsensitiveContains(searchText) ||
+            booking.amount.description.localizedCaseInsensitiveContains(searchText) ||
+            booking.discount.description.localizedCaseInsensitiveContains(searchText) ||
+            booking.bookingType.localizedCaseInsensitiveContains(searchText) ||
+            booking.netTotal.description.localizedCaseInsensitiveContains(searchText) ||
+            booking.status.localizedCaseInsensitiveContains(searchText)
+            
+        }
+        
     }
     
     private func bookingCount(for status: String) -> Int {
@@ -341,4 +370,29 @@ extension ManageBookingsVC {
         navigationController.modalPresentationStyle = .overFullScreen
         present(navigationController, animated: true)
     }
+}
+
+extension ManageBookingsVC : UISearchBarDelegate {
+    func searchBar(_ searchBar : UISearchBar, textDidChange searchText : String){
+        self.searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        currentPage = 1
+        updatePagination()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+            searchBar.resignFirstResponder()
+        }
+
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+
+            searchBar.text = ""
+            searchText = ""
+
+            currentPage = 1
+            updatePagination()
+
+            searchBar.resignFirstResponder()
+        }
+    
 }
