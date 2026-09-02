@@ -116,8 +116,9 @@ extension LeftmenuVC : UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
             onDismiss?()
         case .manageImages:
-            break
-
+            let vc = UIStoryboard(name: "ManageImages", bundle: nil).instantiateViewController(withIdentifier: "ManageImagesVC") as! ManageImagesVC
+            navigationController?.pushViewController(vc, animated: true)
+            onDismiss?()
         case .manageRooms:
             break
         }

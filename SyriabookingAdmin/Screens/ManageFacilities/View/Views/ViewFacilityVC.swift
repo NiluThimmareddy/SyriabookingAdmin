@@ -108,6 +108,7 @@ extension ViewFacilityVC {
         facilitiesButton.isUserInteractionEnabled = true
         activeSwitch.isUserInteractionEnabled = true
         deletebutton.isHidden = true
+        closeButton.tintColor = UIColor(hex: "DD2525")
         editButton.setTitle("Save", for: .normal)
         iconImgView.image = UIImage(named: "ic_edit")
         facilityTitleLabel.text = "Update Facility"
