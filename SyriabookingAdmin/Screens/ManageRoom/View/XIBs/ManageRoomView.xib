@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="XiP-5E-PPj" customClass="ManageRoomView" customModule="SyriabookingAdmin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="54"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="y2Z-OA-Fwy">
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="47.666666666666664"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4A-xP-Dj2">
+                            <rect key="frame" x="0.0" y="0.0" width="51.333333333333336" height="47.666666666666664"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="square" catalog="system"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ys6-iT-Gde">
+                            <rect key="frame" x="56.333333333333329" y="0.0" width="200.33333333333343" height="47.666666666666664"/>
+                            <color key="tintColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="ROOM TYPE">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5e-LN-bcx">
+                            <rect key="frame" x="261.66666666666669" y="0.0" width="153.66666666666669" height="47.666666666666664"/>
+                            <color key="tintColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="BED TYPE">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56b-qL-eYt">
+                            <rect key="frame" x="420.33333333333331" y="0.0" width="112.66666666666669" height="47.666666666666664"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="MAX ADULTS">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Snu-Au-8kR">
+                            <rect key="frame" x="538" y="0.0" width="123" height="47.666666666666664"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="MAX CHILDREN">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymO-88-Udm">
+                            <rect key="frame" x="666" y="0.0" width="102.33333333333337" height="47.666666666666664"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain">
+                                <string key="title">BASE
+PRICE</string>
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aft-Ag-0Nh">
+                            <rect key="frame" x="773.33333333333337" y="0.0" width="112.66666666666663" height="47.666666666666664"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="BREAKFAST">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fdg-iM-iCA">
+                            <rect key="frame" x="891" y="0.0" width="133" height="47.666666666666664"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="ROOM STATUS">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="y5e-LN-bcx" firstAttribute="width" secondItem="y2Z-OA-Fwy" secondAttribute="width" multiplier="0.15" id="0Cf-rJ-f6B"/>
+                        <constraint firstItem="Fdg-iM-iCA" firstAttribute="width" secondItem="y2Z-OA-Fwy" secondAttribute="width" multiplier="0.13" id="Mt0-Pj-U4A"/>
+                        <constraint firstItem="Aft-Ag-0Nh" firstAttribute="width" secondItem="y2Z-OA-Fwy" secondAttribute="width" multiplier="0.11" id="eIx-Qy-iSL"/>
+                        <constraint firstItem="56b-qL-eYt" firstAttribute="width" secondItem="y2Z-OA-Fwy" secondAttribute="width" multiplier="0.11" id="kcB-zh-oIA"/>
+                        <constraint firstItem="ymO-88-Udm" firstAttribute="width" secondItem="y2Z-OA-Fwy" secondAttribute="width" multiplier="0.1" id="t6W-js-rT5"/>
+                        <constraint firstItem="Snu-Au-8kR" firstAttribute="width" secondItem="y2Z-OA-Fwy" secondAttribute="width" multiplier="0.12" id="vcW-KU-dxr"/>
+                        <constraint firstItem="Q4A-xP-Dj2" firstAttribute="width" secondItem="y2Z-OA-Fwy" secondAttribute="width" multiplier="0.05" id="vuK-jH-1KS"/>
+                    </constraints>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAJ-kR-UUW">
+                    <rect key="frame" x="0.0" y="53" width="1024" height="1"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="hW9-tG-bLC"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="6KU-mH-ZD8"/>
+            <color key="backgroundColor" red="0.97254901960784312" green="0.98039215686274506" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="6KU-mH-ZD8" firstAttribute="trailing" secondItem="y2Z-OA-Fwy" secondAttribute="trailing" id="1Ku-JV-k2n"/>
+                <constraint firstItem="EAJ-kR-UUW" firstAttribute="leading" secondItem="6KU-mH-ZD8" secondAttribute="leading" id="MSX-UF-9N0"/>
+                <constraint firstAttribute="bottom" secondItem="EAJ-kR-UUW" secondAttribute="bottom" id="PDq-GD-3a2"/>
+                <constraint firstItem="6KU-mH-ZD8" firstAttribute="trailing" secondItem="EAJ-kR-UUW" secondAttribute="trailing" id="fIO-Mh-DtG"/>
+                <constraint firstItem="y2Z-OA-Fwy" firstAttribute="leading" secondItem="6KU-mH-ZD8" secondAttribute="leading" id="fLr-dp-3LJ"/>
+                <constraint firstItem="y2Z-OA-Fwy" firstAttribute="top" secondItem="XiP-5E-PPj" secondAttribute="top" id="xT2-TM-n19"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-918" y="-438"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="square" catalog="system" width="128" height="114"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

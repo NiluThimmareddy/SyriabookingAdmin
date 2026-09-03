@@ -93,6 +93,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="backView" destination="NIC-uu-o8f" id="O3h-9a-mIJ"/>
+                <outlet property="calendarImgView" destination="lzW-xZ-dR5" id="HjF-NP-exd"/>
+                <outlet property="calendarView" destination="9bR-xl-geg" id="xHs-Lc-ThB"/>
                 <outlet property="roomBookedDatesLabel" destination="Ngx-Z7-rRA" id="RCO-l8-IBc"/>
                 <outlet property="userNameLabel" destination="Gaw-9F-kq6" id="gMv-Gw-2QA"/>
             </connections>

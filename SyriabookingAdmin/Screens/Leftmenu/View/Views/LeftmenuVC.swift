@@ -120,11 +120,12 @@ extension LeftmenuVC : UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
             onDismiss?()
         case .manageRooms:
-            break
+            let vc = UIStoryboard(name: "ManageRoom", bundle: nil).instantiateViewController(withIdentifier: "ManageRoomVC") as! ManageRoomVC
+            navigationController?.pushViewController(vc, animated: true)
+            onDismiss?()
         }
     }
 }
-
 
 extension LeftmenuVC {
     func setUpUI() {
