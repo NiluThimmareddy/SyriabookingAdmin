@@ -37,7 +37,7 @@
                                     <action selector="rightMenuButtonAction:" destination="Y6W-OH-hqX" id="b94-fY-lJy"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="ic_edit" id="Vmc-o3-RWO">
+                            <barButtonItem image="paintpalette" catalog="system" id="Vmc-o3-RWO">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="colourChangeButtonAction:" destination="Y6W-OH-hqX" id="c0E-jH-oAK"/>
@@ -71,8 +71,8 @@
     </scenes>
     <resources>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
-        <image name="ic_edit" width="25" height="24"/>
         <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
+        <image name="paintpalette" catalog="system" width="128" height="105"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -77,7 +77,8 @@ class ManageRoomVC: BaseViewController {
     
     @IBAction func addNewRoomButtonAction(_ sender: Any) {
         let storyboard = storyboard?.instantiateViewController(withIdentifier: "AddRoomVC") as! AddRoomVC
-        present(storyboard, animated: true)
+        present(storyboard, animated: true
+         )
     }
     
     @IBAction func startingPageButtonAction(_ sender: Any) {

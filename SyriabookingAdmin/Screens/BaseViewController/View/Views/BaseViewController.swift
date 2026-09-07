@@ -143,7 +143,7 @@ extension BaseViewController {
         ]
         
         let colorButton = UIBarButtonItem(
-            image: UIImage(named: "ic_edit"),
+            image: UIImage(systemName: "paintpalette"),
             style: .plain,
             target: self,
             action: #selector(colorTapped)

@@ -58,6 +58,9 @@ class AddRoomVC: UIViewController {
     }
     
     @IBAction func saveButtonAction(_ sender: Any) {
+        let vc = UIStoryboard(name: "ManageRate", bundle: nil).instantiateViewController(withIdentifier: "ManageRateVC") as! ManageRateVC
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
 }
 
