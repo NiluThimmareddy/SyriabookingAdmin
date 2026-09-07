@@ -214,6 +214,18 @@ extension ManageRoomVC {
                 
                 // Keep Manage Rooms submenu expanded
                 SidebarManager.shared.selectedMenu = .manageRooms
+                
+                SidebarManager.shared.selectedManageRoomsSubmenu = {
+                    switch option{
+                    case .rates :
+                        return 0
+                    case .images :
+                        return 1
+                    case .facilities :
+                        return 2
+                    }
+                }()
+                
                 SidebarManager.shared.expandManageRooms()
                 
                 switch option {

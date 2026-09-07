@@ -31,6 +31,18 @@ final class SidebarManager {
             object: nil
         )
     }
+    
+    func selectManageRooms() {
+        selectedMenu = .manageRooms
+        isManageRoomsSelected = true
+        isManageRoomsExpanded = false
+        selectedManageRoomsSubmenu = nil
+
+        NotificationCenter.default.post(
+            name: .manageRoomsSubmenuChanged,
+            object: nil
+        )
+    }
 }
 
 extension Notification.Name {

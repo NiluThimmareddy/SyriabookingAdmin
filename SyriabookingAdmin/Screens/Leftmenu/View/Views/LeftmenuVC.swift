@@ -142,7 +142,7 @@ extension LeftmenuVC : UITableViewDelegate, UITableViewDataSource {
         
         if selectedMenu == .manageRooms {
             SidebarManager.shared.selectedManageRoomsSubmenu = nil
-            SidebarManager.shared.expandManageRooms()
+            SidebarManager.shared.selectManageRooms()
         }else{
             SidebarManager.shared.collapseManageRooms()
         }
