@@ -8,7 +8,7 @@
 import UIKit
 
 class ManageRoomVC: BaseViewController {
-
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var insideScrollView: UIView!
     @IBOutlet weak var addNewRoomButton: UIButton!
@@ -25,13 +25,13 @@ class ManageRoomVC: BaseViewController {
     
     let roomList: [RoomModel] = [
         RoomModel(roomType: "Single Room",bedType: "King",maxAdults: 1,maxChildren: 0,basePrice: 85,breakfast: false,
-            roomStatus: "Available",isSelected: true),
+                  roomStatus: "Available",isSelected: true),
         RoomModel(roomType: "Double Room",bedType: "Twin",maxAdults: 2,maxChildren: 1,basePrice: 120,breakfast: false,
-            roomStatus: "Available",isSelected: false),
+                  roomStatus: "Available",isSelected: false),
         RoomModel(roomType: "Suite",bedType: "Queen",maxAdults: 3,maxChildren: 2,basePrice: 150,breakfast: false,
-            roomStatus: "Available",isSelected: false),
+                  roomStatus: "Available",isSelected: false),
         RoomModel(roomType: "Deluxe",bedType: "Double",maxAdults: 1,maxChildren: 2,basePrice: 180,breakfast: false,
-            roomStatus: "Available",isSelected: false)
+                  roomStatus: "Available",isSelected: false)
     ]
     
     private var searchText = ""
@@ -188,17 +188,91 @@ extension ManageRoomVC {
         view.layoutIfNeeded()
     }
     
+    
     private func openViewRoomScreen(with room: RoomModel) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "ViewRoomVC") as! ViewRoomVC
-//        vc.landmark = room
-//        vc.onDismiss = { [weak self] in
-//            guard let self = self else { return }
-//            if let indexPath = self.selectedRoomsIndexPath {
-//                self.selectedRoomsIndexPath = nil
-//                self.roomListTableView.reloadRows(at: [indexPath], with: .none)
-//            }
-//        }
-        present(vc, animated: true)
+        
+        guard let vc = storyboard?.instantiateViewController(
+            withIdentifier: "ViewRoomVC"
+        ) as? ViewRoomVC else {
+            return
+        }
+        
+        
+        // This closure receives the button selection
+        // from ViewRoomVC.
+        vc.onManageRoomOptionSelected = { [weak self, weak vc] option in
+            
+            guard let self = self else {
+                return
+            }
+            
+            // Dismiss the presented ViewRoomVC first
+            vc?.dismiss(animated: true) {
+                
+                // Keep Manage Rooms submenu expanded
+                SidebarManager.shared.selectedMenu = .manageRooms
+                SidebarManager.shared.expandManageRooms()
+                
+                switch option {
+                    
+                case .rates:
+                    
+                    guard let ratesVC = UIStoryboard(
+                        name: "ManageRate",
+                        bundle: nil
+                    ).instantiateViewController(
+                        withIdentifier: "ManageRateVC"
+                    ) as? ManageRateVC else {
+                        return
+                    }
+                    
+                    self.navigationController?.pushViewController(
+                        ratesVC,
+                        animated: true
+                    )
+                    
+                    
+                case .images:
+                    
+                    guard let imagesVC = UIStoryboard(
+                        name: "ManageRoomImage",
+                        bundle: nil
+                    ).instantiateViewController(
+                        withIdentifier: "ManageRoomImageVC"
+                    ) as? ManageRoomImageVC else {
+                        return
+                    }
+                    
+                    self.navigationController?.pushViewController(
+                        imagesVC,
+                        animated: true
+                    )
+                    
+                    
+                case .facilities:
+                    
+                    guard let facilitiesVC = UIStoryboard(
+                        name: "ManageRoomFacilities",
+                        bundle: nil
+                    ).instantiateViewController(
+                        withIdentifier: "ManageRoomFacilitiesVC"
+                    ) as? ManageRoomFacilitiesVC else {
+                        return
+                    }
+                    
+                    self.navigationController?.pushViewController(
+                        facilitiesVC,
+                        animated: true
+                    )
+                }
+            }
+        }
+        
+        // Present ViewRoomVC
+        present(
+            vc,
+            animated: true
+        )
     }
 }
 
@@ -211,11 +285,11 @@ extension ManageRoomVC: UISearchBarDelegate {
         currentPage = 1
         updatePagination()
     }
-
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
-
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         searchText = ""

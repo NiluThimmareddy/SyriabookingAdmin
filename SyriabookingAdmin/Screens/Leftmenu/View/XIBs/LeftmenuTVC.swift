@@ -11,7 +11,7 @@ class LeftmenuTVC: UITableViewCell {
     @IBOutlet weak var backVIew: UIView!
     @IBOutlet weak var iconImgView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-
+    @IBOutlet weak var backViewLeadingConstraint: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         backVIew.layer.cornerRadius = 12
@@ -22,6 +22,15 @@ class LeftmenuTVC: UITableViewCell {
         super.prepareForReuse()
         backVIew.layer.sublayers?.removeAll(where: { $0 is CAGradientLayer })
         backVIew.backgroundColor = .systemBackground
+        backViewLeadingConstraint.constant = 10
+        
+        let normalColor = UIColor(hex: "#575757")
+        titleLabel.textColor = normalColor
+        iconImgView.tintColor = normalColor
+    }
+    
+    func setSubmenuStyle(_ isSubmenu: Bool) {
+        backViewLeadingConstraint.constant = isSubmenu ? 40 : 10
     }
 
     func configure(with menu: SidebarMenuItem, isSelected: Bool) {

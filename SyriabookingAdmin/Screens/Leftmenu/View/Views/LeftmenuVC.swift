@@ -13,6 +13,10 @@ class LeftmenuVC: UIViewController {
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var leftmenuListTableView: UITableView!
     
+    private var selectedSubmenuIndex: Int?{
+        return SidebarManager.shared.selectedManageRoomsSubmenu
+    }
+    
     let sidebarMenus: [SidebarMenuItem] = [
         SidebarMenuItem(title: "Overview",icon: "square.grid.2x2"),
         SidebarMenuItem(title: "Hotel Invoices",icon: "doc.text"),
@@ -25,15 +29,53 @@ class LeftmenuVC: UIViewController {
         SidebarMenuItem(title: "Manage Images",icon: "photo"),
         SidebarMenuItem(title: "Manage Rooms",icon: "door.left.hand.open")
     ]
-    
-    var selectedIndex = 0
+    private let manageRoomsSubmenus: [SidebarMenuItem] = [
+
+           SidebarMenuItem(
+               title: "Manage Rates",
+               icon: "dollarsign.circle"
+           ),
+
+           SidebarMenuItem(
+               title: "Manage Images",
+               icon: "photo"
+           ),
+
+           SidebarMenuItem(
+               title: "Facilities",
+               icon: "wrench.and.screwdriver"
+           )
+       ]
+
+       // MARK: - State
+
+       var selectedIndex = 0
+
+       private var isManageRoomsExpanded: Bool {
+           return SidebarManager.shared.isManageRoomsExpanded
+       }
+
     var onDismiss: (() -> Void)?
         
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
         selectedIndex = SidebarManager.shared.selectedMenu.rawValue
+        NotificationCenter.default.addObserver(self, selector: #selector(manageRoomsSubMenuChanged), name: .manageRoomsSubmenuChanged, object: nil)
         leftmenuListTableView.reloadData()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func manageRoomsSubMenuChanged(){
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else{
+                return
+            }
+            self.leftmenuListTableView.reloadData()
+        }
     }
     
     @IBAction func diasmissButtonAction(_ sender: Any) {
@@ -43,14 +85,33 @@ class LeftmenuVC: UIViewController {
 
 extension LeftmenuVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isManageRoomsExpanded{
+            return sidebarMenus.count + manageRoomsSubmenus.count
+        }
         return sidebarMenus.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeftmenuTVC") as! LeftmenuTVC
-        let menuItems = sidebarMenus[indexPath.row]
-        let isSelected = indexPath.row == selectedIndex
-        cell.configure(with: menuItems,isSelected: isSelected)
+        if indexPath.row < sidebarMenus.count {
+            let menuItems = sidebarMenus[indexPath.row]
+            let isSelected: Bool
+            if indexPath.row == SidebarMenu.manageRooms.rawValue, selectedSubmenuIndex != nil{
+                isSelected = false
+            }else{
+                isSelected = indexPath.row == selectedIndex
+            }
+            
+            cell.setSubmenuStyle(false)
+            cell.configure(with: menuItems,isSelected: isSelected)
+            return cell
+        }
+        
+        let submenuIndex = indexPath.row - sidebarMenus.count
+        let submnuItems = manageRoomsSubmenus[submenuIndex]
+        let isSelected = selectedSubmenuIndex == submenuIndex
+        cell.setSubmenuStyle(true)
+        cell.configure(with: submnuItems, isSelected: isSelected)
         return cell
     }
     
@@ -59,25 +120,34 @@ extension LeftmenuVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         tableView.deselectRow(at: indexPath, animated: true)
-
-        let previousSelectedIndex = selectedIndex
+        if indexPath.row >= sidebarMenus.count {
+            let submenuIndex = indexPath.row - sidebarMenus.count
+            selectedIndex = SidebarMenu.manageRooms.rawValue
+            SidebarManager.shared.selectedMenu = .manageRooms
+            SidebarManager.shared.selectedManageRoomsSubmenu = submenuIndex
+            SidebarManager.shared.expandManageRooms()
+            
+            tableView.reloadData()
+            handleManageRoomsSubmenu( submenuIndex )
+            return
+        }
+        
         selectedIndex = indexPath.row
 
+        let selectedMenu = SidebarMenu(rawValue: indexPath.row) ?? .overview
         // Save selected menu
         SidebarManager.shared.selectedMenu =
-            SidebarMenu(rawValue: indexPath.row) ?? .overview
-
-        var indexPathsToReload: [IndexPath] = [indexPath]
-
-        if previousSelectedIndex != selectedIndex {
-            indexPathsToReload.append(
-                IndexPath(row: previousSelectedIndex, section: 0)
-            )
+            selectedMenu
+        
+        if selectedMenu == .manageRooms {
+            SidebarManager.shared.selectedManageRoomsSubmenu = nil
+            SidebarManager.shared.expandManageRooms()
+        }else{
+            SidebarManager.shared.collapseManageRooms()
         }
 
-        tableView.reloadRows(at: indexPathsToReload, with: .automatic)
+        tableView.reloadData()
 
         switch SidebarManager.shared.selectedMenu {
 
@@ -123,6 +193,70 @@ extension LeftmenuVC : UITableViewDelegate, UITableViewDataSource {
             let vc = UIStoryboard(name: "ManageRoom", bundle: nil).instantiateViewController(withIdentifier: "ManageRoomVC") as! ManageRoomVC
             navigationController?.pushViewController(vc, animated: true)
             onDismiss?()
+        }
+    }
+}
+
+extension LeftmenuVC {
+    private func handleManageRoomsSubmenu(_ index: Int){
+        
+        SidebarManager.shared.selectedMenu = .manageRooms
+        SidebarManager.shared.selectedManageRoomsSubmenu = index
+        SidebarManager.shared.expandManageRooms()
+        
+        switch index {
+        case 0:
+
+                    let vc = UIStoryboard(
+                        name: "ManageRate",
+                        bundle: nil
+                    )
+                    .instantiateViewController(
+                        withIdentifier: "ManageRateVC"
+                    )
+
+                    navigationController?.pushViewController(
+                        vc,
+                        animated: true
+                    )
+
+                    onDismiss?()
+
+                case 1:
+
+                    let vc = UIStoryboard(
+                        name: "ManageRoomImage",
+                        bundle: nil
+                    )
+                    .instantiateViewController(
+                        withIdentifier: "ManageRoomImageVC"
+                    ) as! ManageRoomImageVC
+
+                    navigationController?.pushViewController(
+                        vc,
+                        animated: true
+                    )
+
+                    onDismiss?()
+
+                case 2:
+
+                    let vc = UIStoryboard(
+                        name: "ManageRoomFacilities",
+                        bundle: nil
+                    )
+                    .instantiateViewController(
+                        withIdentifier: "ManageRoomFacilitiesVC"
+                    ) as! ManageRoomFacilitiesVC
+
+                    navigationController?.pushViewController(
+                        vc,
+                        animated: true
+                    )
+            onDismiss?()
+            
+        default:
+            break
         }
     }
 }
