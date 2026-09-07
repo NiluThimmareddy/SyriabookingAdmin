@@ -17,13 +17,13 @@ class ViewRoomVC: UIViewController {
     @IBOutlet weak var eyeIconImgView: UIImageView!
     @IBOutlet weak var viewRoomIDLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var insideScrollView: UIView!
     @IBOutlet weak var basicInfoView: UIView!
     @IBOutlet weak var basicInfoButton: UIButton!
     @IBOutlet weak var occupancyView: UIView!
     @IBOutlet weak var occupancyButton: UIButton!
     @IBOutlet weak var detailsView: UIView!
     @IBOutlet weak var detailsButton: UIButton!
-    @IBOutlet weak var insideScrollView: UIView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
@@ -33,26 +33,45 @@ class ViewRoomVC: UIViewController {
     @IBOutlet weak var facilitiesButton: UIButton!
     
     var onManageRoomOptionSelected: ((ManageRoomOption) -> Void)?
+
+    private var currentVC: UIViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpUI()
     }
-    
-    @IBAction func basicInfoButtonAction(_ sender: Any) {
+
+    @IBAction func basicInfoButtonAction(_ sender: UIButton) {
+        updateTabSelection(selectedButton: sender)
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "BasicInfoVC") as? BasicInfoVC else {
+            return
+        }
+        showChildVC(vc)
     }
-    
-    @IBAction func occupancyButtonAction(_ sender: Any) {
+
+    @IBAction func occupancyButtonAction(_ sender: UIButton) {
+        updateTabSelection(selectedButton: sender)
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "OccupancyVC") as? OccupancyVC else {
+            return
+        }
+        showChildVC(vc)
     }
-    
-    @IBAction func detailsButtonAction(_ sender: Any) {
+
+    @IBAction func detailsButtonAction(_ sender: UIButton) {
+        updateTabSelection(selectedButton: sender)
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsVC else {
+            return
+        }
+        showChildVC(vc)
     }
-    
+
     @IBAction func closeButtonAction(_ sender: Any) {
         self.dismiss(animated: true)
     }
-    
+
     @IBAction func editButtonAction(_ sender: Any) {
     }
-    
+
     @IBAction func deleteButtonAction(_ sender: Any) {
     }
     
@@ -64,178 +83,90 @@ class ViewRoomVC: UIViewController {
     @IBAction func rateButtonAction(_ sender: Any) {
         onManageRoomOptionSelected?(.rates)
     }
-    
+
     @IBAction func facilitiesButtonAction(_ sender: Any) {
         onManageRoomOptionSelected?(.facilities)
     }
+}
+
+extension ViewRoomVC {
+    func setUpUI() {
+        updateTabSelection(selectedButton: basicInfoButton)
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "BasicInfoVC") as? BasicInfoVC else {
+            return
+        }
+        showChildVC(vc)
+    }
     
-//    private func openViewRoomScreen(with room: RoomModel) {
-//
-//        guard let vc = storyboard?.instantiateViewController(
-//            withIdentifier: "ViewRoomVC"
-//        ) as? ViewRoomVC else {
-//            return
-//        }
-//
-//        vc.modalPresentationStyle = .overFullScreen
-//
-//        vc.onManageRoomOptionSelected = { [weak self, weak vc] option in
-//
-//            guard let self = self else {
-//                return
-//            }
-//
-//            // Keep Manage Rooms submenu expanded
-//            SidebarManager.shared.expandManageRooms()
-//
-//            // First dismiss ViewRoomVC
-//            vc?.dismiss(animated: true) { [weak self] in
-//
-//                guard let self = self else {
-//                    return
-//                }
-//
-//                switch option {
-//
-//                case .rates:
-//
-//                    guard let ratesVC = UIStoryboard(
-//                        name: "ManageRate",
-//                        bundle: nil
-//                    ).instantiateViewController(
-//                        withIdentifier: "ManageRateVC"
-//                    ) as? ManageRateVC else {
-//                        return
-//                    }
-//
-//                    self.navigationController?.pushViewController(
-//                        ratesVC,
-//                        animated: true
-//                    )
-//
-//
-//                case .images:
-//
-//                    guard let imagesVC = UIStoryboard(
-//                        name: "ManageRoomImage",
-//                        bundle: nil
-//                    ).instantiateViewController(
-//                        withIdentifier: "ManageRoomImageVC"
-//                    ) as? ManageRoomImageVC else {
-//                        return
-//                    }
-//
-//                    self.navigationController?.pushViewController(
-//                        imagesVC,
-//                        animated: true
-//                    )
-//
-//
-//                case .facilities:
-//
-//                    guard let facilitiesVC = UIStoryboard(
-//                        name: "ManageRoomFacilities",
-//                        bundle: nil
-//                    ).instantiateViewController(
-//                        withIdentifier: "ManageRoomFacilitiesVC"
-//                    ) as? ManageRoomFacilitiesVC else {
-//                        return
-//                    }
-//
-//                    self.navigationController?.pushViewController(
-//                        facilitiesVC,
-//                        animated: true
-//                    )
-//                }
-//            }
-//        }
-//
-//        present(
-//            vc,
-//            animated: true
-//        )
-//    }
+    func updateTabSelection(selectedButton: UIButton) {
+        let selectedColor = ThemeManager.shared.currentColor
+        let normalColor = UIColor(hex: "#575757")
+        let buttons = [
+            basicInfoButton,
+            occupancyButton,
+            detailsButton
+        ]
+        buttons.forEach { button in
+            button?.setTitleColor(normalColor, for: .normal)
+            if #available(iOS 15.0, *) {
+                if var config = button?.configuration {
+                    config.baseForegroundColor = normalColor
+                    button?.configuration = config
+                }
+            }
+        }
+
+        selectedButton.setTitleColor(selectedColor, for: .normal)
+        if #available(iOS 15.0, *) {
+            if var config = selectedButton.configuration {
+                config.baseForegroundColor = selectedColor
+                selectedButton.configuration = config
+            }
+        }
+
+        basicInfoView.isHidden = true
+        occupancyView.isHidden = true
+        detailsView.isHidden = true
+
+        switch selectedButton {
+        case basicInfoButton:
+            basicInfoView.isHidden = false
+            basicInfoView.backgroundColor = selectedColor
+        case occupancyButton:
+            occupancyView.isHidden = false
+            occupancyView.backgroundColor = selectedColor
+        case detailsButton:
+            detailsView.isHidden = false
+            detailsView.backgroundColor = selectedColor
+        default:
+            break
+        }
+    }
+
+    private func showChildVC(_ vc: UIViewController) {
+
+        currentVC?.willMove(toParent: nil)
+        currentVC?.view.removeFromSuperview()
+        currentVC?.removeFromParent()
+        addChild(vc)
+        vc.view.translatesAutoresizingMaskIntoConstraints = false
+        insideScrollView.addSubview(vc.view)
+        NSLayoutConstraint.activate([
+            vc.view.topAnchor.constraint(
+                equalTo: insideScrollView.topAnchor
+            ),
+            vc.view.bottomAnchor.constraint(
+                equalTo: insideScrollView.bottomAnchor
+            ),
+            vc.view.leadingAnchor.constraint(
+                equalTo: insideScrollView.leadingAnchor
+            ),
+            vc.view.trailingAnchor.constraint(
+                equalTo: insideScrollView.trailingAnchor
+            )
+        ])
+        vc.didMove(toParent: self)
+        currentVC = vc
+    }
     
-//
-//    private func openViewRoomScreen(with room: RoomModel) {
-//
-//        guard let vc = storyboard?.instantiateViewController(
-//            withIdentifier: "ViewRoomVC"
-//        ) as? ViewRoomVC else {
-//            return
-//        }
-//        
-//        vc.modalPresentationStyle = .overFullScreen
-//        
-//        
-//
-//        vc.onManageRoomOptionSelected = { [weak self] option in
-//
-//            guard let self = self else {
-//                return
-//            }
-//
-//            // Expand Manage Rooms submenu
-//            SidebarManager.shared.expandManageRooms()
-//
-//            switch option {
-//
-//            case .rates:
-//
-//                guard let ratesVC = UIStoryboard(
-//                    name: "ManageRate",
-//                    bundle: nil
-//                ).instantiateViewController(
-//                    withIdentifier: "ManageRateVC"
-//                ) as? ManageRateVC else {
-//                    return
-//                }
-//
-//                self.navigationController?.pushViewController(
-//                    ratesVC,
-//                    animated: true
-//                )
-//
-//
-//            case .images:
-//
-//                guard let imagesVC = UIStoryboard(
-//                    name: "ManageRoomImage",
-//                    bundle: nil
-//                ).instantiateViewController(
-//                    withIdentifier: "ManageRoomImageVC"
-//                ) as? ManageRoomImageVC else {
-//                    return
-//                }
-//
-//                self.navigationController?.pushViewController(
-//                    imagesVC,
-//                    animated: true
-//                )
-//
-//
-//            case .facilities:
-//
-//                guard let facilitiesVC = UIStoryboard(
-//                    name: "ManageRoomFacilities",
-//                    bundle: nil
-//                ).instantiateViewController(
-//                    withIdentifier: "ManageRoomFacilitiesVC"
-//                ) as? ManageRoomFacilitiesVC else {
-//                    return
-//                }
-//
-//                self.navigationController?.pushViewController(
-//                    facilitiesVC,
-//                    animated: true
-//                )
-//            }
-//        }
-//
-//        // Present ViewRoomVC
-//        present(
-//            vc,
-//            animated: true
-//        )
-//    }
 }
