@@ -16,7 +16,8 @@ class ManageRateTVC: UITableViewCell {
     @IBOutlet weak var noteLabel: UILabel!
     @IBOutlet weak var localPriceLabel: UILabel!
     @IBOutlet weak var localDiscountLabel: UILabel!
-
+    @IBOutlet weak var discountLabel: UILabel!
+    
     var onCheckmarkTapped: (() -> Void)?
 
     private let dateFormatter: DateFormatter = {
@@ -44,7 +45,8 @@ class ManageRateTVC: UITableViewCell {
         priceLabel.text = "$\(rate.price)"
         noteLabel.text = rate.notes
         localPriceLabel.text = "\(rate.localPrice)"
-        localDiscountLabel.text = "\(rate.localDiscount)%"
+        localDiscountLabel.text = "\(rate.localDiscount)"
+        discountLabel.text = "\(rate.discount)"
     }
 
     func setSelected(_ isSelected: Bool) {

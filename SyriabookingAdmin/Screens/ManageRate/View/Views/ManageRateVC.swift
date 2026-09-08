@@ -31,6 +31,7 @@ class ManageRateVC: BaseViewController {
                 id: "RR00046",
                 effectiveDate: formatter.date(from: "17-08-2025 11:06") ?? Date(),
                 price: 140.00,
+                discount: 10,
                 notes: "For 2 person Only",
                 localPrice: 10000.00,
                 localDiscount: 15
@@ -39,6 +40,7 @@ class ManageRateVC: BaseViewController {
                 id: "RR00099",
                 effectiveDate: formatter.date(from: "26-08-2025 08:05") ?? Date(),
                 price: 95.00,
+                discount: 5,
                 notes: "For 2 Adult, 1 Child",
                 localPrice: 110000.00,
                 localDiscount: 10
@@ -84,6 +86,8 @@ class ManageRateVC: BaseViewController {
     }
     
     @IBAction func addNewRateButtonAction(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "AddNewRoomRateVC") as! AddNewRoomRateVC
+        present(vc, animated: true)
     }
     
     @IBAction func startingPageButtonAction(_ sender: Any) {
@@ -126,7 +130,7 @@ extension ManageRateVC : UITableViewDelegate, UITableViewDataSource {
             var reloadPaths = [indexPath]
             if let previousIndexPath,previousIndexPath != indexPath {reloadPaths.append(previousIndexPath)}
             tableView?.reloadRows(at: reloadPaths, with: .none)
-//            self.openViewRoomScreen(with: rooms)
+            self.openViewRoomRateScreen(with: rates)
         }
         return cell
     }
@@ -142,7 +146,7 @@ extension ManageRateVC : UITableViewDelegate, UITableViewDataSource {
         return headerView
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 45
+        return 60
     }
 }
 
@@ -190,10 +194,23 @@ extension ManageRateVC {
     
     private func updateTableHeight() {
         let rowHeight: CGFloat = 53.5
-        let headerHeight: CGFloat = 45
+        let headerHeight: CGFloat = 60
         let totalHeight = (CGFloat(paginatedRates.count) * rowHeight) + headerHeight + 25
         rateListTableViewHeightConstraint.constant = totalHeight
         view.layoutIfNeeded()
+    }
+    
+    private func openViewRoomRateScreen(with roomRate: RoomRateModel) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ViewRoomRateVC") as! ViewRoomRateVC
+        vc.roomRate = roomRate
+        vc.onDismiss = { [weak self] in
+            guard let self = self else { return }
+            if let indexPath = self.selectedRatesIndexPath {
+                self.selectedRatesIndexPath = nil
+                self.rateListTableView.reloadRows(at: [indexPath], with: .none)
+            }
+        }
+        present(vc, animated: true)
     }
 }
 

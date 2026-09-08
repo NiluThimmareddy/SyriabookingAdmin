@@ -33,7 +33,7 @@
                             </buttonConfiguration>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nd-7i-bCG">
-                            <rect key="frame" x="163.66666666666669" y="0.0" width="215.66666666666669" height="47.666666666666664"/>
+                            <rect key="frame" x="163.66666666666663" y="0.0" width="159.33333333333337" height="47.666666666666664"/>
                             <color key="tintColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="EFFECTIVE DATE">
@@ -42,7 +42,7 @@
                             </buttonConfiguration>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nt4-lP-UCU">
-                            <rect key="frame" x="384.33333333333331" y="0.0" width="112.66666666666669" height="47.666666666666664"/>
+                            <rect key="frame" x="328" y="0.0" width="112.66666666666669" height="47.666666666666664"/>
                             <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="PRICE($)">
@@ -50,8 +50,17 @@
                                 <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                             </buttonConfiguration>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7De-av-gNA">
+                            <rect key="frame" x="445.66666666666669" y="0.0" width="102.66666666666669" height="47.666666666666664"/>
+                            <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="DISCOUNT%">
+                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="baseForegroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            </buttonConfiguration>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="978-iq-vvI">
-                            <rect key="frame" x="502.00000000000006" y="0.0" width="204.66666666666669" height="47.666666666666664"/>
+                            <rect key="frame" x="553.33333333333337" y="0.0" width="204.66666666666663" height="47.666666666666664"/>
                             <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="NOTES">
@@ -60,7 +69,7 @@
                             </buttonConfiguration>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MDl-9A-unX">
-                            <rect key="frame" x="711.66666666666663" y="0.0" width="153.66666666666663" height="47.666666666666664"/>
+                            <rect key="frame" x="763" y="0.0" width="153.66666666666663" height="47.666666666666664"/>
                             <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="LOCALPRICE(SYP)">
@@ -69,7 +78,7 @@
                             </buttonConfiguration>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUD-SK-wMU">
-                            <rect key="frame" x="870.33333333333337" y="0.0" width="153.66666666666663" height="47.666666666666664"/>
+                            <rect key="frame" x="921.66666666666663" y="0.0" width="102.33333333333337" height="47.666666666666664"/>
                             <color key="tintColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="LOCALDISCOUNT%">
@@ -80,10 +89,11 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="7De-av-gNA" firstAttribute="width" secondItem="vjo-1I-xVe" secondAttribute="width" multiplier="0.1" id="DG8-R4-gYF"/>
                         <constraint firstItem="RNJ-2V-6P1" firstAttribute="width" secondItem="vjo-1I-xVe" secondAttribute="width" multiplier="0.05" id="FUY-1o-3o4"/>
                         <constraint firstItem="MDl-9A-unX" firstAttribute="width" secondItem="vjo-1I-xVe" secondAttribute="width" multiplier="0.15" id="IXY-Vk-W7q"/>
                         <constraint firstItem="VpV-Vo-EZ5" firstAttribute="width" secondItem="vjo-1I-xVe" secondAttribute="width" multiplier="0.1" id="K0W-Bj-uuE"/>
-                        <constraint firstItem="HUD-SK-wMU" firstAttribute="width" secondItem="vjo-1I-xVe" secondAttribute="width" multiplier="0.15" id="cIN-WI-QIv"/>
+                        <constraint firstItem="HUD-SK-wMU" firstAttribute="width" secondItem="vjo-1I-xVe" secondAttribute="width" multiplier="0.1" id="cIN-WI-QIv"/>
                         <constraint firstItem="978-iq-vvI" firstAttribute="width" secondItem="vjo-1I-xVe" secondAttribute="width" multiplier="0.2" id="ecX-fp-Da2"/>
                         <constraint firstItem="nt4-lP-UCU" firstAttribute="width" secondItem="vjo-1I-xVe" secondAttribute="width" multiplier="0.11" id="nDJ-ZX-HRn"/>
                     </constraints>

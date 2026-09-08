@@ -57,10 +57,10 @@ extension ViewPolicyVC {
     func setUpUI() {
         viewPolicyIconImgView.tintColor = ThemeManager.shared.currentColor
         setupViewMode()
-        configureLandmarkData()
+        configurePolicyData()
     }
     
-    private func configureLandmarkData() {
+    private func configurePolicyData() {
         guard let policies = policy else {
             return
         }

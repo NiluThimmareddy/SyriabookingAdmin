@@ -192,7 +192,6 @@ extension BaseViewController {
             self.navigationItem.leftBarButtonItem?.isEnabled = true
         }
     }
-    
 }
 
 

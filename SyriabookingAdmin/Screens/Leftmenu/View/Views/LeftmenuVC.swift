@@ -32,17 +32,17 @@ class LeftmenuVC: UIViewController {
     private let manageRoomsSubmenus: [SidebarMenuItem] = [
 
            SidebarMenuItem(
-               title: "Manage Rates",
+               title: "Manage Room Rates",
                icon: "dollarsign.circle"
            ),
 
            SidebarMenuItem(
-               title: "Manage Images",
+               title: "Manage Room Images",
                icon: "photo"
            ),
 
            SidebarMenuItem(
-               title: "Facilities",
+               title: "Manage Room Facilities",
                icon: "wrench.and.screwdriver"
            )
        ]
@@ -225,12 +225,12 @@ extension LeftmenuVC {
                 case 1:
 
                     let vc = UIStoryboard(
-                        name: "ManageRoomImage",
+                        name: "ManageImages",
                         bundle: nil
                     )
                     .instantiateViewController(
-                        withIdentifier: "ManageRoomImageVC"
-                    ) as! ManageRoomImageVC
+                        withIdentifier: "ManageImagesVC"
+                    ) as! ManageImagesVC
 
                     navigationController?.pushViewController(
                         vc,

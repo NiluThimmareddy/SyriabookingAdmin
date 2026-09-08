@@ -250,11 +250,11 @@ extension ManageRoomVC {
                 case .images:
                     
                     guard let imagesVC = UIStoryboard(
-                        name: "ManageRoomImage",
+                        name: "ManageImages",
                         bundle: nil
                     ).instantiateViewController(
-                        withIdentifier: "ManageRoomImageVC"
-                    ) as? ManageRoomImageVC else {
+                        withIdentifier: "ManageImagesVC"
+                    ) as? ManageImagesVC else {
                         return
                     }
                     

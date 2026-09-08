@@ -11,6 +11,7 @@ struct RoomRateModel: Codable {
     let id: String
     let effectiveDate: Date
     let price: Double
+    let discount: Int
     let notes: String
     let localPrice: Double
     let localDiscount: Int
