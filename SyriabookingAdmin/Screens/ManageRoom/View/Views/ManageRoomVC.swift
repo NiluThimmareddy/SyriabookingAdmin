@@ -199,22 +199,15 @@ extension ManageRoomVC {
         ) as? ViewRoomVC else {
             return
         }
-        
-        
-        // This closure receives the button selection
-        // from ViewRoomVC.
+
         vc.onManageRoomOptionSelected = { [weak self, weak vc] option in
-            
             guard let self = self else {
                 return
             }
             
-            // Dismiss the presented ViewRoomVC first
             vc?.dismiss(animated: true) {
                 
-                // Keep Manage Rooms submenu expanded
                 SidebarManager.shared.selectedMenu = .manageRooms
-                
                 SidebarManager.shared.selectedManageRoomsSubmenu = {
                     switch option{
                     case .rates :
@@ -227,67 +220,26 @@ extension ManageRoomVC {
                 }()
                 
                 SidebarManager.shared.expandManageRooms()
-                
                 switch option {
-                    
                 case .rates:
-                    
-                    guard let ratesVC = UIStoryboard(
-                        name: "ManageRate",
-                        bundle: nil
-                    ).instantiateViewController(
-                        withIdentifier: "ManageRateVC"
-                    ) as? ManageRateVC else {
+                    guard let ratesVC = UIStoryboard(name: "ManageRate",bundle: nil).instantiateViewController(withIdentifier: "ManageRateVC") as? ManageRateVC else {
                         return
                     }
-                    
-                    self.navigationController?.pushViewController(
-                        ratesVC,
-                        animated: true
-                    )
-                    
-                    
+                    self.navigationController?.pushViewController(ratesVC,animated: true)
                 case .images:
-                    
-                    guard let imagesVC = UIStoryboard(
-                        name: "ManageImages",
-                        bundle: nil
-                    ).instantiateViewController(
-                        withIdentifier: "ManageImagesVC"
-                    ) as? ManageImagesVC else {
+                    guard let imagesVC = UIStoryboard(name: "ManageImages",bundle: nil).instantiateViewController(withIdentifier: "ManageImagesVC") as? ManageImagesVC else {
                         return
                     }
-                    
-                    self.navigationController?.pushViewController(
-                        imagesVC,
-                        animated: true
-                    )
-                    
-                    
+                    self.navigationController?.pushViewController(imagesVC,animated: true)
                 case .facilities:
-                    
-                    guard let facilitiesVC = UIStoryboard(
-                        name: "ManageRoomFacilities",
-                        bundle: nil
-                    ).instantiateViewController(
-                        withIdentifier: "ManageRoomFacilitiesVC"
-                    ) as? ManageRoomFacilitiesVC else {
+                    guard let facilitiesVC = UIStoryboard(name: "ManageRoomFacilities",bundle: nil).instantiateViewController(withIdentifier: "ManageRoomFacilitiesVC") as? ManageRoomFacilitiesVC else {
                         return
                     }
-                    
-                    self.navigationController?.pushViewController(
-                        facilitiesVC,
-                        animated: true
-                    )
+                    self.navigationController?.pushViewController(facilitiesVC,animated: true)
                 }
             }
         }
-        
-        // Present ViewRoomVC
-        present(
-            vc,
-            animated: true
-        )
+        present(vc,animated: true)
     }
 }
 

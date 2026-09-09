@@ -12,13 +12,4 @@ class ManageRoomImageVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        SidebarManager.shared.selectedMenu = .manageRooms
-//        SidebarManager.shared.expandManageRooms()
-//    }
-
-
 }

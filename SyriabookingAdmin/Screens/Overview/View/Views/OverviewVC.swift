@@ -48,7 +48,6 @@ class OverviewVC: BaseViewController {
     @IBOutlet weak var checkInCheckOutTableView: UITableView!
     @IBOutlet weak var noBookingsView: UIView!
     @IBOutlet weak var noBookingOnThisDateLabel: UILabel!
-    
     @IBOutlet weak var QuickStatsIconImageView: UIImageView!
     @IBOutlet weak var bookingStatusIconImageView: UIImageView!
     @IBOutlet weak var recentBookingIconImageView: UIImageView!
@@ -108,12 +107,10 @@ class OverviewVC: BaseViewController {
         super.viewWillTransition(to: size, with: coordinator)
         
         coordinator.animate(alongsideTransition: { _ in
-            // Update calendar frame during rotation
             self.calendar.frame = self.bookingCalenderView.bounds
             self.calendar.setNeedsLayout()
             self.calendar.layoutIfNeeded()
         }, completion: { _ in
-            // Ensure calendar is properly sized after rotation
             self.calendar.frame = self.bookingCalenderView.bounds
             self.calendar.setNeedsLayout()
             self.calendar.layoutIfNeeded()
@@ -217,51 +214,40 @@ extension OverviewVC {
     }
     
     func setupCalendar() {
-        // Set calendar scope
         calendar.scope = .month
         
-        // Set Monday as first day of week (1 = Sunday, 2 = Monday)
         calendar.firstWeekday = 2
         
-        // Configure calendar appearance
         calendar.appearance.headerDateFormat = "MMMM yyyy"
         calendar.appearance.headerTitleColor = UIColor(hex: "#1A1A1A")
         calendar.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 18)
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         
-        // Configure weekday appearance
         calendar.appearance.weekdayTextColor = UIColor(hex: "#666666")
         calendar.appearance.weekdayFont = UIFont.systemFont(ofSize: 14, weight: .medium)
         
-        // Configure date appearance
         calendar.appearance.titleFont = UIFont.systemFont(ofSize: 16)
         calendar.appearance.titleDefaultColor = UIColor(hex: "#1A1A1A")
         calendar.appearance.titleWeekendColor = UIColor(hex: "#FF3B30")
         calendar.appearance.titleTodayColor = ThemeManager.shared.currentColor
         
-        // Configure selection colors
         calendar.appearance.selectionColor =  ThemeManager.shared.currentColor
         calendar.appearance.todayColor =  ThemeManager.shared.currentColor.withAlphaComponent(0.3)
         calendar.appearance.todaySelectionColor = ThemeManager.shared.currentColor
         
-        // Hide event dots
         calendar.appearance.eventDefaultColor = .clear
         calendar.appearance.eventSelectionColor = .clear
         
-        // Configure calendar colors
         calendar.backgroundColor = .clear
         calendar.calendarHeaderView.backgroundColor = .clear
         calendar.calendarWeekdayView.backgroundColor = .clear
         
-        // Set delegates
         calendar.delegate = self
         calendar.dataSource = self
         
-        // Add calendar to view - using autoresizing mask for frame-based layout
         bookingCalenderView.addSubview(calendar)
         calendar.translatesAutoresizingMaskIntoConstraints = false
         
-        // Add constraints to fill the container view
         NSLayoutConstraint.activate([
             calendar.topAnchor.constraint(equalTo: bookingCalenderView.topAnchor),
             calendar.leadingAnchor.constraint(equalTo: bookingCalenderView.leadingAnchor),
@@ -269,11 +255,8 @@ extension OverviewVC {
             calendar.bottomAnchor.constraint(equalTo: bookingCalenderView.bottomAnchor)
         ])
         
-        // Set content hugging priority to allow calendar to fill the container
         calendar.setContentHuggingPriority(.defaultLow, for: .vertical)
         calendar.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
-        
-        // Reload calendar
         calendar.reloadData()
     }
     
@@ -297,7 +280,6 @@ extension OverviewVC {
 
 // MARK: - FSCalendar Delegate & DataSource
 extension OverviewVC: FSCalendarDelegate, FSCalendarDataSource {
-    
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         return 0
     }
@@ -307,10 +289,7 @@ extension OverviewVC: FSCalendarDelegate, FSCalendarDataSource {
         print("Selected date: \(date)")
     }
     
-    // This method is called when the calendar's bounds change
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-        // When calendar changes its size (e.g., when changing months), update the container
-        // The auto layout constraints will handle the resizing
         if animated {
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
