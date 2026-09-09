@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad7_9" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -58,6 +58,14 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="toA-Q3-jf5">
                                                                 <rect key="frame" x="0.0" y="0.0" width="161" height="85"/>
                                                                 <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qaN-41-0ZX">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="161" height="85"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                                        <connections>
+                                                                            <action selector="hotelInvoiceStatusButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wI4-Ny-t7x"/>
+                                                                        </connections>
+                                                                    </button>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bea-cO-lLd">
                                                                         <rect key="frame" x="10" y="19" width="47" height="47"/>
                                                                         <subviews>
@@ -99,14 +107,18 @@
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstItem="lva-KX-g16" firstAttribute="leading" secondItem="q5I-jx-4IQ" secondAttribute="leading" id="4GF-9T-xkZ"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="qaN-41-0ZX" secondAttribute="bottom" id="7am-NY-UwV"/>
                                                                     <constraint firstItem="q5I-jx-4IQ" firstAttribute="leading" secondItem="Bea-cO-lLd" secondAttribute="trailing" constant="10" id="8QR-is-9N1"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="qaN-41-0ZX" secondAttribute="trailing" id="9qP-yd-A74"/>
                                                                     <constraint firstItem="lva-KX-g16" firstAttribute="trailing" secondItem="q5I-jx-4IQ" secondAttribute="trailing" id="IHW-oU-csa"/>
                                                                     <constraint firstItem="Bea-cO-lLd" firstAttribute="leading" secondItem="toA-Q3-jf5" secondAttribute="leading" constant="10" id="L5C-9R-twk"/>
                                                                     <constraint firstAttribute="trailing" secondItem="q5I-jx-4IQ" secondAttribute="trailing" constant="5" id="NJT-F9-PV9"/>
                                                                     <constraint firstItem="lva-KX-g16" firstAttribute="top" secondItem="q5I-jx-4IQ" secondAttribute="bottom" constant="5" id="NbS-bm-A8b"/>
                                                                     <constraint firstItem="q5I-jx-4IQ" firstAttribute="top" secondItem="Bea-cO-lLd" secondAttribute="top" id="ans-h9-fVy"/>
+                                                                    <constraint firstItem="qaN-41-0ZX" firstAttribute="top" secondItem="toA-Q3-jf5" secondAttribute="top" id="leq-Bd-3C5"/>
                                                                     <constraint firstItem="Bea-cO-lLd" firstAttribute="centerY" secondItem="toA-Q3-jf5" secondAttribute="centerY" id="lrS-3p-pjC"/>
                                                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lva-KX-g16" secondAttribute="bottom" constant="5" id="pOe-Iz-m3o"/>
+                                                                    <constraint firstItem="qaN-41-0ZX" firstAttribute="leading" secondItem="toA-Q3-jf5" secondAttribute="leading" id="wji-uf-6Fb"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -123,6 +135,14 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTB-fa-GAh">
                                                                 <rect key="frame" x="181" y="0.0" width="161" height="85"/>
                                                                 <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RvR-7s-AVc">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="161" height="85"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                                        <connections>
+                                                                            <action selector="hotelInvoiceStatusButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="SUv-WW-aGC"/>
+                                                                        </connections>
+                                                                    </button>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vvz-NC-pW5">
                                                                         <rect key="frame" x="10" y="19" width="47" height="47"/>
                                                                         <subviews>
@@ -163,13 +183,17 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
+                                                                    <constraint firstItem="RvR-7s-AVc" firstAttribute="leading" secondItem="dTB-fa-GAh" secondAttribute="leading" id="1Ba-bQ-Oak"/>
                                                                     <constraint firstItem="nMd-Cg-ah0" firstAttribute="top" secondItem="vvz-NC-pW5" secondAttribute="top" id="Cm3-HG-CGL"/>
                                                                     <constraint firstItem="nMd-Cg-ah0" firstAttribute="leading" secondItem="vvz-NC-pW5" secondAttribute="trailing" constant="10" id="En7-Sc-Rda"/>
                                                                     <constraint firstItem="vvz-NC-pW5" firstAttribute="leading" secondItem="dTB-fa-GAh" secondAttribute="leading" constant="10" id="I8x-QJ-4ff"/>
                                                                     <constraint firstAttribute="trailing" secondItem="nMd-Cg-ah0" secondAttribute="trailing" constant="5" id="IlD-ER-ubm"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="RvR-7s-AVc" secondAttribute="trailing" id="OeF-Wp-4Qz"/>
+                                                                    <constraint firstItem="RvR-7s-AVc" firstAttribute="top" secondItem="dTB-fa-GAh" secondAttribute="top" id="UE4-gD-wtD"/>
                                                                     <constraint firstItem="Br8-cN-wlw" firstAttribute="trailing" secondItem="nMd-Cg-ah0" secondAttribute="trailing" id="ddJ-cU-GuV"/>
                                                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Br8-cN-wlw" secondAttribute="bottom" constant="5" id="jOH-br-rgl"/>
                                                                     <constraint firstItem="vvz-NC-pW5" firstAttribute="centerY" secondItem="dTB-fa-GAh" secondAttribute="centerY" id="l0O-HC-oBu"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="RvR-7s-AVc" secondAttribute="bottom" id="mgm-er-o9d"/>
                                                                     <constraint firstItem="Br8-cN-wlw" firstAttribute="leading" secondItem="nMd-Cg-ah0" secondAttribute="leading" id="rcq-u2-sY9"/>
                                                                     <constraint firstItem="Br8-cN-wlw" firstAttribute="top" secondItem="nMd-Cg-ah0" secondAttribute="bottom" constant="5" id="tY2-Ba-Twf"/>
                                                                 </constraints>
@@ -188,6 +212,15 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q98-dG-cnA">
                                                                 <rect key="frame" x="362" y="0.0" width="161" height="85"/>
                                                                 <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggC-ED-nXp">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="161" height="85"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                                        <connections>
+                                                                            <action selector="hotelInvoiceStatusButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="V7J-GE-bOC"/>
+                                                                        </connections>
+                                                                    </button>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NGN-fX-sVt">
                                                                         <rect key="frame" x="10" y="19" width="47" height="47"/>
                                                                         <subviews>
@@ -253,6 +286,14 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T3X-Rc-27w">
                                                                 <rect key="frame" x="543" y="0.0" width="161" height="85"/>
                                                                 <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="je9-kc-UBD">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="161" height="85"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                                        <connections>
+                                                                            <action selector="hotelInvoiceStatusButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9oo-Ia-6cY"/>
+                                                                        </connections>
+                                                                    </button>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jlk-6Q-l1e">
                                                                         <rect key="frame" x="10" y="19" width="47" height="47"/>
                                                                         <subviews>
@@ -297,11 +338,15 @@
                                                                     <constraint firstItem="ZVN-bq-Wp4" firstAttribute="top" secondItem="jlk-6Q-l1e" secondAttribute="top" id="4Hf-Ef-Qli"/>
                                                                     <constraint firstItem="jlk-6Q-l1e" firstAttribute="centerY" secondItem="T3X-Rc-27w" secondAttribute="centerY" id="C12-0V-q6K"/>
                                                                     <constraint firstItem="ZVN-bq-Wp4" firstAttribute="leading" secondItem="jlk-6Q-l1e" secondAttribute="trailing" constant="10" id="DHp-mh-7HG"/>
+                                                                    <constraint firstItem="je9-kc-UBD" firstAttribute="top" secondItem="T3X-Rc-27w" secondAttribute="top" id="GNc-QD-UyV"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="je9-kc-UBD" secondAttribute="bottom" id="RYw-yR-WQ1"/>
                                                                     <constraint firstItem="he0-af-c1s" firstAttribute="trailing" secondItem="ZVN-bq-Wp4" secondAttribute="trailing" id="aND-n3-Yvs"/>
+                                                                    <constraint firstItem="je9-kc-UBD" firstAttribute="leading" secondItem="T3X-Rc-27w" secondAttribute="leading" id="csj-RJ-gUw"/>
                                                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="he0-af-c1s" secondAttribute="bottom" constant="5" id="gWY-ee-oLU"/>
                                                                     <constraint firstItem="he0-af-c1s" firstAttribute="top" secondItem="ZVN-bq-Wp4" secondAttribute="bottom" constant="5" id="jCz-mu-ydH"/>
                                                                     <constraint firstAttribute="trailing" secondItem="ZVN-bq-Wp4" secondAttribute="trailing" constant="5" id="lSf-mA-yNv"/>
                                                                     <constraint firstItem="jlk-6Q-l1e" firstAttribute="leading" secondItem="T3X-Rc-27w" secondAttribute="leading" constant="10" id="vvo-79-Vtb"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="je9-kc-UBD" secondAttribute="trailing" id="wDF-Yb-D1t"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -323,6 +368,15 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JLR-7s-4EY">
                                                                 <rect key="frame" x="0.0" y="0.0" width="161" height="85"/>
                                                                 <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJC-Cz-8Vf">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="161" height="85"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                                        <connections>
+                                                                            <action selector="hotelInvoiceStatusButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ho3-6i-aWZ"/>
+                                                                        </connections>
+                                                                    </button>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Gz-Zh-e8E">
                                                                         <rect key="frame" x="10" y="19" width="47" height="47"/>
                                                                         <subviews>
@@ -388,6 +442,15 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kle-vo-pOX">
                                                                 <rect key="frame" x="181" y="0.0" width="161" height="85"/>
                                                                 <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7q-wu-Rga">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="161" height="85"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                                        <connections>
+                                                                            <action selector="hotelInvoiceStatusButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="JyU-KD-jnS"/>
+                                                                        </connections>
+                                                                    </button>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lih-mW-VIp">
                                                                         <rect key="frame" x="10" y="19" width="47" height="47"/>
                                                                         <subviews>
@@ -453,6 +516,15 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9HT-4M-7GK">
                                                                 <rect key="frame" x="362" y="0.0" width="161" height="85"/>
                                                                 <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmU-5J-nYr">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="161" height="85"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                                        <connections>
+                                                                            <action selector="hotelInvoiceStatusButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="jug-Hu-YAR"/>
+                                                                        </connections>
+                                                                    </button>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g7j-pt-t4y">
                                                                         <rect key="frame" x="10" y="19" width="47" height="47"/>
                                                                         <subviews>
@@ -518,6 +590,15 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLu-7i-ePF">
                                                                 <rect key="frame" x="543" y="0.0" width="161" height="85"/>
                                                                 <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EqM-XO-qXC">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="161" height="85"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                                        <connections>
+                                                                            <action selector="hotelInvoiceStatusButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="jXf-y0-kKK"/>
+                                                                        </connections>
+                                                                    </button>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZEh-Wn-fya">
                                                                         <rect key="frame" x="10" y="19" width="47" height="47"/>
                                                                         <subviews>
@@ -642,14 +723,19 @@
                     <connections>
                         <outlet property="allInvoiceCountLabel" destination="pf2-nl-dce" id="0y7-en-1PL"/>
                         <outlet property="allInvoiceLabel" destination="NOt-Sh-7fU" id="I4L-6w-1qf"/>
+                        <outlet property="allView" destination="HLu-7i-ePF" id="YPm-df-si7"/>
                         <outlet property="approvedCountLabel" destination="Og8-bG-wTi" id="GAy-Ca-2a8"/>
                         <outlet property="approvedTitleLabel" destination="H3E-dX-NcG" id="u4D-K9-KpB"/>
+                        <outlet property="approvedView" destination="JLR-7s-4EY" id="q1V-dz-tJI"/>
                         <outlet property="cancelledCountLabel" destination="G97-fS-eed" id="XrA-qt-Tap"/>
                         <outlet property="cancelledTitleLabel" destination="mq6-SB-zVu" id="r4q-Vr-V5z"/>
+                        <outlet property="cancelledView" destination="9HT-4M-7GK" id="acB-zQ-PKV"/>
                         <outlet property="disputedCountLabel" destination="Br8-cN-wlw" id="uwD-iC-I13"/>
                         <outlet property="disputedTitleLabel" destination="nMd-Cg-ah0" id="shh-sW-YwK"/>
+                        <outlet property="disputedView" destination="dTB-fa-GAh" id="z77-Tm-Xxl"/>
                         <outlet property="draftCountLabel" destination="lva-KX-g16" id="91S-JQ-LAh"/>
                         <outlet property="draftTitleLabel" destination="q5I-jx-4IQ" id="VaH-77-DgA"/>
+                        <outlet property="draftView" destination="toA-Q3-jf5" id="LgE-CM-T02"/>
                         <outlet property="insideScrollView" destination="X6J-ib-mO4" id="pFd-5G-2JQ"/>
                         <outlet property="invoiceIconImageView" destination="KCo-Sl-fKP" id="bLE-DM-DbR"/>
                         <outlet property="invoiceListTableview" destination="JQz-mp-mDM" id="GUc-eV-OsY"/>
@@ -657,12 +743,23 @@
                         <outlet property="invoiceTitleLabel" destination="Dyb-ub-Mfr" id="sUV-LK-UAQ"/>
                         <outlet property="paidCountLabel" destination="he0-af-c1s" id="OfN-HD-ewD"/>
                         <outlet property="paidTitleLabel" destination="ZVN-bq-Wp4" id="cEn-lY-Znl"/>
+                        <outlet property="paidView" destination="T3X-Rc-27w" id="EOa-6z-LrC"/>
                         <outlet property="partiallyPaidCountLabel" destination="hQP-Xj-00Q" id="oD7-yJ-dJr"/>
                         <outlet property="partiallyPaidTitleLabel" destination="GdL-KM-ABz" id="jDu-FR-x1Y"/>
+                        <outlet property="partiallyPaidView" destination="Q98-dG-cnA" id="xpX-6t-Ezm"/>
                         <outlet property="scrollView" destination="0zO-m1-N7D" id="ift-LL-9qG"/>
                         <outlet property="searchBar" destination="mOF-5j-NhU" id="2ub-RP-XiK"/>
                         <outlet property="sentCountLabel" destination="8LA-wT-R8T" id="ABN-zE-BAg"/>
                         <outlet property="sentTitleLabel" destination="ABz-Fo-XTp" id="D0U-yo-4XP"/>
+                        <outlet property="sentView" destination="kle-vo-pOX" id="gwQ-qp-ZHe"/>
+                        <outletCollection property="invoiceStatusButton" destination="qaN-41-0ZX" collectionClass="NSMutableArray" id="nXh-Al-LYP"/>
+                        <outletCollection property="invoiceStatusButton" destination="RvR-7s-AVc" collectionClass="NSMutableArray" id="Vez-vZ-NSY"/>
+                        <outletCollection property="invoiceStatusButton" destination="ggC-ED-nXp" collectionClass="NSMutableArray" id="pV7-8t-7NM"/>
+                        <outletCollection property="invoiceStatusButton" destination="je9-kc-UBD" collectionClass="NSMutableArray" id="igx-Nz-JB8"/>
+                        <outletCollection property="invoiceStatusButton" destination="FJC-Cz-8Vf" collectionClass="NSMutableArray" id="ebo-y6-ifB"/>
+                        <outletCollection property="invoiceStatusButton" destination="u7q-wu-Rga" collectionClass="NSMutableArray" id="qfX-sG-vkR"/>
+                        <outletCollection property="invoiceStatusButton" destination="fmU-5J-nYr" collectionClass="NSMutableArray" id="wQp-Kl-sEw"/>
+                        <outletCollection property="invoiceStatusButton" destination="EqM-XO-qXC" collectionClass="NSMutableArray" id="lMv-6O-syJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1297,7 +1394,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

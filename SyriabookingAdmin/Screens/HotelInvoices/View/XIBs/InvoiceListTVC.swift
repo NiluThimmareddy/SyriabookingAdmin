@@ -62,6 +62,9 @@ class InvoiceListTVC: UITableViewCell {
         case .approved:
             statusLabel.backgroundColor = UIColor(hex: "#3190EE").withAlphaComponent(0.10)
             statusLabel.textColor = UIColor(hex: "#3190EE")
+        case .sent:
+            statusLabel.backgroundColor = UIColor(hex: "##9333EA").withAlphaComponent(0.10)
+            statusLabel.textColor = UIColor(hex: "#9333EA")
         }
     }
 }

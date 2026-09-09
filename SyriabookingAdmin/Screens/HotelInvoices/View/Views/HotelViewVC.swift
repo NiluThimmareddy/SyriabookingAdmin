@@ -225,6 +225,19 @@ extension HotelViewVC {
 
             approvebutton.isHidden = true
             saveChangesButton.isHidden = true
+        case .sent:
+            statusView.backgroundColor = UIColor(hex: "#9333EA").withAlphaComponent(0.10)
+            statusLabel.textColor = UIColor(hex: "#9333EA")
+
+            pdfView.isHidden = true
+            pdfViewHeightConstraint.constant = 0
+            pdfViewTopConstraint.constant = 0
+            pdfViewBottomConstraint.constant = 0
+
+            bookingListTableViewTopConstraint.constant = 0
+
+            approvebutton.isHidden = true
+            saveChangesButton.isHidden = true
         }
         view.layoutIfNeeded()
     }

@@ -35,4 +35,5 @@ enum InvoiceStatus: String, Codable {
     case paid = "Paid"
     case partiallyPaid = "Partially Paid"
     case approved = "Approved"
+    case sent = "Sent"
 }

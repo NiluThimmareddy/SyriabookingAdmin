@@ -30,8 +30,16 @@ class HotelInvoiceVC: BaseViewController {
     @IBOutlet weak var allInvoiceCountLabel: UILabel!
     @IBOutlet weak var invoiceListTableview: UITableView!
     @IBOutlet weak var invoiceListTableviewHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var invoiceIconImageView: UIImageView!
+    @IBOutlet var invoiceStatusButton: [UIButton]!
+    @IBOutlet weak var draftView: UIView!
+    @IBOutlet weak var disputedView: UIView!
+    @IBOutlet weak var partiallyPaidView: UIView!
+    @IBOutlet weak var paidView: UIView!
+    @IBOutlet weak var approvedView: UIView!
+    @IBOutlet weak var sentView: UIView!
+    @IBOutlet weak var cancelledView: UIView!
+    @IBOutlet weak var allView: UIView!
     
     
     let invoices: [Invoice] = [
@@ -51,46 +59,63 @@ class HotelInvoiceVC: BaseViewController {
     ]
     
     private var searchText = ""
-    private var selectedIndex = 0
-    private var filteredInvoices : [Invoice] {
-        let statusFilterInvoices : [Invoice] = []
-        
-//        switch selectedIndex {
-//        case 0:
-//            statusFilterInvoices = invoices.filter{
-//                $0.status.rawValue.lowercased() == "draft"
-//            }
-//        case 1:
-//            statusFilterInvoices = invoices.filter{
-//                $0.status.rawValue.lowercased() == "disputed"
-//            }
-//        default:
-//            statusFilterInvoices = invoices
-//        }
-        
-        guard !searchText.isEmpty else{
-            return invoices
+    private var selectedIndex = 7
+
+    private var filteredInvoices: [Invoice] {
+        let statusFilteredInvoices: [Invoice]
+        switch selectedIndex {
+        case 0:
+            statusFilteredInvoices = invoices.filter {
+                $0.status == .draft
+            }
+        case 1:
+            statusFilteredInvoices = invoices.filter {
+                $0.status == .disputed
+            }
+        case 2:
+            statusFilteredInvoices = invoices.filter {
+                $0.status == .partiallyPaid
+            }
+        case 3:
+            statusFilteredInvoices = invoices.filter {
+                $0.status == .paid
+            }
+        case 4:
+            statusFilteredInvoices = invoices.filter {
+                $0.status == .approved
+            }
+        case 5:
+            statusFilteredInvoices = invoices.filter {
+                $0.status == .sent
+            }
+        case 6:
+            statusFilteredInvoices = invoices.filter {
+                $0.status == .canceled
+            }
+        case 7:
+            statusFilteredInvoices = invoices
+        default:
+            statusFilteredInvoices = invoices
         }
-        
-        return invoices.filter { Invoice in
-            Invoice.invoiceNo.localizedCaseInsensitiveContains(searchText) ||
-            Invoice.period.localizedCaseInsensitiveContains(searchText) ||
-            Invoice.status.rawValue.localizedCaseInsensitiveContains(searchText) ||
-            String(Invoice.totalAmount).localizedCaseInsensitiveContains(searchText) ||
-            Invoice.dueDate.localizedCaseInsensitiveContains(searchText) ||
-            (Invoice.paidDate?.localizedCaseInsensitiveContains(searchText) ?? false)
-            
+
+        guard !searchText.isEmpty else {
+            return statusFilteredInvoices
+        }
+
+        return statusFilteredInvoices.filter { invoice in
+
+            invoice.invoiceNo.localizedCaseInsensitiveContains(searchText) ||
+            invoice.period.localizedCaseInsensitiveContains(searchText) ||
+            invoice.status.rawValue.localizedCaseInsensitiveContains(searchText) ||
+            String(invoice.totalAmount).localizedCaseInsensitiveContains(searchText) ||
+            invoice.dueDate.localizedCaseInsensitiveContains(searchText) ||
+            (invoice.paidDate?.localizedCaseInsensitiveContains(searchText) ?? false)
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.showsVerticalScrollIndicator = false
-        invoiceListTableview.register(UINib(nibName: "InvoiceListTVC", bundle: nil), forCellReuseIdentifier: "InvoiceListTVC")
-        invoiceListTableview.isScrollEnabled = false
-        invoiceIconImageView.tintColor = ThemeManager.shared.currentColor
-        searchBar.delegate = self
+        setUpUI()
     }
     
     override func viewDidLayoutSubviews() {
@@ -103,6 +128,17 @@ class HotelInvoiceVC: BaseViewController {
         invoiceListTableviewHeightConstraint.constant = invoiceListTableview.contentSize.height
     }
     
+    @IBAction func hotelInvoiceStatusButtonAction(_ sender: Any) {
+        guard let button = sender as? UIButton else {
+            return
+        }
+        selectedIndex = button.tag
+        updateInvoiceStatusViewSelection()
+        invoiceListTableview.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.updateTableViewHeight()
+        }
+    }
 }
 
 extension HotelInvoiceVC : UITableViewDelegate, UITableViewDataSource {
@@ -164,5 +200,34 @@ extension HotelInvoiceVC : UISearchBarDelegate {
         }
         
         searchBar.resignFirstResponder()
+    }
+}
+
+
+extension HotelInvoiceVC {
+    func setUpUI() {
+        scrollView.showsVerticalScrollIndicator = false
+        invoiceListTableview.register(UINib(nibName: "InvoiceListTVC", bundle: nil),forCellReuseIdentifier: "InvoiceListTVC")
+        invoiceListTableview.isScrollEnabled = false
+        invoiceIconImageView.tintColor = ThemeManager.shared.currentColor
+        searchBar.delegate = self
+
+        for (index, button) in invoiceStatusButton.enumerated() {
+            button.tag = index
+        }
+        updateInvoiceStatusViewSelection()
+    }
+    
+    private func updateInvoiceStatusViewSelection() {
+        let statusViews: [UIView] = [draftView,disputedView,partiallyPaidView,paidView,approvedView,sentView,cancelledView,allView]
+        for (index, view) in statusViews.enumerated() {
+            if index == selectedIndex {
+                view.layer.borderWidth = 1
+                view.layer.borderColor = ThemeManager.shared.currentColor.cgColor
+            } else {
+                view.layer.borderWidth = 0
+                view.layer.borderColor = UIColor.clear.cgColor
+            }
+        }
     }
 }
