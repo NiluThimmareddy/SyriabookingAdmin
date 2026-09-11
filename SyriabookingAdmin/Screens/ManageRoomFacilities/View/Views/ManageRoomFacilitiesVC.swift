@@ -66,6 +66,12 @@ class ManageRoomFacilitiesVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        applyTheme()
+    }
+    
+    override func applyTheme() {
+        super.applyTheme()
+        addNewFacilityButton.tintColor = ThemeManager.shared.currentColor
     }
     
     @IBAction func addNewFacilityButtonAction(_ sender: Any) {
@@ -136,7 +142,6 @@ extension ManageRoomFacilitiesVC : UITableViewDelegate, UITableViewDataSource {
 
 extension ManageRoomFacilitiesVC {
     func setUpUI() {
-        addNewFacilityButton.tintColor = ThemeManager.shared.currentColor
         facilitySearchBar.delegate = self
         facilitylistTableView.register(UINib(nibName: "RoomFacilityTVC", bundle: nil), forCellReuseIdentifier: "RoomFacilityTVC")
         facilitylistTableView.isScrollEnabled = false

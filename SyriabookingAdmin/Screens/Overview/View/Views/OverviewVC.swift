@@ -87,13 +87,23 @@ class OverviewVC: BaseViewController {
         let today = Date()
         calendar.select(today)
         filterBookings(for: today)
+        applyTheme()
+    }
+    
+    override func applyTheme() {
+        super.applyTheme()
+        QuickStatsIconImageView.tintColor = ThemeManager.shared.currentColor
+        bookingStatusIconImageView.tintColor = ThemeManager.shared.currentColor
+        recentBookingIconImageView.tintColor = ThemeManager.shared.currentColor
+        BookingCalendarIconImageView.tintColor = ThemeManager.shared.currentColor
+        RecentBookingCalendarIconImageView.tintColor = ThemeManager.shared.currentColor
+        publishButton.applyOverviewGradient(color: ThemeManager.shared.currentColor)
         
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(themeChange),
-            name: .themeChanged,
-            object: nil
-        )
+        calendar.appearance.selectionColor =  ThemeManager.shared.currentColor
+        calendar.appearance.todayColor =  ThemeManager.shared.currentColor.withAlphaComponent(0.3)
+        calendar.appearance.todaySelectionColor = ThemeManager.shared.currentColor
+        calendar.appearance.titleTodayColor = ThemeManager.shared.currentColor
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -182,14 +192,7 @@ extension OverviewVC : UITableViewDelegate, UITableViewDataSource {
 // MARK: - UI Setup
 extension OverviewVC {
     func setUpUI() {
-        QuickStatsIconImageView.tintColor = ThemeManager.shared.currentColor
-        bookingStatusIconImageView.tintColor = ThemeManager.shared.currentColor
-        recentBookingIconImageView.tintColor = ThemeManager.shared.currentColor
-        BookingCalendarIconImageView.tintColor = ThemeManager.shared.currentColor
-        RecentBookingCalendarIconImageView.tintColor = ThemeManager.shared.currentColor
-        
         scrollView.showsVerticalScrollIndicator = false
-        publishButton.applyOverviewGradient(color: ThemeManager.shared.currentColor)
 
         [topView,totalRoomsView,bookingsView,revenueView,guestsView,confirmedView,cancelledView,pendingView].forEach { lightShadow in
             lightShadow.applyLightShadow()
@@ -203,14 +206,6 @@ extension OverviewVC {
         
         noBookingsView.isHidden = true
         checkInCheckOutTableView.isHidden = false
-    }
-    
-    @objc private func themeChange() {
-        publishButton.applyOverviewGradient(color: ThemeManager.shared.currentColor)
-        calendar.appearance.selectionColor =  ThemeManager.shared.currentColor
-        calendar.appearance.todayColor =  ThemeManager.shared.currentColor.withAlphaComponent(0.3)
-        calendar.appearance.todaySelectionColor = ThemeManager.shared.currentColor
-        calendar.appearance.titleTodayColor = ThemeManager.shared.currentColor
     }
     
     func setupCalendar() {

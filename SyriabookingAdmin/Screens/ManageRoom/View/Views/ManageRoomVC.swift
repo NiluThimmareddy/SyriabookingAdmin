@@ -73,6 +73,12 @@ class ManageRoomVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        applyTheme()
+    }
+    
+    override func applyTheme() {
+        super.applyTheme()
+        addNewRoomButton.tintColor = ThemeManager.shared.currentColor
     }
     
     @IBAction func addNewRoomButtonAction(_ sender: Any) {
@@ -149,7 +155,6 @@ extension ManageRoomVC {
         
         setupRowsPerPageMenu()
         updatePagination()
-        addNewRoomButton.tintColor = ThemeManager.shared.currentColor
     }
     
     private func updatePagination() {

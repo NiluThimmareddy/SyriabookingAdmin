@@ -72,6 +72,12 @@ class ManagePoliciesVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        applyTheme()
+    }
+    
+    override func applyTheme() {
+        super.applyTheme()
+        addNewPolicyButton.tintColor = ThemeManager.shared.currentColor
     }
     
     @IBAction func addNewPolicybuttonAction(_ sender: Any) {
@@ -147,7 +153,6 @@ extension ManagePoliciesVC {
         policySearchBar.delegate = self
         setupRowsPerPageMenu()
         updatePagination()
-        addNewPolicyButton.tintColor = ThemeManager.shared.currentColor
     }
     
     private func updatePagination() {

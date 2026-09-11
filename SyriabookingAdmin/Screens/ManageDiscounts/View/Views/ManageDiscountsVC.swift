@@ -72,6 +72,12 @@ class ManageDiscountsVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        applyTheme()
+    }
+    
+    override func applyTheme() {
+        super.applyTheme()
+        addNewDiscountButton.tintColor = ThemeManager.shared.currentColor
     }
     
     @IBAction func addNewDiscountButtonAction(_ sender: Any) {
@@ -149,7 +155,6 @@ extension ManageDiscountsVC {
         
         setupRowsPerPageMenu()
         updatePagination()
-        addNewDiscountButton.tintColor = ThemeManager.shared.currentColor
     }
     
     private func updatePagination() {

@@ -44,16 +44,12 @@ class ManageBookingStatusCVC: UICollectionViewCell {
             
             statusCountLabel.textColor = .white
             
-            
         } else {
             
-            backView.layer.borderColor = UIColor.clear.cgColor
-            
+            backView.layer.borderColor = UIColor.clear.cgColor            
             backgroundColourView.backgroundColor =
                 normalColor.withAlphaComponent(0.1)
-            
             statusIconImgView.tintColor = normalColor
-            
             statusCountLabel.textColor = .label
             statusCountLabel.backgroundColor = .clear
         }

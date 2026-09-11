@@ -8,7 +8,7 @@
 import UIKit
 
 class ManageFacilitiesVC: BaseViewController {
-
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var insideScrollView: UIView!
     @IBOutlet weak var addNewFacilitiesButton: UIButton!
@@ -29,7 +29,7 @@ class ManageFacilitiesVC: BaseViewController {
         FacilityModel(id: "HF00026", facility: "Tour Desk", notes: "Assistance with booking local tours and attractions", isActive: true),
         FacilityModel(id: "HF00027", facility: "Free Parking", notes: "Complimentary parking for hotel guests", isActive: true),
         FacilityModel(id: "HF00028", facility: "Paid Airport Shuttle", notes: "Available upon request, charges apply", isActive: true),
-        FacilityModel(id: "HF00029", facility: "Paid Airport Shuttle", notes: "Available upon request, charges apply", isActive: true), 
+        FacilityModel(id: "HF00029", facility: "Paid Airport Shuttle", notes: "Available upon request, charges apply", isActive: true),
         FacilityModel(id: "HF00030", facility: "Restaurant", notes: "Serves breakfast, lunch, and dinner", isActive: true),
         FacilityModel(id: "HF00031", facility: "Coffee Shop", notes: "Freshly brewed coffee and snacks available all day", isActive: true),
         FacilityModel(id: "HF00032", facility: "24h Front Desk", notes: "Round-the-clock assistance for guests", isActive: true),
@@ -51,9 +51,9 @@ class ManageFacilitiesVC: BaseViewController {
         
         return facilityList.filter { facility in
             facility.id.localizedCaseInsensitiveContains(searchText) ||
-                   facility.facility.localizedCaseInsensitiveContains(searchText) ||
-                   facility.notes.localizedCaseInsensitiveContains(searchText) ||
-                   String(facility.isActive).localizedCaseInsensitiveContains(searchText)
+            facility.facility.localizedCaseInsensitiveContains(searchText) ||
+            facility.notes.localizedCaseInsensitiveContains(searchText) ||
+            String(facility.isActive).localizedCaseInsensitiveContains(searchText)
         }
     }
     
@@ -75,6 +75,12 @@ class ManageFacilitiesVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        applyTheme()
+    }
+    
+    override func applyTheme() {
+        super.applyTheme()
+        addNewFacilitiesButton.tintColor = ThemeManager.shared.currentColor
     }
     
     @IBAction func addNewFacilitiesButtonAction(_ sender: Any) {
@@ -144,7 +150,6 @@ extension ManageFacilitiesVC : UITableViewDelegate, UITableViewDataSource {
 
 extension ManageFacilitiesVC {
     func setUpUI() {
-        addNewFacilitiesButton.tintColor = ThemeManager.shared.currentColor
         facilitiesSearchBar.delegate = self
         facilitiesTableView.register(UINib(nibName: "ManageFacilitiesTVC", bundle: nil), forCellReuseIdentifier: "ManageFacilitiesTVC")
         facilitiesTableView.isScrollEnabled = false
@@ -207,35 +212,35 @@ extension ManageFacilitiesVC {
 }
 
 extension ManageFacilitiesVC: UISearchBarDelegate {
-
+    
     func searchBar(
         _ searchBar: UISearchBar,
         textDidChange searchText: String
     ) {
-
+        
         self.searchText = searchText.trimmingCharacters(
             in: .whitespacesAndNewlines
         )
-
+        
         // Always start search results from page 1
         currentPage = 1
-
+        
         updatePagination()
     }
-
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
-
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-
+        
         searchBar.text = ""
         searchText = ""
-
+        
         currentPage = 1
-
+        
         updatePagination()
-
+        
         searchBar.resignFirstResponder()
     }
 }

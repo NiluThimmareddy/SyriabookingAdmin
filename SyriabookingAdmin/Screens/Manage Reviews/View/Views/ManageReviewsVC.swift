@@ -48,11 +48,17 @@ class ManageReviewsVC: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        addNewReviewsButton.tintColor = ThemeManager.shared.currentColor
         reviewsSearchBar.delegate = self
         reviewsListTableView.register(UINib(nibName: "ManageReviewsTVC", bundle: nil), forCellReuseIdentifier: "ManageReviewsTVC")
         reviewsListTableView.isScrollEnabled = false
+        applyTheme()
     }
+    
+    override func applyTheme() {
+        super.applyTheme()
+        addNewReviewsButton.tintColor = ThemeManager.shared.currentColor
+    }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

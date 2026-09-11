@@ -72,6 +72,12 @@ class ManageLandmarksVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        applyTheme()
+    }
+    
+    override func applyTheme() {
+        super.applyTheme()
+        addNewLandmarkButton.tintColor = ThemeManager.shared.currentColor
     }
     
     @IBAction func addNewLandmarkButtonAction(_ sender: Any) {
@@ -149,7 +155,6 @@ extension ManageLandmarksVC {
         
         setupRowsPerPageMenu()
         updatePagination()
-        addNewLandmarkButton.tintColor = ThemeManager.shared.currentColor
     }
     
     private func updatePagination() {

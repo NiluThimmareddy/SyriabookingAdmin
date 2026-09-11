@@ -15,8 +15,6 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        
-        
         navigationController?.applyTheme()
         
         NotificationCenter.default.addObserver(
@@ -29,8 +27,12 @@ class BaseViewController: UIViewController {
     
     @objc func updateTheme() {
         navigationController?.applyTheme()
+        applyTheme()
     }
     
+    func applyTheme(){
+        
+    }
     
     @objc private func themeChanged() {
         navigationController?.applyTheme()

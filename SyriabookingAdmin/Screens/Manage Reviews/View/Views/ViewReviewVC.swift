@@ -4,58 +4,6 @@
 //
 //  Created by Toqsoft on 18/08/26.
 //
-/*
-import UIKit
-
-class ViewReviewVC: UIViewController {
-
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var insideScrollView: UIView!
-    @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var reviewTitleLabel: UILabel!
-    @IBOutlet weak var idLabel: UILabel!
-    @IBOutlet weak var idTF: UITextField!
-    @IBOutlet weak var reviewerNameLabel: UILabel!
-    @IBOutlet weak var reviewerNameTF: UITextField!
-    @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var ratingTF: UITextField!
-    @IBOutlet weak var increaseRatingButton: UIButton!
-    @IBOutlet weak var decreaseRatingButton: UIButton!
-    @IBOutlet weak var reviewTextLabel: UILabel!
-    @IBOutlet weak var reviewTextTF: UITextField!
-    @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
-    
-    
-    var review: ReviewModel?
-    var onDismiss: (() -> Void)?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-    
-    @IBAction func increaseRatingButtonAction(_ sender: Any) {
-    }
-    
-    @IBAction func decreaseRatingButtonAction(_ sender: Any) {
-    }
-    
-    @IBAction func closeButtonAction(_ sender: Any) {
-        self.dismiss(animated: true)
-    }
-    
-    @IBAction func editButtonAction(_ sender: Any) {
-    }
-    
-    @IBAction func deleteButtonAction(_ sender: Any) {
-    }
-    
-    
-    
-}
-*/
 
 import UIKit
 

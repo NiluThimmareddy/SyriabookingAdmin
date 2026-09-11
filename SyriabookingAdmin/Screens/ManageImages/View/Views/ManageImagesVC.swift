@@ -66,6 +66,12 @@ class ManageImagesVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        applyTheme()
+    }
+    
+    override func applyTheme() {
+        super.applyTheme()
+         uploadImageButton.tintColor = ThemeManager.shared.currentColor
     }
     
     @IBAction func uploadImageButtonAction(_ sender: Any) {
@@ -135,7 +141,6 @@ extension ManageImagesVC : UITableViewDelegate, UITableViewDataSource {
 
 extension ManageImagesVC {
     func setUpUI() {
-        uploadImageButton.tintColor = ThemeManager.shared.currentColor
         imagesSearchbar.delegate = self
         imagesListTableView.register(UINib(nibName: "ManageImagesTVC", bundle: nil), forCellReuseIdentifier: "ManageImagesTVC")
         imagesListTableView.isScrollEnabled = false

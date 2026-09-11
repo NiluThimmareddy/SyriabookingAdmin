@@ -83,6 +83,12 @@ class ManageRateVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        applyTheme()
+    }
+    
+    override func applyTheme() {
+        super.applyTheme()        
+        addNewRateButton.tintColor = ThemeManager.shared.currentColor
     }
     
     @IBAction func addNewRateButtonAction(_ sender: Any) {
@@ -158,7 +164,6 @@ extension ManageRateVC {
         
         setupRowsPerPageMenu()
         updatePagination()
-        addNewRateButton.tintColor = ThemeManager.shared.currentColor
     }
     
     private func updatePagination() {

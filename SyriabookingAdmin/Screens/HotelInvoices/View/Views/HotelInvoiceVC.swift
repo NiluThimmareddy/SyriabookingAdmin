@@ -116,8 +116,16 @@ class HotelInvoiceVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        applyTheme()
     }
     
+    override func applyTheme() {
+        super.applyTheme()
+        let themeColor = ThemeManager.shared.currentColor
+        invoiceIconImageView.tintColor = themeColor
+        updateInvoiceStatusViewSelection()
+    }
+   
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         updateTableViewHeight()
@@ -209,13 +217,11 @@ extension HotelInvoiceVC {
         scrollView.showsVerticalScrollIndicator = false
         invoiceListTableview.register(UINib(nibName: "InvoiceListTVC", bundle: nil),forCellReuseIdentifier: "InvoiceListTVC")
         invoiceListTableview.isScrollEnabled = false
-        invoiceIconImageView.tintColor = ThemeManager.shared.currentColor
         searchBar.delegate = self
 
         for (index, button) in invoiceStatusButton.enumerated() {
             button.tag = index
         }
-        updateInvoiceStatusViewSelection()
     }
     
     private func updateInvoiceStatusViewSelection() {

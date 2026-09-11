@@ -89,16 +89,18 @@ class ManageBookingsVC: BaseViewController {
         )
         return Array(filteredBookings[startIndex..<endIndex])
     }
-    
-    
-   
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        
+        applyTheme()
     }
     
+    override func applyTheme() {
+        super.applyTheme()
+        addNewBookingsButton.tintColor = ThemeManager.shared.currentColor
+        bookingStatusCollectionView.reloadData()
+    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         bookingStatusCollectionView.collectionViewLayout.invalidateLayout()
@@ -225,7 +227,6 @@ extension ManageBookingsVC : UITableViewDelegate, UITableViewDataSource {
 
 extension ManageBookingsVC {
     func setUpUI() {
-        addNewBookingsButton.tintColor = ThemeManager.shared.currentColor
         searchBookings.delegate = self
         
         bookingStatusCollectionView.register(UINib(nibName: "ManageBookingStatusCVC", bundle: nil), forCellWithReuseIdentifier: "ManageBookingStatusCVC")
@@ -358,15 +359,6 @@ extension ManageBookingsVC {
         }
 
         let navigationController = UINavigationController(rootViewController: vc)
-//        let appearance = UINavigationBarAppearance()
-//        appearance.configureWithOpaqueBackground()
-//        appearance.backgroundColor = ThemeManager.shared.currentColor
-//        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-//
-//        navigationController.navigationBar.standardAppearance = appearance
-//        navigationController.navigationBar.scrollEdgeAppearance = appearance
-//        navigationController.navigationBar.compactAppearance = appearance
-//        navigationController.navigationBar.tintColor = .white
         navigationController.modalPresentationStyle = .overFullScreen
         present(navigationController, animated: true)
     }
